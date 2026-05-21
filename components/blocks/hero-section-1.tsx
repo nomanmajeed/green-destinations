@@ -7,6 +7,7 @@ import { ArrowRight, ChevronRight, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { cn } from '@/lib/utils'
+import { ThemeToggle } from '@/components/ui/curtain-theme-toggle'
 
 const transitionVariants = {
     item: {
@@ -198,75 +199,39 @@ export function HeroSection() {
                         </div>
                         <div className="group-hover:blur-xs mx-auto mt-12 grid max-w-2xl grid-cols-4 gap-x-12 gap-y-8 transition-all duration-500 group-hover:opacity-50 sm:gap-x-16 sm:gap-y-14">
                             <div className="flex">
-                                <img
-                                    className="mx-auto h-5 w-fit dark:invert"
-                                    src="https://html.tailus.io/blocks/customers/nvidia.svg"
-                                    alt="Nvidia Logo"
-                                    height="20"
-                                    width="auto"
+                                <Image
+                                    className="m-auto w-32 dark:opacity-30 dark:contrast-200 opacity-60 grayscale filter duration-300 hover:grayscale-0 hover:opacity-100 dark:hover:opacity-100"
+                                    src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&q=80"
+                                    alt="partner logo"
+                                    width={300}
+                                    height={80}
                                 />
                             </div>
                             <div className="flex">
-                                <img
-                                    className="mx-auto h-4 w-fit dark:invert"
-                                    src="https://html.tailus.io/blocks/customers/column.svg"
-                                    alt="Column Logo"
-                                    height="16"
-                                    width="auto"
+                                <Image
+                                    className="m-auto w-24 dark:opacity-30 dark:contrast-200 opacity-60 grayscale filter duration-300 hover:grayscale-0 hover:opacity-100 dark:hover:opacity-100"
+                                    src="https://images.unsplash.com/photo-1618005198143-e5283b519a7f?w=300&q=80"
+                                    alt="partner logo"
+                                    width={300}
+                                    height={80}
                                 />
                             </div>
                             <div className="flex">
-                                <img
-                                    className="mx-auto h-4 w-fit dark:invert"
-                                    src="https://html.tailus.io/blocks/customers/github.svg"
-                                    alt="GitHub Logo"
-                                    height="16"
-                                    width="auto"
+                                <Image
+                                    className="m-auto w-28 dark:opacity-30 dark:contrast-200 opacity-60 grayscale filter duration-300 hover:grayscale-0 hover:opacity-100 dark:hover:opacity-100"
+                                    src="https://images.unsplash.com/photo-1618005154378-5a21e4284d72?w=300&q=80"
+                                    alt="partner logo"
+                                    width={300}
+                                    height={80}
                                 />
                             </div>
                             <div className="flex">
-                                <img
-                                    className="mx-auto h-5 w-fit dark:invert"
-                                    src="https://html.tailus.io/blocks/customers/nike.svg"
-                                    alt="Nike Logo"
-                                    height="20"
-                                    width="auto"
-                                />
-                            </div>
-                            <div className="flex">
-                                <img
-                                    className="mx-auto h-5 w-fit dark:invert"
-                                    src="https://html.tailus.io/blocks/customers/lemonsqueezy.svg"
-                                    alt="Lemon Squeezy Logo"
-                                    height="20"
-                                    width="auto"
-                                />
-                            </div>
-                            <div className="flex">
-                                <img
-                                    className="mx-auto h-4 w-fit dark:invert"
-                                    src="https://html.tailus.io/blocks/customers/laravel.svg"
-                                    alt="Laravel Logo"
-                                    height="16"
-                                    width="auto"
-                                />
-                            </div>
-                            <div className="flex">
-                                <img
-                                    className="mx-auto h-7 w-fit dark:invert"
-                                    src="https://html.tailus.io/blocks/customers/lilly.svg"
-                                    alt="Lilly Logo"
-                                    height="28"
-                                    width="auto"
-                                />
-                            </div>
-                            <div className="flex">
-                                <img
-                                    className="mx-auto h-6 w-fit dark:invert"
-                                    src="https://html.tailus.io/blocks/customers/openai.svg"
-                                    alt="OpenAI Logo"
-                                    height="24"
-                                    width="auto"
+                                <Image
+                                    className="m-auto w-28 dark:opacity-30 dark:contrast-200 opacity-60 grayscale filter duration-300 hover:grayscale-0 hover:opacity-100 dark:hover:opacity-100"
+                                    src="https://images.unsplash.com/photo-1618005131379-6a7f0b83f3e1?w=300&q=80"
+                                    alt="partner logo"
+                                    width={300}
+                                    height={80}
                                 />
                             </div>
                         </div>
@@ -303,7 +268,7 @@ const HeroHeader = () => {
                 className="fixed z-20 w-full px-2 group">
                 <div className={cn('mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12', isScrolled && 'bg-background/50 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5')}>
                     <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
-                        <div className="flex w-full justify-between lg:w-auto">
+                        <div className="flex w-full justify-between items-center lg:w-auto">
                             <Link
                                 href="/"
                                 aria-label="home"
@@ -311,13 +276,16 @@ const HeroHeader = () => {
                                 <Logo />
                             </Link>
 
-                            <button
-                                onClick={() => setMenuState(!menuState)}
-                                aria-label={menuState ? 'Close Menu' : 'Open Menu'}
-                                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden">
-                                <Menu className="in-data-[state=active]:rotate-180 group-data-[state=active]:scale-0 group-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
-                                <X className="group-data-[state=active]:rotate-0 group-data-[state=active]:scale-100 group-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
-                            </button>
+                            <div className="flex items-center gap-4 lg:hidden">
+                                <ThemeToggle variant="icon" defaultTheme="dark" duration={600} />
+                                <button
+                                    onClick={() => setMenuState(!menuState)}
+                                    aria-label={menuState ? 'Close Menu' : 'Open Menu'}
+                                    className="relative z-20 -m-2.5 p-2.5 cursor-pointer text-foreground">
+                                    <Menu className="in-data-[state=active]:rotate-180 group-data-[state=active]:scale-0 group-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
+                                    <X className="group-data-[state=active]:rotate-0 group-data-[state=active]:scale-100 group-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
+                                </button>
+                            </div>
                         </div>
 
                         <div className="absolute inset-0 m-auto hidden size-fit lg:block">
@@ -348,7 +316,10 @@ const HeroHeader = () => {
                                     ))}
                                 </ul>
                             </div>
-                            <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
+                            <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit items-center">
+                                <div className="hidden lg:block mr-2">
+                                    <ThemeToggle variant="icon" defaultTheme="dark" duration={600} />
+                                </div>
                                 <Button
                                     asChild
                                     variant="outline"

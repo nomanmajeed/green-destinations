@@ -8,7 +8,7 @@ const links = {
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/8" style={{ background: "#050f1e" }}>
+    <footer className="relative border-t border-border bg-slate-100 dark:bg-[#050f1e]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
           {/* Brand col */}
@@ -20,27 +20,27 @@ export default function Footer() {
                 </svg>
               </div>
               <div className="leading-none">
-                <span className="font-extrabold text-white text-sm">Green</span>
-                <span className="font-extrabold text-[#f7d36f] text-sm ml-1">Destinations</span>
+                <span className="font-extrabold text-foreground text-sm">Green</span>
+                <span className="font-extrabold text-gold text-sm ml-1">Destinations</span>
               </div>
             </div>
-            <p className="text-blue-200/50 text-sm leading-relaxed mb-5">
+            <p className="text-foreground/60 text-sm leading-relaxed mb-5">
               Specialist SEND home‑to‑school transport across the West Midlands.
             </p>
-            <ul className="space-y-2 text-sm text-blue-200/50">
+            <ul className="space-y-2 text-sm text-foreground/60">
               <li className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#f7d36f] shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-gold shrink-0" />
                 386 Park Road, Hockley, Birmingham, B18 5ST
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#f7d36f] shrink-0" />
-                <a href="mailto:admin@greendestinationsltd.com" className="hover:text-white transition-colors">
+                <Mail className="w-3.5 h-3.5 text-gold shrink-0" />
+                <a href="mailto:admin@greendestinationsltd.com" className="hover:text-foreground transition-colors">
                   admin@greendestinationsltd.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#f7d36f] shrink-0" />
-                <a href="tel:+441210000000" className="hover:text-white transition-colors">
+                <Phone className="w-3.5 h-3.5 text-gold shrink-0" />
+                <a href="tel:+441210000000" className="hover:text-foreground transition-colors">
                   +44 (0)121 000 0000
                 </a>
               </li>
@@ -50,13 +50,13 @@ export default function Footer() {
           {/* Link cols */}
           {Object.entries(links).map(([heading, items]) => (
             <div key={heading}>
-              <h4 className="text-white font-bold text-sm mb-4 tracking-wide">{heading}</h4>
+              <h4 className="text-foreground font-bold text-sm mb-4 tracking-wide">{heading}</h4>
               <ul className="space-y-2.5">
                 {items.map((item) => (
                   <li key={item}>
                     <a
                       href="#"
-                      className="text-blue-200/50 text-sm hover:text-[#f7d36f] transition-colors"
+                      className="text-foreground/60 text-sm hover:text-gold transition-colors"
                     >
                       {item}
                     </a>
@@ -68,12 +68,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-blue-200/40">
+        <div className="border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-foreground/50">
           <span>© 2026 Green Destinations Ltd. All rights reserved.</span>
           <div className="flex items-center gap-5">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Safeguarding Policy</a>
+            <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-foreground transition-colors">Safeguarding Policy</a>
           </div>
         </div>
       </div>

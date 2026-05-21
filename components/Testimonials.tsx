@@ -69,7 +69,7 @@ export default function Testimonials() {
     <section
       id="testimonials"
       className="relative py-24 lg:py-32 overflow-hidden"
-      style={{ background: "rgba(7,24,48,0.55)" }}
+      style={{ background: "var(--section-bg)" }}
     >
       {/* Decorative background blur */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -86,16 +86,16 @@ export default function Testimonials() {
           className="flex flex-col items-center justify-center text-center max-w-2xl mx-auto mb-16"
         >
           <div className="inline-flex items-center gap-2 glass-gold rounded-full px-4 py-1.5 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#f7d36f]" />
-            <span className="text-[#f7d36f] text-xs font-semibold tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+            <span className="text-gold text-xs font-semibold tracking-widest uppercase">
               Testimonials
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mt-2">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight mt-2">
             What our <span className="text-gradient-gold">partners & families</span> say
           </h2>
-          <p className="text-blue-200/70 text-lg leading-relaxed mt-4">
+          <p className="text-foreground/75 text-lg leading-relaxed mt-4">
             Read about the real-world impact of our dedicated, safety-first home-to-school journeys.
           </p>
         </motion.div>

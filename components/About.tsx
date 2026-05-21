@@ -70,7 +70,7 @@ export default function About() {
       id="about"
       ref={ref}
       className="relative py-24 lg:py-32 overflow-hidden"
-      style={{ background: "rgba(7,24,48,0.6)" }}
+      style={{ background: "var(--section-bg)" }}
     >
       {/* decorative blur */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[400px] rounded-full bg-blue-600/5 blur-[100px] pointer-events-none" />
@@ -84,16 +84,16 @@ export default function About() {
           className="text-center mb-16"
         >
           <motion.div variants={fadeUp} className="inline-flex items-center gap-2 glass-gold rounded-full px-4 py-1.5 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#f7d36f]" />
-            <span className="text-[#f7d36f] text-xs font-semibold tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+            <span className="text-gold text-xs font-semibold tracking-widest uppercase">
               About Us
             </span>
           </motion.div>
-          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight">
+          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-4 tracking-tight">
             Safer journeys built on{" "}
             <span className="text-gradient-gold">trust</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-blue-200/70 text-lg max-w-2xl mx-auto leading-relaxed">
+          <motion.p variants={fadeUp} className="text-foreground/75 text-lg max-w-2xl mx-auto leading-relaxed">
             Our service is built around safety, professionalism, and the
             individual needs of the children we support.
           </motion.p>
@@ -108,7 +108,7 @@ export default function About() {
         >
           {features.map((f) => (
             <motion.div key={f.n} variants={fadeUp}>
-              <Card className="bg-transparent border-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-2xl overflow-hidden group h-full">
+              <Card className="bg-card/45 border-border hover:border-foreground/15 hover:bg-card/75 transition-all duration-300 hover:shadow-2xl overflow-hidden group h-full">
                 <CardContent className="p-6 h-full flex flex-col">
                   <div
                     className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${f.color} flex items-center justify-center mb-4 shadow-xl ${f.glow} group-hover:scale-110 transition-transform duration-300`}
@@ -117,10 +117,10 @@ export default function About() {
                       {f.n}
                     </span>
                   </div>
-                  <h3 className="text-white font-bold text-lg mb-2">
+                  <h3 className="text-foreground font-bold text-lg mb-2">
                     {f.title}
                   </h3>
-                  <p className="text-blue-200/60 text-sm leading-relaxed flex-1">
+                  <p className="text-foreground/70 text-sm leading-relaxed flex-1">
                     {f.desc}
                   </p>
                 </CardContent>
@@ -136,11 +136,11 @@ export default function About() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-3 tracking-tight">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-3 tracking-tight">
               Why families and partners{" "}
               <span className="text-gradient-gold">choose us</span>
             </h3>
-            <p className="text-blue-200/70 mb-8 leading-relaxed">
+            <p className="text-foreground/75 mb-8 leading-relaxed">
               Every journey with Green Destinations is underpinned by rigorous
               vetting, bespoke training, and a genuine commitment to each
               child's wellbeing.
@@ -154,8 +154,8 @@ export default function About() {
                 "First aid and SEND awareness trained staff",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#f7d36f] shrink-0 mt-0.5" />
-                  <span className="text-blue-100/80 text-sm">{item}</span>
+                  <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+                  <span className="text-foreground/80 text-sm">{item}</span>
                 </li>
               ))}
             </ul>
@@ -175,13 +175,13 @@ export default function About() {
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }}
               >
-                <Card className="bg-white/[0.04] border-white/10 hover:bg-white/[0.07] hover:border-white/20 transition-all duration-300 group">
+                <Card className="bg-card/45 border-border hover:bg-card/75 hover:border-foreground/15 transition-all duration-300 group">
                   <CardContent className="p-5">
                     <div className="w-9 h-9 rounded-xl glass-gold flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                      <v.icon className="w-4 h-4 text-[#f7d36f]" />
+                      <v.icon className="w-4 h-4 text-gold" />
                     </div>
-                    <h4 className="text-white font-bold text-sm mb-1">{v.h}</h4>
-                    <p className="text-blue-200/50 text-xs leading-relaxed">{v.p}</p>
+                    <h4 className="text-foreground font-bold text-sm mb-1">{v.h}</h4>
+                    <p className="text-foreground/60 text-xs leading-relaxed">{v.p}</p>
                   </CardContent>
                 </Card>
               </motion.div>
