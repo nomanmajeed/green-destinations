@@ -17,7 +17,7 @@ const roles = [
     p: "Drive a dedicated home‑to‑school SEND route. Calm temperament and D1 license required.",
     loc: "Birmingham",
     type: "Full‑time / Part-time",
-    tagColor: "bg-blue-500/20 text-blue-300 border-blue-500/30",
+    tagColor: "bg-blue-500/10 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/20 dark:border-blue-500/30",
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const roles = [
     p: "Support pupils on daily journeys with patience, structure, and warmth.",
     loc: "West Midlands",
     type: "Term‑time",
-    tagColor: "bg-pink-500/20 text-pink-300 border-pink-500/30",
+    tagColor: "bg-pink-500/10 dark:bg-pink-500/20 text-pink-700 dark:text-pink-300 border-pink-500/20 dark:border-pink-500/30",
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const roles = [
     p: "Join the wider fleet with regular shift patterns and route consistency.",
     loc: "Birmingham",
     type: "Full‑time",
-    tagColor: "bg-blue-500/20 text-blue-300 border-blue-500/30",
+    tagColor: "bg-blue-500/10 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/20 dark:border-blue-500/30",
   },
   {
     id: 4,
@@ -44,7 +44,7 @@ const roles = [
     p: "Plan and oversee daily routes alongside schools and local authorities.",
     loc: "Hockley, B18",
     type: "Full‑time",
-    tagColor: "bg-purple-500/20 text-purple-300 border-purple-500/30",
+    tagColor: "bg-purple-500/10 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/20 dark:border-purple-500/30",
   },
   {
     id: 5,
@@ -53,7 +53,7 @@ const roles = [
     p: "Champion our safeguarding culture across the driver and assistant team.",
     loc: "Hybrid",
     type: "Full‑time",
-    tagColor: "bg-[#f7d36f]/20 text-[#f7d36f] border-[#f7d36f]/30",
+    tagColor: "bg-amber-500/10 dark:bg-[#f7d36f]/20 text-amber-700 dark:text-[#f7d36f] border-amber-500/20 dark:border-[#f7d36f]/30",
   },
   {
     id: 6,
@@ -62,7 +62,7 @@ const roles = [
     p: "Onboard and tutor new drivers in safe SEND‑specific practices.",
     loc: "Birmingham",
     type: "Part‑time",
-    tagColor: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
+    tagColor: "bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border-emerald-500/20 dark:border-emerald-500/30",
   },
 ];
 
@@ -113,19 +113,19 @@ function ApplyModal({
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 40, scale: 0.97 }}
         transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-        className="relative w-full max-w-lg glass rounded-3xl border border-white/15 shadow-2xl overflow-hidden"
+        className="relative w-full max-w-lg glass rounded-3xl border border-border shadow-2xl overflow-hidden"
       >
         {/* Header */}
-        <div className="flex items-start justify-between p-6 border-b border-white/10">
+        <div className="flex items-start justify-between p-6 border-b border-border">
           <div>
-            <p className="text-[#f7d36f] text-xs font-semibold tracking-widest uppercase mb-1">
+            <p className="text-gold text-xs font-semibold tracking-widest uppercase mb-1">
               Green Destinations · {role.loc} · {role.type}
             </p>
-            <h3 className="text-white font-extrabold text-xl">{role.h}</h3>
+            <h3 className="text-foreground font-extrabold text-xl">{role.h}</h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-xl hover:bg-white/10 transition-colors text-white/50 hover:text-white"
+            className="p-1.5 rounded-xl hover:bg-foreground/10 transition-colors text-foreground/50 hover:text-foreground cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -143,11 +143,11 @@ function ApplyModal({
                   <path d="M5 13l4 4L19 7" stroke="#0b2245" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
-              <h4 className="text-white font-bold text-lg mb-2">Application Sent!</h4>
-              <p className="text-blue-200/60 text-sm">
+              <h4 className="text-foreground font-bold text-lg mb-2">Application Sent!</h4>
+              <p className="text-foreground/70 text-sm">
                 Thanks {form.name.split(" ")[0]}! We'll be in touch soon.
               </p>
-              <Button onClick={onClose} className="mt-6 bg-[#f7d36f] hover:bg-[#e6ad2e] text-[#0b2245] font-bold rounded-xl">
+              <Button onClick={onClose} className="mt-6 bg-gold hover:bg-[#e6ad2e] text-[#0b2245] font-bold rounded-xl cursor-pointer">
                 Close
               </Button>
             </motion.div>
@@ -155,39 +155,39 @@ function ApplyModal({
             <form onSubmit={submit} className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-white/60 text-xs font-medium block mb-1">Full Name</label>
+                  <label className="text-foreground/70 text-xs font-medium block mb-1">Full Name</label>
                   <Input
                     required
                     value={form.name}
                     onChange={set("name")}
                     placeholder="Jane Smith"
-                    className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-[#f7d36f]/50 rounded-xl"
+                    className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl"
                   />
                 </div>
                 <div>
-                  <label className="text-white/60 text-xs font-medium block mb-1">Phone</label>
+                  <label className="text-foreground/70 text-xs font-medium block mb-1">Phone</label>
                   <Input
                     required
                     value={form.phone}
                     onChange={set("phone")}
                     placeholder="+44 7xxx xxxxxx"
-                    className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-[#f7d36f]/50 rounded-xl"
+                    className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl"
                   />
                 </div>
               </div>
               <div>
-                <label className="text-white/60 text-xs font-medium block mb-1">Email</label>
+                <label className="text-foreground/70 text-xs font-medium block mb-1">Email</label>
                 <Input
                   required
                   type="email"
                   value={form.email}
                   onChange={set("email")}
                   placeholder="jane@example.com"
-                  className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-[#f7d36f]/50 rounded-xl"
+                  className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl"
                 />
               </div>
               <div>
-                <label className="text-white/60 text-xs font-medium block mb-1">
+                <label className="text-foreground/70 text-xs font-medium block mb-1">
                   Brief Statement
                 </label>
                 <Textarea
@@ -196,13 +196,13 @@ function ApplyModal({
                   onChange={set("statement")}
                   placeholder="Explain your experience with SEND or transport..."
                   rows={3}
-                  className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-[#f7d36f]/50 rounded-xl resize-none"
+                  className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl resize-none"
                 />
               </div>
               <Button
                 type="submit"
                 disabled={submitting}
-                className="w-full bg-[#f7d36f] hover:bg-[#e6ad2e] text-[#0b2245] font-bold rounded-xl py-3 transition-all duration-200 hover:scale-[1.01] shadow-lg shadow-yellow-500/20"
+                className="w-full bg-gold hover:bg-[#e6ad2e] text-[#0b2245] font-bold rounded-xl py-3 transition-all duration-200 hover:scale-[1.01] shadow-lg shadow-yellow-500/20 cursor-pointer"
               >
                 {submitting ? (
                   <span className="flex items-center gap-2">
@@ -242,7 +242,7 @@ export default function Careers() {
       id="careers"
       ref={ref}
       className="relative py-24 lg:py-32"
-      style={{ background: "rgba(7,24,48,0.5)" }}
+      style={{ background: "var(--section-bg)" }}
     >
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-yellow-500/5 blur-[100px]" />
@@ -258,29 +258,29 @@ export default function Careers() {
         >
           <div>
             <motion.div variants={fadeUp} className="inline-flex items-center gap-2 glass-gold rounded-full px-4 py-1.5 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#f7d36f]" />
-              <span className="text-[#f7d36f] text-xs font-semibold tracking-widest uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+              <span className="text-gold text-xs font-semibold tracking-widest uppercase">
                 Join the Team
               </span>
             </motion.div>
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight">
               Build a meaningful role in{" "}
               <span className="text-gradient-gold">SEND transport</span>
             </motion.h2>
           </div>
           <motion.div variants={fadeUp}>
-            <p className="text-blue-200/70 leading-relaxed mb-4">
+            <p className="text-foreground/75 leading-relaxed mb-4">
               Our values shape every journey, every interaction, and every role
               across Green Destinations. Join a team that makes a real
               difference.
             </p>
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/40" />
               <Input
                 placeholder="Search roles…"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="pl-9 bg-white/5 border-white/15 text-white placeholder:text-white/30 rounded-xl focus:border-[#f7d36f]/50"
+                className="pl-9 bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 rounded-xl focus:border-gold/50"
               />
             </div>
           </motion.div>
@@ -295,7 +295,7 @@ export default function Careers() {
         >
           {filtered.map((role) => (
             <motion.div key={role.id} variants={fadeUp}>
-              <Card className="group h-full bg-white/[0.03] border-white/10 hover:border-white/20 hover:bg-white/[0.06] transition-all duration-300 cursor-pointer"
+              <Card className="group h-full bg-card/45 border-border hover:border-foreground/15 hover:bg-card/70 transition-all duration-300 cursor-pointer"
                 onClick={() => setSelected(role)}>
                 <CardContent className="p-5 flex flex-col h-full">
                   <div className="flex items-center gap-2 mb-3">
@@ -303,13 +303,13 @@ export default function Careers() {
                       {role.tag}
                     </Badge>
                   </div>
-                  <h3 className="text-white font-bold text-base mb-2 group-hover:text-[#f7d36f] transition-colors">
+                  <h3 className="text-foreground font-bold text-base mb-2 group-hover:text-gold transition-colors">
                     {role.h}
                   </h3>
-                  <p className="text-blue-200/55 text-sm leading-relaxed flex-1 mb-4">
+                  <p className="text-foreground/70 text-sm leading-relaxed flex-1 mb-4">
                     {role.p}
                   </p>
-                  <div className="flex items-center gap-4 text-xs text-blue-300/60 mb-4">
+                  <div className="flex items-center gap-4 text-xs text-foreground/70 mb-4">
                     <span className="flex items-center gap-1">
                       <MapPin className="w-3.5 h-3.5" /> {role.loc}
                     </span>
@@ -319,7 +319,7 @@ export default function Careers() {
                   </div>
                   <Button
                     size="sm"
-                    className="w-full bg-white/8 hover:bg-[#f7d36f] hover:text-[#0b2245] text-white border border-white/15 hover:border-[#f7d36f] rounded-xl font-semibold text-xs transition-all duration-200 flex items-center gap-1.5"
+                    className="w-full bg-foreground/5 hover:bg-gold hover:text-[#0b2245] text-foreground border border-border hover:border-gold rounded-xl font-semibold text-xs transition-all duration-200 flex items-center gap-1.5 cursor-pointer"
                   >
                     Apply Now
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -331,7 +331,7 @@ export default function Careers() {
         </motion.div>
 
         {filtered.length === 0 && (
-          <div className="text-center py-16 text-blue-200/50">
+          <div className="text-center py-16 text-foreground/50">
             No roles match your search.
           </div>
         )}

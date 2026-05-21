@@ -17,10 +17,10 @@ const services = [
       "Consistent drivers and routes",
       "Parent & school communication",
     ],
-    accent: "from-blue-500/20 to-blue-700/10",
-    iconColor: "text-blue-400",
-    iconBg: "bg-blue-500/20",
-    badge: "bg-blue-500/20 text-blue-300 border-blue-500/30",
+    accent: "from-blue-500/5 to-blue-700/5 dark:from-blue-500/20 dark:to-blue-700/10",
+    iconColor: "text-blue-600 dark:text-blue-400",
+    iconBg: "bg-blue-500/10 dark:bg-blue-500/20",
+    badge: "bg-blue-500/10 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/20 dark:border-blue-500/30",
   },
   {
     icon: Heart,
@@ -32,10 +32,10 @@ const services = [
       "SEND awareness trained",
       "Positive, caring approach",
     ],
-    accent: "from-pink-500/20 to-rose-700/10",
-    iconColor: "text-pink-400",
-    iconBg: "bg-pink-500/20",
-    badge: "bg-pink-500/20 text-pink-300 border-pink-500/30",
+    accent: "from-pink-500/5 to-rose-700/5 dark:from-pink-500/20 dark:to-rose-700/10",
+    iconColor: "text-pink-600 dark:text-pink-400",
+    iconBg: "bg-pink-500/10 dark:bg-pink-500/20",
+    badge: "bg-pink-500/10 dark:bg-pink-500/20 text-pink-700 dark:text-pink-300 border-pink-500/20 dark:border-pink-500/30",
   },
   {
     icon: ShieldCheck,
@@ -47,10 +47,10 @@ const services = [
       "Safeguarding policies & training",
       "Incident reporting & transparency",
     ],
-    accent: "from-[#f7d36f]/15 to-[#e6ad2e]/5",
-    iconColor: "text-[#f7d36f]",
-    iconBg: "bg-[#f7d36f]/15",
-    badge: "bg-[#f7d36f]/20 text-[#f7d36f] border-[#f7d36f]/30",
+    accent: "from-amber-500/5 to-[#e6ad2e]/5 dark:from-[#f7d36f]/15 dark:to-[#e6ad2e]/5",
+    iconColor: "text-amber-600 dark:text-[#f7d36f]",
+    iconBg: "bg-amber-500/10 dark:bg-[#f7d36f]/15",
+    badge: "bg-amber-500/10 dark:bg-[#f7d36f]/20 text-amber-800 dark:text-[#f7d36f] border-amber-500/20 dark:border-[#f7d36f]/30",
     featured: true,
   },
   {
@@ -63,10 +63,10 @@ const services = [
       "Autism and SEND awareness",
       "DBS‑checked and vetted",
     ],
-    accent: "from-emerald-500/20 to-teal-700/10",
-    iconColor: "text-emerald-400",
-    iconBg: "bg-emerald-500/20",
-    badge: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
+    accent: "from-emerald-500/5 to-teal-700/5 dark:from-emerald-500/20 dark:to-teal-700/10",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    iconBg: "bg-emerald-500/10 dark:bg-emerald-500/20",
+    badge: "bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border-emerald-500/20 dark:border-emerald-500/30",
   },
   {
     icon: Route,
@@ -78,10 +78,10 @@ const services = [
       "Route optimisation",
       "Operational transparency",
     ],
-    accent: "from-purple-500/20 to-indigo-700/10",
-    iconColor: "text-purple-400",
-    iconBg: "bg-purple-500/20",
-    badge: "bg-purple-500/20 text-purple-300 border-purple-500/30",
+    accent: "from-purple-500/5 to-indigo-700/5 dark:from-purple-500/20 dark:to-indigo-700/10",
+    iconColor: "text-purple-600 dark:text-purple-400",
+    iconBg: "bg-purple-500/10 dark:bg-purple-500/20",
+    badge: "bg-purple-500/10 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/20 dark:border-purple-500/30",
   },
 ];
 
@@ -115,16 +115,16 @@ export default function Services() {
           className="text-center mb-16"
         >
           <motion.div variants={fadeUp} className="inline-flex items-center gap-2 glass-gold rounded-full px-4 py-1.5 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#f7d36f]" />
-            <span className="text-[#f7d36f] text-xs font-semibold tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+            <span className="text-gold text-xs font-semibold tracking-widest uppercase">
               What We Offer
             </span>
           </motion.div>
-          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight">
+          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-4 tracking-tight">
             Services built around{" "}
             <span className="text-gradient-gold">every child's journey</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-blue-200/70 text-lg max-w-2xl mx-auto leading-relaxed">
+          <motion.p variants={fadeUp} className="text-foreground/75 text-lg max-w-2xl mx-auto leading-relaxed">
             From specialist SEND routes to local authority contracts — every
             service we offer is shaped by care and expertise.
           </motion.p>
@@ -140,13 +140,13 @@ export default function Services() {
           {services.map((s) => (
             <motion.div key={s.h} variants={fadeUp} className="group">
               <Card
-                className={`relative h-full border-white/10 bg-gradient-to-br ${s.accent} backdrop-blur-sm overflow-hidden
-                  hover:border-white/20 hover:shadow-2xl hover:shadow-black/30 transition-all duration-400
-                  ${s.featured ? "ring-1 ring-[#f7d36f]/30" : ""}`}
+                className={`relative h-full border-border bg-card/30 bg-gradient-to-br ${s.accent} backdrop-blur-sm overflow-hidden
+                  hover:border-foreground/15 hover:shadow-2xl transition-all duration-400
+                  ${s.featured ? "ring-1 ring-gold/30" : ""}`}
               >
                 {s.featured && (
                   <div className="absolute top-3 right-3">
-                    <span className="text-[10px] font-bold text-[#0b2245] bg-[#f7d36f] px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] font-bold text-[#0b2245] bg-gold px-2 py-0.5 rounded-full">
                       Core
                     </span>
                   </div>
@@ -166,10 +166,10 @@ export default function Services() {
                     </Badge>
                   </div>
 
-                  <h3 className="text-white font-bold text-lg mb-2 leading-tight">
+                  <h3 className="text-foreground font-bold text-lg mb-2 leading-tight">
                     {s.h}
                   </h3>
-                  <p className="text-blue-200/60 text-sm leading-relaxed mb-5 flex-1">
+                  <p className="text-foreground/70 text-sm leading-relaxed mb-5 flex-1">
                     {s.p}
                   </p>
 
@@ -177,7 +177,7 @@ export default function Services() {
                     {s.list.map((item) => (
                       <li
                         key={item}
-                        className="flex items-center gap-2 text-xs text-blue-200/70"
+                        className="flex items-center gap-2 text-xs text-foreground/70"
                       >
                         <span
                           className={`w-1 h-1 rounded-full ${s.iconBg} shrink-0`}

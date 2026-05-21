@@ -32,24 +32,24 @@ export const TestimonialsColumn = (props: {
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
               {props.testimonials.map(({ text, image, name, role }, i) => (
-                <div
-                  className="p-8 rounded-3xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-white/20 max-w-xs w-full group backdrop-blur-sm"
+                 <div
+                  className="p-8 rounded-3xl border border-border bg-card/45 hover:bg-card/70 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-foreground/15 max-w-xs w-full group backdrop-blur-sm"
                   key={i}
                 >
-                  <div className="text-blue-100/80 text-sm leading-relaxed">{text}</div>
+                  <div className="text-foreground/80 text-sm leading-relaxed">{text}</div>
                   <div className="flex items-center gap-3 mt-6">
                     <img
                       width={40}
                       height={40}
                       src={image}
                       alt={name}
-                      className="h-10 w-10 rounded-full object-cover border border-white/20 group-hover:scale-105 transition-transform duration-300"
+                      className="h-10 w-10 rounded-full object-cover border border-border group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="flex flex-col">
-                      <div className="font-bold text-white tracking-tight leading-5 text-sm group-hover:text-[#f7d36f] transition-colors">
+                      <div className="font-bold text-foreground tracking-tight leading-5 text-sm group-hover:text-gold transition-colors">
                         {name}
                       </div>
-                      <div className="text-xs leading-5 text-blue-200/50 tracking-tight">
+                      <div className="text-xs leading-5 text-foreground/60 tracking-tight">
                         {role}
                       </div>
                     </div>

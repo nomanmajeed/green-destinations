@@ -83,16 +83,16 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <motion.div variants={fadeUp} className="inline-flex items-center gap-2 glass-gold rounded-full px-4 py-1.5 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#f7d36f]" />
-            <span className="text-[#f7d36f] text-xs font-semibold tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+            <span className="text-gold text-xs font-semibold tracking-widest uppercase">
               Get In Touch
             </span>
           </motion.div>
-          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight">
+          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-4 tracking-tight">
             Get in touch with{" "}
             <span className="text-gradient-gold">our team</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-blue-200/70 text-lg max-w-xl mx-auto">
+          <motion.p variants={fadeUp} className="text-foreground/75 text-lg max-w-xl mx-auto">
             Whether you&apos;re a family, school, or local authority — we&apos;d
             love to hear from you.
           </motion.p>
@@ -106,34 +106,34 @@ export default function Contact() {
             animate={inView ? "show" : "hidden"}
             className="flex flex-col gap-4"
           >
-            <motion.h3 variants={fadeUp} className="text-white font-bold text-xl mb-2">
+            <motion.h3 variants={fadeUp} className="text-foreground font-bold text-xl mb-2">
               Send us a message
             </motion.h3>
-            <motion.p variants={fadeUp} className="text-blue-200/60 text-sm leading-relaxed mb-4">
+            <motion.p variants={fadeUp} className="text-foreground/70 text-sm leading-relaxed mb-4">
               Our team is available Monday to Friday. We aim to respond within
               one working day.
             </motion.p>
 
             {info.map((item) => (
               <motion.div key={item.title} variants={fadeUp}>
-                <Card className="bg-white/[0.04] border-white/10 hover:bg-white/[0.07] hover:border-white/20 transition-all duration-300 group">
+                <Card className="bg-card/45 border-border hover:bg-card/75 hover:border-foreground/15 transition-all duration-300 group">
                   <CardContent className="p-4 flex items-center gap-4">
                     <div className="w-10 h-10 rounded-xl glass-gold flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
-                      <item.icon className="w-4 h-4 text-[#f7d36f]" />
+                      <item.icon className="w-4 h-4 text-gold" />
                     </div>
                     <div>
-                      <p className="text-white/50 text-xs font-medium uppercase tracking-widest mb-0.5">
+                      <p className="text-foreground/50 text-xs font-medium uppercase tracking-widest mb-0.5">
                         {item.title}
                       </p>
                       {item.href ? (
                         <a
                           href={item.href}
-                          className="text-white text-sm font-medium hover:text-[#f7d36f] transition-colors whitespace-pre-line"
+                          className="text-foreground text-sm font-medium hover:text-gold transition-colors whitespace-pre-line"
                         >
                           {item.v}
                         </a>
                       ) : (
-                        <p className="text-white text-sm font-medium whitespace-pre-line">
+                        <p className="text-foreground text-sm font-medium whitespace-pre-line">
                           {item.v}
                         </p>
                       )}
@@ -150,7 +150,7 @@ export default function Contact() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <Card className="bg-white/[0.04] border-white/10 shadow-2xl shadow-black/30">
+            <Card className="bg-card/45 border-border shadow-2xl shadow-black/5 dark:shadow-black/30">
               <CardContent className="p-7">
                 {sent ? (
                   <motion.div
@@ -169,10 +169,10 @@ export default function Contact() {
                         />
                       </svg>
                     </div>
-                    <h4 className="text-white font-extrabold text-xl mb-2">
+                    <h4 className="text-foreground font-extrabold text-xl mb-2">
                       Message Received
                     </h4>
-                    <p className="text-blue-200/60 text-sm leading-relaxed max-w-xs">
+                    <p className="text-foreground/70 text-sm leading-relaxed max-w-xs">
                       Thanks for reaching out. A member of the team will be
                       in touch shortly.
                     </p>
@@ -181,7 +181,7 @@ export default function Contact() {
                   <form onSubmit={submit} className="space-y-4">
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="text-white/60 text-xs font-medium block mb-1.5">
+                        <label className="text-foreground/70 text-xs font-medium block mb-1.5">
                           Full Name
                         </label>
                         <Input
@@ -189,23 +189,23 @@ export default function Contact() {
                           value={form.name}
                           onChange={set("name")}
                           placeholder="Jane Smith"
-                          className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-[#f7d36f]/50 rounded-xl h-11"
+                          className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl h-11"
                         />
                       </div>
                       <div>
-                        <label className="text-white/60 text-xs font-medium block mb-1.5">
+                        <label className="text-foreground/70 text-xs font-medium block mb-1.5">
                           Phone
                         </label>
                         <Input
                           value={form.phone}
                           onChange={set("phone")}
                           placeholder="+44 7xxx xxxxxx"
-                          className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-[#f7d36f]/50 rounded-xl h-11"
+                          className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl h-11"
                         />
                       </div>
                     </div>
                     <div>
-                      <label className="text-white/60 text-xs font-medium block mb-1.5">
+                      <label className="text-foreground/70 text-xs font-medium block mb-1.5">
                         Email
                       </label>
                       <Input
@@ -214,11 +214,11 @@ export default function Contact() {
                         value={form.email}
                         onChange={set("email")}
                         placeholder="jane@example.com"
-                        className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-[#f7d36f]/50 rounded-xl h-11"
+                        className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl h-11"
                       />
                     </div>
                     <div>
-                      <label className="text-white/60 text-xs font-medium block mb-1.5">
+                      <label className="text-foreground/70 text-xs font-medium block mb-1.5">
                         Message
                       </label>
                       <Textarea
@@ -227,13 +227,13 @@ export default function Contact() {
                         onChange={set("message")}
                         placeholder="Tell us about your transport needs…"
                         rows={5}
-                        className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-[#f7d36f]/50 rounded-xl resize-none"
+                        className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl resize-none"
                       />
                     </div>
                     <Button
                       type="submit"
                       disabled={sending}
-                      className="w-full bg-[#f7d36f] hover:bg-[#e6ad2e] text-[#0b2245] font-bold rounded-xl h-12 text-base transition-all duration-200 hover:scale-[1.01] shadow-lg shadow-yellow-500/20"
+                      className="w-full bg-gold hover:bg-[#e6ad2e] text-[#0b2245] font-bold rounded-xl h-12 text-base transition-all duration-200 hover:scale-[1.01] shadow-lg shadow-yellow-500/20 cursor-pointer"
                     >
                       {sending ? (
                         <span className="flex items-center gap-2">
