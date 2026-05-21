@@ -68,7 +68,12 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" ref={ref} className="relative py-24 lg:py-32 overflow-hidden">
+    <section
+      id="contact"
+      ref={ref}
+      className="relative pt-24 pb-12 lg:pt-32 lg:pb-16 overflow-hidden"
+      style={{ background: "var(--section-bg)" }}
+    >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
         <div className="absolute top-1/2 left-0 w-[600px] h-[400px] rounded-full bg-blue-600/8 blur-[100px]" />

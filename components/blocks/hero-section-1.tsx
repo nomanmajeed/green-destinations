@@ -167,17 +167,17 @@ export function HeroSection() {
                                 />
                                 <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg shadow-zinc-950/15 ring-1">
                                     <Image
-                                        className="bg-background aspect-[15/8] relative hidden rounded-2xl dark:block"
-                                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=2700&q=75"
-                                        alt="app dashboard dark"
+                                        className="bg-background aspect-[15/8] object-cover relative hidden rounded-2xl dark:block"
+                                        src="https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=2700&q=75"
+                                        alt="scenic travel road dark"
                                         width={2700}
                                         height={1440}
                                         unoptimized
                                     />
                                     <Image
-                                        className="z-2 border-border/25 aspect-[15/8] relative rounded-2xl border dark:hidden"
-                                        src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=2700&q=75"
-                                        alt="app dashboard light"
+                                        className="z-2 border-border/25 aspect-[15/8] object-cover relative rounded-2xl border dark:hidden"
+                                        src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=2700&q=75"
+                                        alt="scenic travel road light"
                                         width={2700}
                                         height={1440}
                                         unoptimized
@@ -197,42 +197,49 @@ export function HeroSection() {
                                 <ChevronRight className="ml-1 inline-block size-3" />
                             </Link>
                         </div>
-                        <div className="group-hover:blur-xs mx-auto mt-12 grid max-w-2xl grid-cols-4 gap-x-12 gap-y-8 transition-all duration-500 group-hover:opacity-50 sm:gap-x-16 sm:gap-y-14">
-                            <div className="flex">
-                                <Image
-                                    className="m-auto w-32 dark:opacity-30 dark:contrast-200 opacity-60 grayscale filter duration-300 hover:grayscale-0 hover:opacity-100 dark:hover:opacity-100"
-                                    src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&q=80"
-                                    alt="partner logo"
-                                    width={300}
-                                    height={80}
-                                />
+                        <div className="group-hover:blur-xs mx-auto mt-12 grid max-w-2xl grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-8 transition-all duration-500 group-hover:opacity-50 sm:gap-x-16 sm:gap-y-14 items-center justify-items-center">
+                            {/* Partner 1: West Midlands LEA */}
+                            <div className="flex items-center gap-2.5 text-foreground/60 dark:text-foreground/40 hover:text-foreground dark:hover:text-foreground transition-all duration-300">
+                                <svg className="w-7 h-7 shrink-0 text-foreground/60 dark:text-foreground/40 hover:text-foreground" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                </svg>
+                                <div className="flex flex-col text-left">
+                                    <span className="text-xs font-bold tracking-wider uppercase leading-tight text-foreground/80">West Midlands</span>
+                                    <span className="text-[10px] opacity-75 font-semibold uppercase tracking-widest leading-none">Education Auth.</span>
+                                </div>
                             </div>
-                            <div className="flex">
-                                <Image
-                                    className="m-auto w-24 dark:opacity-30 dark:contrast-200 opacity-60 grayscale filter duration-300 hover:grayscale-0 hover:opacity-100 dark:hover:opacity-100"
-                                    src="https://images.unsplash.com/photo-1618005198143-e5283b519a7f?w=300&q=80"
-                                    alt="partner logo"
-                                    width={300}
-                                    height={80}
-                                />
+
+                            {/* Partner 2: NHS Care Partner */}
+                            <div className="flex items-center gap-2.5 text-foreground/60 dark:text-foreground/40 hover:text-foreground dark:hover:text-foreground transition-all duration-300">
+                                <svg className="w-7 h-7 shrink-0 text-foreground/60 dark:text-foreground/40 hover:text-foreground" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                                </svg>
+                                <div className="flex flex-col text-left">
+                                    <span className="text-xs font-bold tracking-wider uppercase leading-tight text-foreground/80">NHS Trust</span>
+                                    <span className="text-[10px] opacity-75 font-semibold uppercase tracking-widest leading-none">Care Partner</span>
+                                </div>
                             </div>
-                            <div className="flex">
-                                <Image
-                                    className="m-auto w-28 dark:opacity-30 dark:contrast-200 opacity-60 grayscale filter duration-300 hover:grayscale-0 hover:opacity-100 dark:hover:opacity-100"
-                                    src="https://images.unsplash.com/photo-1618005154378-5a21e4284d72?w=300&q=80"
-                                    alt="partner logo"
-                                    width={300}
-                                    height={80}
-                                />
+
+                            {/* Partner 3: Specialist Schools Alliance */}
+                            <div className="flex items-center gap-2.5 text-foreground/60 dark:text-foreground/40 hover:text-foreground dark:hover:text-foreground transition-all duration-300">
+                                <svg className="w-7 h-7 shrink-0 text-foreground/60 dark:text-foreground/40 hover:text-foreground" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                                <div className="flex flex-col text-left">
+                                    <span className="text-xs font-bold tracking-wider uppercase leading-tight text-foreground/80">Specialist Schools</span>
+                                    <span className="text-[10px] opacity-75 font-semibold uppercase tracking-widest leading-none">SEND Alliance</span>
+                                </div>
                             </div>
-                            <div className="flex">
-                                <Image
-                                    className="m-auto w-28 dark:opacity-30 dark:contrast-200 opacity-60 grayscale filter duration-300 hover:grayscale-0 hover:opacity-100 dark:hover:opacity-100"
-                                    src="https://images.unsplash.com/photo-1618005131379-6a7f0b83f3e1?w=300&q=80"
-                                    alt="partner logo"
-                                    width={300}
-                                    height={80}
-                                />
+
+                            {/* Partner 4: SEND Safety Trust */}
+                            <div className="flex items-center gap-2.5 text-foreground/60 dark:text-foreground/40 hover:text-foreground dark:hover:text-foreground transition-all duration-300">
+                                <svg className="w-7 h-7 shrink-0 text-foreground/60 dark:text-foreground/40 hover:text-foreground" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                                <div className="flex flex-col text-left">
+                                    <span className="text-xs font-bold tracking-wider uppercase leading-tight text-foreground/80">SEND Safety</span>
+                                    <span className="text-[10px] opacity-75 font-semibold uppercase tracking-widest leading-none">Accredited Trust</span>
+                                </div>
                             </div>
                         </div>
                     </div>
