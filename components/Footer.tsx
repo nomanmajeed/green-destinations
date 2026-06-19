@@ -1,9 +1,25 @@
+import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 const links = {
-  Company: ["About Us", "Services", "Careers", "Contact Us"],
-  "For Families": ["Book a Journey", "SEND Transport", "Passenger Support", "Safeguarding"],
-  "For Operators": ["LA Partnerships", "Route Coordination", "Compliance", "Reporting"],
+  Company: [
+    { name: "About Us", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Careers", href: "/careers" },
+    { name: "Contact Us", href: "/contact" },
+  ],
+  "For Families": [
+    { name: "Book a Journey", href: "/contact" },
+    { name: "SEND Transport", href: "/services" },
+    { name: "Passenger Support", href: "/services" },
+    { name: "Safeguarding", href: "/about" },
+  ],
+  "For Operators": [
+    { name: "LA Partnerships", href: "/services" },
+    { name: "Route Coordination", href: "/services" },
+    { name: "Compliance", href: "/services" },
+    { name: "Reporting", href: "/services" },
+  ],
 };
 
 export default function Footer() {
@@ -53,13 +69,13 @@ export default function Footer() {
               <h4 className="text-foreground font-bold text-sm mb-4 tracking-wide">{heading}</h4>
               <ul className="space-y-2.5">
                 {items.map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
                       className="text-foreground/60 text-sm hover:text-gold transition-colors"
                     >
-                      {item}
-                    </a>
+                      {item.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
