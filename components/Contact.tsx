@@ -258,6 +258,33 @@ export default function Contact() {
             </Card>
           </motion.div>
         </div>
+
+        {/* Map Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="mt-12"
+        >
+          <Card className="bg-card/45 border-border overflow-hidden shadow-2xl rounded-3xl">
+            <div className="relative w-full h-[350px] sm:h-[450px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2429.2136006421066!2d-1.9213455!3d52.4933946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870bc7e5c9a4449%3A0xe54e389d4fb842b1!2s386%20Park%20Rd%2C%20Hockley%2C%20Birmingham%20B18%205ST!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full opacity-95 transition-all duration-300"
+              />
+              <div className="absolute top-4 left-4 glass px-4 py-2.5 rounded-xl border border-border pointer-events-none select-none">
+                <p className="text-foreground font-bold text-xs uppercase tracking-wider">Birmingham Head Office</p>
+                <p className="text-foreground/75 text-xs">386 Park Road, Hockley, B18 5ST</p>
+              </div>
+            </div>
+          </Card>
+        </motion.div>
       </div>
     </section>
   );
