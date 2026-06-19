@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
-import { Bus, Heart, ShieldCheck, Users, Route } from "lucide-react";
+import { Bus, Heart, ShieldCheck, Award, Route } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -11,74 +11,74 @@ const services = [
     icon: Bus,
     tag: "SEND",
     h: "Specialist SEND Transport",
-    p: "We provide dedicated home‑to‑school transport for pupils with SEND, with a strong focus on comfort, routine, and reassurance.",
+    p: "Fulfilling local authority statutory duties under Section 508B of the Education Act 1996, providing safe, calm, and reliable home-to-school travel arrangements for SEND pupils.",
     list: [
-      "Tailored to each child's needs",
-      "Consistent drivers and routes",
-      "Parent & school communication",
+      "Facilitate regular school attendance",
+      "Consistent routes, vehicles, and teams",
+      "Close cooperation with schools and families",
     ],
-    accent: "from-blue-500/5 to-blue-700/5 dark:from-blue-500/20 dark:to-blue-700/10",
+    accent: "from-blue-500/5 to-blue-700/5 dark:from-white/3 dark:to-white/1",
     iconColor: "text-blue-600 dark:text-blue-400",
     iconBg: "bg-blue-500/10 dark:bg-blue-500/20",
     badge: "bg-blue-500/10 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/20 dark:border-blue-500/30",
   },
   {
     icon: Heart,
-    tag: "CARE",
-    h: "Passenger Support",
-    p: "Our passenger assistants help children travel safely and confidently, offering calm support throughout the journey where needed.",
+    tag: "SUPPORT",
+    h: "Passenger Support Escorts",
+    p: "Our Passenger Assistants accompany pupils throughout their journeys, offering patient support, reassurance for anxiety, and assistance with boarding and exiting.",
     list: [
-      "Emotional regulation support",
-      "SEND awareness trained",
-      "Positive, caring approach",
+      "Support boarding and secure seating",
+      "Emotional regulation and reassurance",
+      "Calm and patience-led journey experience",
     ],
-    accent: "from-pink-500/5 to-rose-700/5 dark:from-pink-500/20 dark:to-rose-700/10",
+    accent: "from-pink-500/5 to-rose-700/5 dark:from-white/3 dark:to-white/1",
     iconColor: "text-pink-600 dark:text-pink-400",
     iconBg: "bg-pink-500/10 dark:bg-pink-500/20",
     badge: "bg-pink-500/10 dark:bg-pink-500/20 text-pink-700 dark:text-pink-300 border-pink-500/20 dark:border-pink-500/30",
   },
   {
     icon: ShieldCheck,
-    tag: "SAFE",
-    h: "Safeguarding First",
-    p: "Safeguarding is central to our operation. We promote a culture of responsibility, care, and vigilance across the whole team.",
+    tag: "SAFEGUARD",
+    h: "Vetting & Safeguarding Culture",
+    p: "Safeguarding is embedded in our operations. All drivers and escorts undergo Enhanced DBS checks and must obtain local authority approval and ID badges.",
     list: [
-      "DBS‑checked staff",
-      "Safeguarding policies & training",
-      "Incident reporting & transparency",
+      "Enhanced DBS checked staff",
+      "Local Authority badging and validation",
+      "Clear escalation and reporting protocols",
     ],
-    accent: "from-amber-500/5 to-[#e6ad2e]/5 dark:from-[#f7d36f]/15 dark:to-[#e6ad2e]/5",
+    accent: "from-amber-500/5 to-[#e6ad2e]/5 dark:from-white/3 dark:to-white/1",
     iconColor: "text-amber-600 dark:text-[#f7d36f]",
     iconBg: "bg-amber-500/10 dark:bg-[#f7d36f]/15",
     badge: "bg-amber-500/10 dark:bg-[#f7d36f]/20 text-amber-800 dark:text-[#f7d36f] border-amber-500/20 dark:border-[#f7d36f]/30",
     featured: true,
   },
   {
-    icon: Users,
-    tag: "TEAM",
-    h: "Trained Passenger Assistants",
-    p: "Our passenger assistants are trained to support communication, emotional regulation, and the routines that make journeys feel safe.",
+    icon: Award,
+    tag: "ACCREDITED",
+    h: "PATS Training Scheme",
+    p: "We provide training aligned with the nationally accredited Passenger Assistance Training Scheme (PATS), certifying our staff in special needs transport safety.",
     list: [
-      "Safeguarding & first aid trained",
-      "Autism and SEND awareness",
-      "DBS‑checked and vetted",
+      "Hidden disability awareness",
+      "Emergency healthcare protocols",
+      "Non-discrimination and compliance skills",
     ],
-    accent: "from-emerald-500/5 to-teal-700/5 dark:from-emerald-500/20 dark:to-teal-700/10",
+    accent: "from-emerald-500/5 to-teal-700/5 dark:from-white/3 dark:to-white/1",
     iconColor: "text-emerald-600 dark:text-emerald-400",
     iconBg: "bg-emerald-500/10 dark:bg-emerald-500/20",
     badge: "bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border-emerald-500/20 dark:border-emerald-500/30",
   },
   {
     icon: Route,
-    tag: "LA",
-    h: "Local Authority Partnerships",
-    p: "We work with commissioning teams to deliver dependable, well‑documented services aligned with statutory standards.",
+    tag: "PARTNERS",
+    h: "Public Sector Partnerships",
+    p: "We work directly with commissioning teams to deliver highly compliant, structured transport solutions that offer genuine value for public funds.",
     list: [
-      "Contract delivery & reporting",
-      "Route optimisation",
-      "Operational transparency",
+      "Operational discipline & tracking",
+      "Statutory compliance reporting",
+      "Route optimization and value management",
     ],
-    accent: "from-purple-500/5 to-indigo-700/5 dark:from-purple-500/20 dark:to-indigo-700/10",
+    accent: "from-purple-500/5 to-indigo-700/5 dark:from-white/3 dark:to-white/1",
     iconColor: "text-purple-600 dark:text-purple-400",
     iconBg: "bg-purple-500/10 dark:bg-purple-500/20",
     badge: "bg-purple-500/10 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/20 dark:border-purple-500/30",
@@ -117,16 +117,15 @@ export default function Services() {
           <motion.div variants={fadeUp} className="inline-flex items-center gap-2 glass-gold rounded-full px-4 py-1.5 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-gold" />
             <span className="text-gold text-xs font-semibold tracking-widest uppercase">
-              What We Offer
+              Our Services
             </span>
           </motion.div>
           <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-4 tracking-tight">
-            Services built around{" "}
-            <span className="text-gradient-gold">every child's journey</span>
+            Specialist services built around{" "}
+            <span className="text-gradient-gold">safe & dignifying travel</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="text-foreground/75 text-lg max-w-2xl mx-auto leading-relaxed">
-            From specialist SEND routes to local authority contracts — every
-            service we offer is shaped by care and expertise.
+            From statutory school routes to Passenger Assistant support and PATS accredited training — we deliver with operational discipline.
           </motion.p>
         </motion.div>
 

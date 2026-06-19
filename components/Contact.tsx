@@ -11,24 +11,24 @@ import { Card, CardContent } from "@/components/ui/card";
 const info = [
   {
     icon: MapPin,
-    title: "Office",
+    title: "Office Address",
     v: "386 Park Road, Hockley\nBirmingham, B18 5ST",
   },
   {
     icon: Mail,
-    title: "Email",
-    v: "admin@greendestinationsltd.com",
+    title: "Email Channels",
+    v: "General: admin@greendestinationsltd.com\nCareers: recruitment@greendestinationsltd.com",
     href: "mailto:admin@greendestinationsltd.com",
   },
   {
     icon: Phone,
-    title: "Phone",
-    v: "+44 (0)121 000 0000",
-    href: "tel:+441210000000",
+    title: "Enquiry Line",
+    v: "0121 553 3363",
+    href: "tel:01215533363",
   },
   {
     icon: Clock,
-    title: "Hours",
+    title: "Operating Hours",
     v: "Monday – Friday · 7:00 – 19:00",
   },
 ];
