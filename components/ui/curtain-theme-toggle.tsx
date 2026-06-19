@@ -61,16 +61,16 @@ const TOKENS: Record<Theme, Record<string, string>> = {
     inputText: "#0b2245",
   },
   dark: {
-    pageBg:    "#0b2245",
-    pageText:  "#f0f4ff",
-    barBg:     "#071830",
-    barText:   "#f0f4ff",
-    barBorder: "rgba(255,255,255,0.07)",
-    btnBg:     "#163a6e",
+    pageBg:    "#030303",
+    pageText:  "#f3f4f6",
+    barBg:     "#09090b",
+    barText:   "#f3f4f6",
+    barBorder: "rgba(255,255,255,0.08)",
+    btnBg:     "#18181b",
     btnText:   "#f7d36f",
     btnRing:   "rgba(255,255,255,0.1)",
     inputBg:   "rgba(255,255,255,0.05)",
-    inputText: "#f0f4ff",
+    inputText: "#f3f4f6",
   },
 };
 
