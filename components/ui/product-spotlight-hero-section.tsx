@@ -482,6 +482,12 @@ export function Component() {
   const [currentMetadata, setCurrentMetadata] = useState<ProductMetadata | null>(null)
   const [keyProductIndex, setKeyProductIndex] = useState(0)
   const [isKeyProductAnimating, setIsKeyProductAnimating] = useState(true)
+  const [mounted, setMounted] = useState(false)
+  
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const [backgroundProductInstances] = useState(() => {
     // Create stable background product instances (no creation/destruction)
     return Array.from({ length: 15 }, (_, index) => ({
@@ -599,7 +605,7 @@ export function Component() {
               }}
             >
               {/* Stable background products - always visible */}
-              {backgroundProductInstances.map((item) => (
+              {mounted && backgroundProductInstances.map((item) => (
                 <AnimatedProduct
                   key={item.id}
                   product={item.product}
@@ -608,7 +614,7 @@ export function Component() {
                 />
               ))}
               {/* Only render the featured product if animating */}
-              {isKeyProductAnimating && (
+              {mounted && isKeyProductAnimating && (
                 <AnimatedProduct
                   key={`key-${keyProducts[keyProductIndex].id}-${keyProductIndex}`}
                   product={keyProducts[keyProductIndex]}

@@ -22,8 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} h-full`}>
-      <body className="min-h-full flex flex-col">
+    <html lang="en" className={`${plusJakarta.variable} h-full`} suppressHydrationWarning>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <Header />
         <div className="flex-1 flex flex-col">{children}</div>
         <Footer />
