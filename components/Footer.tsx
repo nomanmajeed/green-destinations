@@ -1,14 +1,30 @@
+import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 const links = {
-  Company: ["About Us", "Services", "Careers", "Contact Us"],
-  "For Families": ["Book a Journey", "SEND Transport", "Passenger Support", "Safeguarding"],
-  "For Operators": ["LA Partnerships", "Route Coordination", "Compliance", "Reporting"],
+  Company: [
+    { name: "About Us", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Careers", href: "/careers" },
+    { name: "Contact Us", href: "/contact" },
+  ],
+  "For Families": [
+    { name: "Book a Journey", href: "/contact" },
+    { name: "SEND Transport", href: "/services" },
+    { name: "Passenger Support", href: "/services" },
+    { name: "Safeguarding", href: "/about" },
+  ],
+  "For Operators": [
+    { name: "LA Partnerships", href: "/services" },
+    { name: "Route Coordination", href: "/services" },
+    { name: "Compliance", href: "/services" },
+    { name: "Reporting", href: "/services" },
+  ],
 };
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-border bg-slate-100 dark:bg-[#050f1e]">
+    <footer className="relative border-t border-border bg-slate-100 dark:bg-[#030303]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
           {/* Brand col */}
@@ -40,8 +56,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-gold shrink-0" />
-                <a href="tel:+441210000000" className="hover:text-foreground transition-colors">
-                  +44 (0)121 000 0000
+                <a href="tel:01215533363" className="hover:text-foreground transition-colors">
+                  0121 553 3363
                 </a>
               </li>
             </ul>
@@ -53,13 +69,13 @@ export default function Footer() {
               <h4 className="text-foreground font-bold text-sm mb-4 tracking-wide">{heading}</h4>
               <ul className="space-y-2.5">
                 {items.map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
                       className="text-foreground/60 text-sm hover:text-gold transition-colors"
                     >
-                      {item}
-                    </a>
+                      {item.name}
+                    </Link>
                   </li>
                 ))}
               </ul>

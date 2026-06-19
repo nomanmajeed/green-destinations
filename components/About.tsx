@@ -2,28 +2,28 @@
 
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
-import { Shield, Users, Clock, Heart, CheckCircle2 } from "lucide-react";
+import { Shield, Users, Clock, Heart, CheckCircle2, Scale, Leaf } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const features = [
   {
     n: "01",
-    title: "Specialist Service",
-    desc: "Dedicated SEND home‑to‑school transport operator custom-fit for pupil routines.",
+    title: "Established Since 2012",
+    desc: "Over a decade of specialist local government service delivery that supports independence and protects health.",
     color: "from-blue-500 to-blue-700",
     glow: "shadow-blue-500/20",
   },
   {
     n: "02",
-    title: "Safeguarding Focused",
-    desc: "Safety, care, and child welfare at the heart of every single journey.",
+    title: "100+ Years Combined Experience",
+    desc: "Our board of management and operations teams bring massive expertise in public services and safeguarding.",
     color: "from-[#f7d36f] to-[#e6ad2e]",
     glow: "shadow-yellow-500/20",
   },
   {
     n: "03",
-    title: "Professional Team",
-    desc: "Highly trained drivers and assistants who support pupils with dignity and respect.",
+    title: "Local Multiplier Effect",
+    desc: "We employ local people, who in turn utilize a fully integrated local supply chain, keeping value in the local economy.",
     color: "from-emerald-400 to-emerald-600",
     glow: "shadow-emerald-500/20",
   },
@@ -32,23 +32,23 @@ const features = [
 const values = [
   {
     icon: Shield,
-    h: "Safety",
-    p: "Protecting children and young people is always our first priority.",
+    h: "Safeguarding First",
+    p: "All relevant team members are Enhanced DBS checked and strictly vetted.",
+  },
+  {
+    icon: Scale,
+    h: "Statutory Duty Alignment",
+    p: "Fulfilling local authority obligations under Section 508B of the Education Act 1996.",
   },
   {
     icon: Users,
-    h: "Respect",
-    p: "We treat every child, family, and partner with dignity and professionalism.",
-  },
-  {
-    icon: Clock,
-    h: "Reliability",
-    p: "We aim to deliver a dependable service families can trust every day.",
+    h: "PATS Certified Team",
+    p: "Accredited training for drivers and assistants on passenger safety and care.",
   },
   {
     icon: Heart,
-    h: "Care",
-    p: "We believe the right attitude matters just as much as the right process.",
+    h: "Dignity & Care",
+    p: "Ensuring school journeys feel safe, calm, and respectful for every pupil.",
   },
 ];
 
@@ -90,12 +90,13 @@ export default function About() {
             </span>
           </motion.div>
           <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-4 tracking-tight">
-            Safer journeys built on{" "}
-            <span className="text-gradient-gold">trust</span>
+            Safer school journeys built on{" "}
+            <span className="text-gradient-gold">trust & capability</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-foreground/75 text-lg max-w-2xl mx-auto leading-relaxed">
-            Our service is built around safety, professionalism, and the
-            individual needs of the children we support.
+          <motion.p variants={fadeUp} className="text-foreground/75 text-lg max-w-3xl mx-auto leading-relaxed">
+            Established in 2012, Green Destinations delivers specialist transport services
+            supporting statutory duties under **Section 508B of the Education Act 1996**, helping local
+            authorities facilitate school attendance for SEND pupils.
           </motion.p>
         </motion.div>
 
@@ -129,33 +130,32 @@ export default function About() {
           ))}
         </motion.div>
 
-        {/* Why families choose us */}
+        {/* Training focus and values */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-3 tracking-tight">
-              Why families and partners{" "}
-              <span className="text-gradient-gold">choose us</span>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-4 tracking-tight">
+              Rigorous Training &{" "}
+              <span className="text-gradient-gold">Vetting Standards</span>
             </h3>
-            <p className="text-foreground/75 mb-8 leading-relaxed">
-              Every journey with Green Destinations is underpinned by rigorous
-              vetting, bespoke training, and a genuine commitment to each
-              child's wellbeing.
+            <p className="text-foreground/75 mb-6 leading-relaxed text-sm sm:text-base">
+              Every driver and passenger assistant undergoes comprehensive training that prepares them to work safely, respectfully, and effectively with children who have a wide range of needs.
             </p>
+            <h4 className="font-semibold text-foreground text-sm uppercase tracking-wider mb-3">Our Core Training Modules:</h4>
             <ul className="space-y-3">
               {[
-                "All drivers and escorts hold valid DBS credentials",
-                "Robust safeguarding culture across the whole team",
-                "Routine‑focused approach tailored to each pupil",
-                "Transparent reporting to schools and local authorities",
-                "First aid and SEND awareness trained staff",
+                "Awareness of different types of disability, including hidden disabilities",
+                "Awareness of what constitutes discrimination and bias",
+                "Skills to recognize, support and manage pupils with different types of disabilities",
+                "Appropriate communication skills for pupils with visible and hidden disabilities",
+                "Implementation of healthcare protocols, including emergency procedures",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                  <span className="text-foreground/80 text-sm">{item}</span>
+                  <span className="text-foreground/85 text-xs sm:text-sm">{item}</span>
                 </li>
               ))}
             </ul>

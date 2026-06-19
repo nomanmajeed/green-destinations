@@ -5,7 +5,6 @@ import { Component as ProductSpotlight } from "@/components/ui/product-spotlight
 import Testimonials from "@/components/Testimonials";
 import Careers from "@/components/Careers";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -19,7 +18,6 @@ export default function Home() {
         <Careers />
         <Contact />
       </main>
-      <Footer />
     </>
   );
 }

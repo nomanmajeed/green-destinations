@@ -95,7 +95,7 @@ const sampleProducts = [
     name: "Lichfield Cathedral", 
     price: "£0.00", 
     score: 92, 
-    image: "https://images.unsplash.com/photo-1548625361-155deee223c0?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1760&auto=format&fit=crop"
   },
   { 
     id: 13, 
@@ -215,6 +215,7 @@ function AnimatedProduct({ product, isKeyProduct = false, containerSize, onReach
   const controls = useAnimation()
 
   useEffect(() => {
+    let active = true;
     const animateProduct = async () => {
       if (isKeyProduct) {
         // Featured product: curved path to center, pause, then continue same trajectory
@@ -224,6 +225,7 @@ function AnimatedProduct({ product, isKeyProduct = false, containerSize, onReach
         const startPoint = getRandomEdgePoint(containerSize, entryEdge)
         const centerPoint = { x: containerSize.width / 2 - 40, y: containerSize.height / 2 - 40 }
 
+        if (!active) return;
         // Set initial position (outside container, blurred)
         await controls.set({
           x: startPoint.x,
@@ -233,6 +235,7 @@ function AnimatedProduct({ product, isKeyProduct = false, containerSize, onReach
           opacity: 0.8
         })
 
+        if (!active) return;
         // Animate to center with curve
         await controls.start({
           x: centerPoint.x,
@@ -247,6 +250,7 @@ function AnimatedProduct({ product, isKeyProduct = false, containerSize, onReach
           }
         })
 
+        if (!active) return;
         // Show metadata
         onReachCenter?.({
           name: product.name,
@@ -255,13 +259,18 @@ function AnimatedProduct({ product, isKeyProduct = false, containerSize, onReach
         })
 
         // Pause for 3 seconds (completely stopped)
-        await new Promise(resolve => setTimeout(resolve, 3000))
+        await new Promise(resolve => {
+          const t = setTimeout(() => resolve(null), 3000);
+          return () => clearTimeout(t);
+        });
 
+        if (!active) return;
         // Move to a random edge after the pause
         const exitEdges: Array<'top' | 'bottom' | 'left' | 'right'> = ['top', 'bottom', 'left', 'right']
         const randomExitEdge = exitEdges[Math.floor(Math.random() * exitEdges.length)]
         const randomExitPoint = getRandomEdgePoint(containerSize, randomExitEdge)
 
+        if (!active) return;
         // Continue to exit point
         await controls.start({
           x: randomExitPoint.x,
@@ -279,7 +288,7 @@ function AnimatedProduct({ product, isKeyProduct = false, containerSize, onReach
       } else {
         // Background product: continuous edge-to-edge floating with instant restart
         const animateLoop = async () => {
-          while (true) {
+          while (active) {
             const edges: Array<'top' | 'bottom' | 'left' | 'right'> = ['top', 'bottom', 'left', 'right']
             const entryEdge = edges[Math.floor(Math.random() * edges.length)]
             const exitEdge = edges[Math.floor(Math.random() * edges.length)]
@@ -288,6 +297,7 @@ function AnimatedProduct({ product, isKeyProduct = false, containerSize, onReach
             const endPoint = getRandomEdgePoint(containerSize, exitEdge)
             const path = createCurvedPath(startPoint, endPoint, containerSize)
 
+            if (!active) return;
             // Set initial position with variation
             await controls.set({
               x: startPoint.x,
@@ -299,6 +309,7 @@ function AnimatedProduct({ product, isKeyProduct = false, containerSize, onReach
 
             // Animate through curved path with consistent speed
             for (let i = 1; i < path.length; i++) {
+              if (!active) return;
               await controls.start({
                 x: path[i].x,
                 y: path[i].y,
@@ -311,7 +322,10 @@ function AnimatedProduct({ product, isKeyProduct = false, containerSize, onReach
             }
 
             // Small delay before restarting to prevent overwhelming
-            await new Promise(resolve => setTimeout(resolve, 100))
+            await new Promise(resolve => {
+              const t = setTimeout(() => resolve(null), 100);
+              return () => clearTimeout(t);
+            });
           }
         }
 
@@ -319,12 +333,17 @@ function AnimatedProduct({ product, isKeyProduct = false, containerSize, onReach
       }
 
       // Notify completion for key products
-      if (isKeyProduct) {
+      if (isKeyProduct && active) {
         onComplete?.()
       }
     }
 
     animateProduct()
+
+    return () => {
+      active = false;
+      controls.stop();
+    }
   }, [isKeyProduct, containerSize])
 
   return (
@@ -346,7 +365,7 @@ function AnimatedProduct({ product, isKeyProduct = false, containerSize, onReach
           className="object-cover"
           sizes="(max-width: 768px) 64px, 80px"
           priority={isKeyProduct}
-          quality={isKeyProduct ? 90 : 75}
+          quality={75}
         />
         <div className="absolute inset-0 bg-black/20" />
       </div>
@@ -463,6 +482,12 @@ export function Component() {
   const [currentMetadata, setCurrentMetadata] = useState<ProductMetadata | null>(null)
   const [keyProductIndex, setKeyProductIndex] = useState(0)
   const [isKeyProductAnimating, setIsKeyProductAnimating] = useState(true)
+  const [mounted, setMounted] = useState(false)
+  
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const [backgroundProductInstances] = useState(() => {
     // Create stable background product instances (no creation/destruction)
     return Array.from({ length: 15 }, (_, index) => ({
@@ -580,7 +605,7 @@ export function Component() {
               }}
             >
               {/* Stable background products - always visible */}
-              {backgroundProductInstances.map((item) => (
+              {mounted && backgroundProductInstances.map((item) => (
                 <AnimatedProduct
                   key={item.id}
                   product={item.product}
@@ -589,7 +614,7 @@ export function Component() {
                 />
               ))}
               {/* Only render the featured product if animating */}
-              {isKeyProductAnimating && (
+              {mounted && isKeyProductAnimating && (
                 <AnimatedProduct
                   key={`key-${keyProducts[keyProductIndex].id}-${keyProductIndex}`}
                   product={keyProducts[keyProductIndex]}
