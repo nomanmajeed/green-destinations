@@ -1,4 +1,5 @@
 import Contact from "@/components/Contact";
+import SubpageHero from "@/components/SubpageHero";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,19 +10,11 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="pt-20">
-      {/* Page Header */}
-      <div className="relative py-16 overflow-hidden bg-slate-50 dark:bg-[#071830] border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground tracking-tight mb-4">
-            Contact <span className="text-gradient-gold">Our Team</span>
-          </h1>
-          <p className="text-foreground/75 text-lg max-w-2xl mx-auto leading-relaxed">
-            Get in touch to book a journey, ask questions, or partner with us.
-          </p>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 to-yellow-500/5 dark:from-blue-500/10 dark:to-yellow-500/10 opacity-30 pointer-events-none" />
-      </div>
-      
+      <SubpageHero
+        title="Contact Our Team"
+        subtitle="For school routes, driver training, recruitment questions, or public sector partnerships — we are ready to start the conversation."
+        backgroundImage="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1600&q=80"
+      />
       <Contact />
     </div>
   );
