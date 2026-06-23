@@ -44,6 +44,21 @@ export function HeroBackground() {
         }}
       />
 
+      {/* Rotating conic gradient — a slow living green/gold sheen */}
+      <div className="absolute left-1/2 top-[44%] -translate-x-1/2 -translate-y-1/2">
+        <motion.div
+          className="h-[46rem] w-[46rem] rounded-full opacity-[0.16] blur-2xl dark:opacity-[0.22]"
+          style={{
+            background:
+              "conic-gradient(from 0deg, var(--brand-green), transparent 25%, var(--gold), transparent 55%, var(--brand-green) 80%, transparent 100%)",
+            maskImage: "radial-gradient(circle, black 0%, transparent 68%)",
+            WebkitMaskImage: "radial-gradient(circle, black 0%, transparent 68%)",
+          }}
+          animate={reduce ? undefined : { rotate: 360 }}
+          transition={{ duration: 55, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
+
       {/* Aurora — single green + single gold, slow drift + breathe */}
       <motion.div
         className="absolute -left-24 -top-32 h-[34rem] w-[34rem] rounded-full blur-3xl"

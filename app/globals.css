@@ -258,6 +258,17 @@
   border-radius: 2px;
 }
 
+/* Slow auto zoom (Ken Burns) for hero imagery */
+@keyframes kenburns {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.09); }
+  100% { transform: scale(1); }
+}
+.animate-kenburns {
+  animation: kenburns 22s ease-in-out infinite;
+  will-change: transform;
+}
+
 @media (prefers-reduced-transparency: reduce) {
   .glass, .glass-gold {
     backdrop-filter: none;

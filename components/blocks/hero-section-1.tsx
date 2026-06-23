@@ -5,8 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   motion,
+  useMotionValue,
   useReducedMotion,
   useScroll,
+  useSpring,
   useTransform,
   type Variants,
 } from "framer-motion";
@@ -38,6 +40,29 @@ export function HeroSection() {
     offset: ["start end", "end start"],
   });
   const parallaxY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+
+  // Cursor-reactive 3D tilt for the hero image
+  const px = useMotionValue(0);
+  const py = useMotionValue(0);
+  const rotateY = useSpring(useTransform(px, [-0.5, 0.5], [9, -9]), {
+    stiffness: 150,
+    damping: 18,
+  });
+  const rotateX = useSpring(useTransform(py, [-0.5, 0.5], [-9, 9]), {
+    stiffness: 150,
+    damping: 18,
+  });
+
+  const handleTilt = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (reduce) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    px.set((e.clientX - r.left) / r.width - 0.5);
+    py.set((e.clientY - r.top) / r.height - 0.5);
+  };
+  const resetTilt = () => {
+    px.set(0);
+    py.set(0);
+  };
 
   const reveal: Variants = {
     hidden: { opacity: 0, y: reduce ? 0 : 16 },
@@ -121,21 +146,37 @@ export function HeroSection() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="relative"
         >
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-border shadow-[0_30px_60px_-30px_rgba(6,20,13,0.45)]">
+          <motion.div
+            onMouseMove={handleTilt}
+            onMouseLeave={resetTilt}
+            whileHover={reduce ? undefined : { scale: 1.015 }}
+            style={{ rotateX, rotateY, transformPerspective: 900 }}
+            className="group relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-border shadow-[0_30px_60px_-30px_rgba(6,20,13,0.45)] transition-shadow duration-500 hover:shadow-[0_45px_80px_-30px_rgba(6,20,13,0.6)]"
+          >
             <motion.div
               style={{ y: reduce ? 0 : parallaxY }}
               className="absolute inset-[-8%]"
             >
-              <Image
-                src="/images/ut-hero-home.jpg"
-                alt="An Ultimate Travel minibus, specialists in SEND transport, on a tree-lined road in soft morning light"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
+              <div
+                className={`relative h-full w-full ${reduce ? "" : "animate-kenburns"} transition-transform duration-700 ease-out group-hover:scale-[1.06]`}
+              >
+                <Image
+                  src="/images/ut-hero-home.jpg"
+                  alt="An Ultimate Travel minibus, specialists in SEND transport, on a tree-lined road in soft morning light"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
             </motion.div>
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#06140d]/40 via-transparent to-transparent" />
+
+            {/* Gold ring that lights up on hover */}
+            <div className="pointer-events-none absolute inset-0 rounded-[1.75rem] ring-2 ring-inset ring-[var(--gold)]/0 transition-all duration-500 group-hover:ring-[var(--gold)]/45" />
+
+            {/* Soft sheen that fades in on hover */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
             {/* One-shot light sweep across the frame on load */}
             {!reduce && (
@@ -147,7 +188,7 @@ export function HeroSection() {
                 transition={{ duration: 1.3, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
               />
             )}
-          </div>
+          </motion.div>
 
           {/* Quiet, real proof point — gentle float */}
           <motion.div
