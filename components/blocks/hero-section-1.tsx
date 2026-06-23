@@ -19,6 +19,7 @@ import {
   Flag,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { HeroBackground } from "@/components/blocks/hero-background";
 
 const credentials = [
   { icon: Accessibility, label: "Wheelchair accessible" },
@@ -49,56 +50,7 @@ export function HeroSection() {
 
   return (
     <section className="relative isolate overflow-hidden">
-      {/* ─── Layered animated background ─────────────────────────── */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        {/* Aurora — single green + single gold, slow drift, restrained */}
-        <motion.div
-          className="absolute -left-24 -top-32 h-[34rem] w-[34rem] rounded-full blur-3xl"
-          style={{
-            background:
-              "radial-gradient(circle, color-mix(in srgb, var(--brand-green) 22%, transparent) 0%, transparent 65%)",
-          }}
-          animate={reduce ? undefined : { x: [0, 40, 0], y: [0, 26, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute right-[-8%] top-10 h-[32rem] w-[32rem] rounded-full blur-3xl"
-          style={{
-            background:
-              "radial-gradient(circle, color-mix(in srgb, var(--gold) 18%, transparent) 0%, transparent 65%)",
-          }}
-          animate={reduce ? undefined : { x: [0, -34, 0], y: [0, 32, 0] }}
-          transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* Route motif — a quiet journey line with a travelling marker */}
-        <svg
-          className="absolute inset-x-0 bottom-0 h-[70%] w-full text-[var(--gold)]"
-          viewBox="0 0 1200 420"
-          fill="none"
-          preserveAspectRatio="none"
-        >
-          <motion.path
-            id="ut-route"
-            d="M-40 360 C 220 200, 360 380, 620 250 S 980 130, 1240 230"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeOpacity="0.22"
-            strokeDasharray="2 10"
-            strokeLinecap="round"
-            initial={{ pathLength: reduce ? 1 : 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2.4, ease: [0.16, 1, 0.3, 1] }}
-          />
-          {!reduce && (
-            <circle r="5" fill="currentColor" fillOpacity="0.9">
-              <animateMotion dur="9s" repeatCount="indefinite" rotate="auto">
-                <mpath href="#ut-route" />
-              </animateMotion>
-            </circle>
-          )}
-        </svg>
-      </div>
+      <HeroBackground />
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pt-28 pb-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-32 lg:pb-24">
         {/* Copy */}
