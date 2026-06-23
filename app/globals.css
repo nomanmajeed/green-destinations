@@ -59,57 +59,57 @@
 }
 
 :root {
-  /* Light Mode (Modern, clean slate/blue brand look) */
-  --background: #fafafa;
-  --foreground: #0b2245;
+  /* Light mode — calm, premium, navy ink on cool paper, one gold accent */
+  --background: #f5f6f8;
+  --foreground: #0b1f3f;
   --card: #ffffff;
-  --card-foreground: #0b2245;
+  --card-foreground: #0b1f3f;
   --popover: #ffffff;
-  --popover-foreground: #0b2245;
+  --popover-foreground: #0b1f3f;
   --primary: #0b2245;
   --primary-foreground: #ffffff;
-  --secondary: #f1f5f9;
+  --secondary: #eceff4;
   --secondary-foreground: #0b2245;
-  --muted: #f1f5f9;
-  --muted-foreground: #475569;
-  --accent: #f8fafc;
+  --muted: #eceff4;
+  --muted-foreground: #56627a;
+  --accent: #eef1f6;
   --accent-foreground: #0b2245;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: rgba(11, 34, 69, 0.08);
-  --input: rgba(11, 34, 69, 0.06);
-  --ring: #e6ad2e;
+  --border: rgba(11, 34, 69, 0.10);
+  --input: rgba(11, 34, 69, 0.14);
+  --ring: rgba(154, 115, 34, 0.55);
   --chart-1: #0b2245;
-  --chart-2: #e6ad2e;
-  --chart-3: #34d399;
-  --chart-4: #f472b6;
-  --chart-5: #a78bfa;
-  --radius: 0.75rem;
+  --chart-2: #9a7322;
+  --chart-3: #4a5a78;
+  --chart-4: #8a99b3;
+  --chart-5: #c9b07a;
+  --radius: 0.9rem;
   --sidebar: #ffffff;
-  --sidebar-foreground: #0b2245;
+  --sidebar-foreground: #0b1f3f;
   --sidebar-primary: #0b2245;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f1f5f9;
+  --sidebar-accent: #eceff4;
   --sidebar-accent-foreground: #0b2245;
-  --sidebar-border: rgba(11, 34, 69, 0.08);
-  --sidebar-ring: #e6ad2e;
-  
-  --gold-light: #d97706;
-  --gold-dark: #b45309;
-  --navy-deep: #f8fafc;
-  --navy-mid: #e2e8f0;
-  --navy-light: #cbd5e1;
+  --sidebar-border: rgba(11, 34, 69, 0.10);
+  --sidebar-ring: rgba(154, 115, 34, 0.55);
+
+  /* Single accent: antique gold. One scale, used with restraint. */
+  --gold: #9a7322;          /* accent text / hairlines (AA on light) */
+  --gold-soft: rgba(154, 115, 34, 0.12);
+  --gold-cta-bg: #e7b53e;   /* CTA fill */
+  --gold-cta-fg: #0b2245;   /* CTA label */
 
   /* Theme-aware layout variables */
-  --body-bg: linear-gradient(160deg, #ffffff 0%, #f1f5f9 100%);
-  --section-bg: rgba(241, 245, 249, 0.65);
-  --glass-bg: rgba(255, 255, 255, 0.75);
-  --glass-border: rgba(11, 34, 69, 0.08);
-  --glass-gold-bg: rgba(247, 211, 111, 0.15);
-  --glass-gold-border: rgba(217, 119, 6, 0.25);
-  --scrollbar-thumb: #cbd5e1;
-  --scrollbar-track: #f1f5f9;
+  --body-bg: #f5f6f8;
+  --section-bg: #eef1f6;
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(11, 34, 69, 0.10);
+  --glass-gold-bg: rgba(154, 115, 34, 0.08);
+  --glass-gold-border: rgba(154, 115, 34, 0.22);
+  --scrollbar-thumb: #c4ccd8;
+  --scrollbar-track: #eceff4;
   --destructive-foreground: oklch(1.0000 0 0);
-  --font-serif: Merriweather, serif;
+  --font-serif: var(--font-plus-jakarta), sans-serif;
   --shadow-2xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
   --shadow-xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
   --shadow-sm: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 1px 2px -2px hsl(0 0% 0% / 0.10);
@@ -121,50 +121,49 @@
 }
 
 .dark {
-  /* Dark Mode (Premium solid black/charcoal and gold accent look) */
-  --background: #030303;
-  --foreground: #f3f4f6;
-  --card: #09090b;
-  --card-foreground: #f3f4f6;
-  --popover: #09090b;
-  --popover-foreground: #f3f4f6;
-  --primary: #f7d36f;
-  --primary-foreground: #030303;
-  --secondary: #18181b;
-  --secondary-foreground: #e4e4e7;
-  --muted: #18181b;
-  --muted-foreground: #a1a1aa;
-  --accent: #27272a;
-  --accent-foreground: #f4f4f5;
-  --border: rgba(255, 255, 255, 0.08);
-  --input: rgba(255, 255, 255, 0.06);
-  --ring: #f7d36f;
-  --sidebar: #030303;
-  --sidebar-foreground: #f3f4f6;
-  --sidebar-primary: #f7d36f;
-  --sidebar-primary-foreground: #030303;
-  --sidebar-accent: #18181b;
-  --sidebar-accent-foreground: #f3f4f6;
+  /* Dark mode — deep navy-ink, not pure black, with one warm gold accent */
+  --background: #080c16;
+  --foreground: #eef1f6;
+  --card: #0d1320;
+  --card-foreground: #eef1f6;
+  --popover: #0d1320;
+  --popover-foreground: #eef1f6;
+  --primary: #e7c569;
+  --primary-foreground: #0b1020;
+  --secondary: #141b2b;
+  --secondary-foreground: #e7eaf1;
+  --muted: #141b2b;
+  --muted-foreground: #9aa6bd;
+  --accent: #1a2334;
+  --accent-foreground: #f3f5f9;
+  --border: rgba(231, 197, 105, 0.10);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: rgba(231, 197, 105, 0.5);
+  --sidebar: #080c16;
+  --sidebar-foreground: #eef1f6;
+  --sidebar-primary: #e7c569;
+  --sidebar-primary-foreground: #0b1020;
+  --sidebar-accent: #141b2b;
+  --sidebar-accent-foreground: #eef1f6;
   --sidebar-border: rgba(255, 255, 255, 0.08);
-  --sidebar-ring: #f7d36f;
-  
-  --gold-light: #f7d36f;
-  --gold-dark: #e6ad2e;
-  --navy-deep: #030303;
-  --navy-mid: #09090b;
-  --navy-light: #18181b;
+  --sidebar-ring: rgba(231, 197, 105, 0.5);
+
+  --gold: #e7c569;
+  --gold-soft: rgba(231, 197, 105, 0.10);
+  --gold-cta-bg: #e7c569;
+  --gold-cta-fg: #0b1020;
 
   /* Theme-aware layout variables */
-  --body-bg: linear-gradient(160deg, #030303 0%, #09090b 100%);
-  --section-bg: rgba(9, 9, 11, 0.6);
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-gold-bg: rgba(247, 211, 111, 0.05);
-  --glass-gold-border: rgba(247, 211, 111, 0.2);
-  --scrollbar-thumb: #e6ad2e;
-  --scrollbar-track: #030303;
+  --body-bg: #080c16;
+  --section-bg: #0c121e;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-gold-bg: rgba(231, 197, 105, 0.07);
+  --glass-gold-border: rgba(231, 197, 105, 0.22);
+  --scrollbar-thumb: #2a3550;
+  --scrollbar-track: #080c16;
   --destructive-foreground: oklch(0.2077 0.0398 265.7549);
-  --font-serif: Merriweather, serif;
+  --font-serif: var(--font-plus-jakarta), sans-serif;
   --shadow-2xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
   --shadow-xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
   --shadow-sm: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 1px 2px -2px hsl(0 0% 0% / 0.10);
@@ -185,63 +184,100 @@
     background: var(--body-bg);
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
-    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
     transition: background 0.3s ease, color 0.3s ease;
   }
   html {
     scroll-behavior: smooth;
   }
+  h1, h2, h3, h4 {
+    font-feature-settings: "ss01", "cv01";
+    letter-spacing: -0.02em;
+  }
 }
 
+/* ── Single-accent gold helpers ─────────────────────────────── */
 .text-gold {
-  color: var(--gold-light);
-}
-
-.text-gold-dark {
-  color: var(--gold-dark);
+  color: var(--gold);
 }
 
 .bg-gold {
-  background: var(--gold-light);
+  background: var(--gold-cta-bg);
 }
 
+/* Primary CTA — brand gold fill, navy label, tactile press */
+.btn-gold {
+  background: var(--gold-cta-bg);
+  color: var(--gold-cta-fg);
+  font-weight: 700;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), filter 0.18s ease;
+}
+.btn-gold:hover {
+  filter: brightness(1.05);
+}
+.btn-gold:active {
+  transform: translateY(1px);
+}
+
+/* Retained for backward compatibility; flat gold, no rainbow gradient */
 .gradient-gold {
-  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-dark) 100%);
+  background: var(--gold-cta-bg);
 }
-
 .text-gradient-gold {
-  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-dark) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--gold);
 }
 
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--glass-border);
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .glass-gold {
   background: var(--glass-gold-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--glass-gold-border);
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
+/* Thin gold rule used as a quiet section marker */
+.rule-gold {
+  width: 2.25rem;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass, .glass-gold {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--card);
+  }
+}
+
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
   background: var(--scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb);
-  border-radius: 3px;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-light);
+  background: var(--gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

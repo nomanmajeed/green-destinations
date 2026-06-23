@@ -11,7 +11,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Green Destinations — Specialist SEND Transport",
+  title: "Green Destinations | Specialist SEND Transport",
   description:
     "Dedicated home-to-school transport for pupils with Special Educational Needs and Disabilities. Safe, caring, and consistent journeys across the West Midlands.",
 };
