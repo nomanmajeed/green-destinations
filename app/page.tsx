@@ -4,7 +4,7 @@ import Services from "@/components/Services";
 import Fleet from "@/components/Fleet";
 import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
-import Careers from "@/components/Careers";
+import CareersTeaser from "@/components/CareersTeaser";
 import Contact from "@/components/Contact";
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
         <Fleet />
         <Process />
         <Testimonials />
-        <Careers />
+        <CareersTeaser />
         <Contact />
       </main>
     </>
