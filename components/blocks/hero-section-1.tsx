@@ -1,21 +1,42 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { ArrowRight, ShieldCheck, Award, Scale, BadgeCheck } from "lucide-react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  type Variants,
+} from "framer-motion";
+import {
+  ArrowRight,
+  Accessibility,
+  ShieldCheck,
+  Users,
+  MapPin,
+  Flag,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const credentials = [
-  { icon: ShieldCheck, label: "Enhanced DBS Checked" },
-  { icon: Award, label: "PATS Accredited" },
-  { icon: Scale, label: "Section 508B Compliant" },
-  { icon: BadgeCheck, label: "Local Authority Approved" },
+  { icon: Accessibility, label: "Wheelchair accessible" },
+  { icon: ShieldCheck, label: "Safe & reliable" },
+  { icon: Users, label: "Specialists in SEND transport" },
+  { icon: MapPin, label: "School runs across the UK" },
+  { icon: Flag, label: "Proudly UK based" },
 ];
 
 export function HeroSection() {
   const reduce = useReducedMotion();
+  const imageRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: imageRef,
+    offset: ["start end", "end start"],
+  });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
 
   const reveal: Variants = {
     hidden: { opacity: 0, y: reduce ? 0 : 16 },
@@ -28,7 +49,17 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pt-28 pb-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-32 lg:pb-24">
+      {/* Quiet ambient wash — single gold radial, anchored, no rainbow */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-24 right-[-10%] h-[42rem] w-[42rem] rounded-full opacity-60 blur-3xl"
+        style={{
+          background:
+            "radial-gradient(circle, var(--gold-soft) 0%, transparent 60%)",
+        }}
+      />
+
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pt-28 pb-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-32 lg:pb-24">
         {/* Copy */}
         <div className="max-w-xl">
           <motion.div
@@ -40,7 +71,7 @@ export function HeroSection() {
           >
             <span className="rule-gold" />
             <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-              Specialist SEND Transport
+              Specialists in SEND Transport
             </span>
           </motion.div>
 
@@ -61,8 +92,9 @@ export function HeroSection() {
             animate="show"
             className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground"
           >
-            Dedicated home-to-school journeys across the West Midlands, calm,
-            safe, and consistent, with a trained assistant on every route.
+            Ultimate Travel provides dedicated home-to-school journeys, calm,
+            safe, and consistent, with a trained passenger assistant on every
+            route.
           </motion.p>
 
           <motion.div
@@ -90,48 +122,63 @@ export function HeroSection() {
 
         {/* Image */}
         <motion.div
+          ref={imageRef}
           initial={{ opacity: 0, scale: reduce ? 1 : 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="relative"
         >
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-border shadow-[0_30px_60px_-30px_rgba(11,34,69,0.45)]">
-            <Image
-              src="/images/gd-hero-journey.jpg"
-              alt="A Green Destinations minibus on a tree-lined road in soft morning light"
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b2245]/35 via-transparent to-transparent" />
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-border shadow-[0_30px_60px_-30px_rgba(6,20,13,0.45)]">
+            <motion.div
+              style={{ y: reduce ? 0 : parallaxY }}
+              className="absolute inset-[-8%]"
+            >
+              <Image
+                src="/images/gd-hero-journey.jpg"
+                alt="An Ultimate Travel minibus on a tree-lined road in soft morning light"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </motion.div>
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#06140d]/40 via-transparent to-transparent" />
           </div>
 
           {/* Quiet, real proof point anchored to the image */}
-          <div className="absolute -bottom-5 left-5 rounded-2xl border border-border bg-card/95 px-5 py-3.5 shadow-lg backdrop-blur">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute -bottom-5 left-5 rounded-2xl border border-border bg-card/95 px-5 py-3.5 shadow-lg backdrop-blur"
+          >
             <p className="text-2xl font-bold tracking-tight text-foreground">
               Since 2012
             </p>
             <p className="text-xs text-muted-foreground">
-              Trusted by West Midlands authorities
+              Trusted by families and authorities
             </p>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
       {/* Credentials strip (under the hero, not inside it) */}
       <div className="border-y border-border bg-[var(--section-bg)]">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px overflow-hidden md:grid-cols-4">
-          {credentials.map(({ icon: Icon, label }) => (
-            <div
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px overflow-hidden sm:grid-cols-3 lg:grid-cols-5">
+          {credentials.map(({ icon: Icon, label }, i) => (
+            <motion.div
               key={label}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
               className="flex items-center justify-center gap-2.5 px-4 py-5 text-center"
             >
               <Icon className="h-4 w-4 shrink-0 text-[var(--gold)]" strokeWidth={2} />
               <span className="text-xs font-semibold tracking-tight text-foreground/80">
                 {label}
               </span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -4,7 +4,7 @@ import SubpageHero from "@/components/SubpageHero";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services | Green Destinations",
+  title: "Services | Ultimate Travel",
   description:
     "Explore our SEND transport services, passenger assistant support, safeguarding processes, and local authority partnership contracts.",
 };

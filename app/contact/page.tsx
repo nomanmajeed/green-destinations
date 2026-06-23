@@ -3,9 +3,9 @@ import SubpageHero from "@/components/SubpageHero";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact | Green Destinations",
+  title: "Contact | Ultimate Travel",
   description:
-    "Get in touch with Green Destinations. Contact our team to book a journey, partner with us, or learn more about our specialist SEND transport services.",
+    "Get in touch with Ultimate Travel. Contact our team to book a journey, partner with us, or learn more about our specialist SEND transport services.",
 };
 
 export default function ContactPage() {

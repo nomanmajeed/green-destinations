@@ -5,7 +5,7 @@ import { TestimonialsColumn, Testimonial } from "@/components/ui/testimonials-co
 
 const testimonials: Testimonial[] = [
   {
-    text: "Green Destinations changed our mornings. A consistent, calm driver who understands my son's sensory needs has made his school journey stress-free.",
+    text: "Ultimate Travel changed our mornings. A consistent, calm driver who understands my son's sensory needs has made his school journey stress-free.",
     name: "Sarah Jenkins",
     role: "Parent of pupil (autism)",
   },
@@ -20,7 +20,7 @@ const testimonials: Testimonial[] = [
     role: "Transport Commissioning Officer",
   },
   {
-    text: "Finding accessible transport with staff who treat our daughter with real dignity was tough, until we partnered with Green Destinations.",
+    text: "Finding accessible transport with staff who treat our daughter with real dignity was tough, until we partnered with Ultimate Travel.",
     name: "Marcus Reynolds",
     role: "Parent of pupil (physical SEND)",
   },

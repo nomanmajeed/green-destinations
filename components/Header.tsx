@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -51,17 +52,29 @@ export default function Header() {
           className={cn(
             "mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 rounded-2xl px-4 sm:px-6 transition-all duration-300",
             scrolled
-              ? "glass border border-border shadow-[0_8px_30px_-12px_rgba(11,34,69,0.25)]"
+              ? "glass border border-border shadow-[0_8px_30px_-12px_rgba(6,20,13,0.25)]"
               : "border border-transparent"
           )}
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-[#0b2245] text-[var(--gold-cta-bg)] font-black text-[11px] tracking-tight">
-              GD
+          <Link href="/" className="group flex items-center gap-2.5 shrink-0">
+            <span className="relative h-9 w-9 overflow-hidden rounded-lg ring-1 ring-border shadow-sm transition-transform duration-300 group-hover:scale-105">
+              <Image
+                src="/images/ut-mark.jpg"
+                alt="Ultimate Travel"
+                fill
+                sizes="36px"
+                className="object-cover"
+                priority
+              />
             </span>
-            <span className="font-bold text-[15px] tracking-tight text-foreground">
-              Green Destinations
+            <span className="flex flex-col leading-none">
+              <span className="font-bold text-[15px] tracking-tight text-foreground">
+                Ultimate Travel
+              </span>
+              <span className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                SEND Transport
+              </span>
             </span>
           </Link>
 

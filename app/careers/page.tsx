@@ -3,9 +3,9 @@ import SubpageHero from "@/components/SubpageHero";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Careers | Green Destinations",
+  title: "Careers | Ultimate Travel",
   description:
-    "Join the Green Destinations team. View open positions for PSV/D1 drivers, passenger assistants, and coordinators in Birmingham and the West Midlands.",
+    "Join the Ultimate Travel team. View open positions for PSV/D1 drivers, passenger assistants, and coordinators in Birmingham and the West Midlands.",
 };
 
 export default function CareersPage() {

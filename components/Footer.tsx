@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -46,13 +47,18 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-10 py-14 md:grid-cols-4">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2.5">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-[#0b2245] text-[var(--gold-cta-bg)] text-[11px] font-black tracking-tight">
-                GD
+              <span className="relative h-9 w-9 overflow-hidden rounded-lg ring-1 ring-border">
+                <Image src="/images/ut-mark.jpg" alt="Ultimate Travel" fill sizes="36px" className="object-cover" />
               </span>
-              <span className="text-[15px] font-bold tracking-tight text-foreground">Green Destinations</span>
+              <span className="flex flex-col leading-none">
+                <span className="text-[15px] font-bold tracking-tight text-foreground">Ultimate Travel</span>
+                <span className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                  Specialists in SEND Transport
+                </span>
+              </span>
             </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Specialist SEND home-to-school transport across the West Midlands.
+              Specialist SEND home-to-school transport across the West Midlands and beyond.
             </p>
             <ul className="mt-5 space-y-2.5 text-sm text-muted-foreground">
               <li className="flex items-start gap-2.5">
@@ -92,7 +98,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-3 border-t border-border py-6 text-xs text-muted-foreground sm:flex-row">
-          <span>© 2026 Green Destinations Ltd. All rights reserved.</span>
+          <span>© 2026 Ultimate Travel. All rights reserved.</span>
           <div className="flex items-center gap-5">
             <Link href="/contact" className="transition-colors hover:text-foreground">Privacy Policy</Link>
             <Link href="/contact" className="transition-colors hover:text-foreground">Terms of Service</Link>

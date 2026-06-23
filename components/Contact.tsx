@@ -143,7 +143,7 @@ export default function Contact() {
                 <Button type="submit" disabled={sending} className="btn-gold h-12 w-full rounded-xl text-base shadow-none">
                   {sending ? (
                     <span className="flex items-center justify-center gap-2">
-                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#0b2245]/40 border-t-[#0b2245]" />
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-current/40 border-t-current" />
                       Sending
                     </span>
                   ) : (
@@ -167,7 +167,7 @@ export default function Contact() {
         >
           <div className="relative h-[340px] sm:h-[440px]">
             <iframe
-              title="Green Destinations office location"
+              title="Ultimate Travel office location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2429.2136006421066!2d-1.9213455!3d52.4933946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870bc7e5c9a4449%3A0xe54e389d4fb842b1!2s386%20Park%20Rd%2C%20Hockley%2C%20Birmingham%20B18%205ST!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
               width="100%"
               height="100%"

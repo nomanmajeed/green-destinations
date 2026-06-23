@@ -109,7 +109,7 @@ export default function Services() {
           <div className="relative order-1 min-h-[260px] lg:order-2">
             <Image
               src="/images/gd-interior-calm.jpg"
-              alt="The calm, accessible interior of a Green Destinations minibus"
+              alt="The calm, accessible interior of an Ultimate Travel minibus"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
@@ -128,7 +128,7 @@ export default function Services() {
             <motion.div
               key={s.h}
               variants={fadeUp}
-              className="flex flex-col rounded-2xl border border-border bg-card p-7 transition-colors duration-300 hover:border-[var(--gold)]/40"
+              className="flex flex-col rounded-2xl border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--gold)]/40 hover:shadow-[0_20px_40px_-24px_rgba(6,20,13,0.4)]"
             >
               <div className="flex items-center gap-3">
                 <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--gold-soft)]">

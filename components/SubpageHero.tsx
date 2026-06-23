@@ -28,7 +28,7 @@ export default function SubpageHero({ eyebrow, title, subtitle, backgroundImage 
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b2245]/90 via-[#0b2245]/55 to-[#0b2245]/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#06140d]/92 via-[#06140d]/60 to-[#06140d]/30" />
       </motion.div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-12 pt-32">

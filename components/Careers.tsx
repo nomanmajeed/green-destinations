@@ -115,7 +115,7 @@ function ApplyModal({ role, onClose }: { role: Role; onClose: () => void }) {
       className="fixed inset-0 z-[60] flex items-end justify-center overflow-y-auto p-4 sm:items-center"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
-      <div className="absolute inset-0 bg-[#0b1020]/60 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-[#06140d]/65 backdrop-blur-sm" onClick={onClose} />
       <motion.div
         initial={{ opacity: 0, y: 40, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -210,7 +210,7 @@ function ApplyModal({ role, onClose }: { role: Role; onClose: () => void }) {
               <Button type="submit" disabled={submitting} className="btn-gold h-12 w-full rounded-xl shadow-none">
                 {submitting ? (
                   <span className="flex items-center justify-center gap-2">
-                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#0b2245]/40 border-t-[#0b2245]" />
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-current/40 border-t-current" />
                     Submitting application
                   </span>
                 ) : (

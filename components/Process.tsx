@@ -45,7 +45,7 @@ export default function Process() {
           initial={{ opacity: 0, scale: 1.03 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="relative order-2 aspect-[4/5] overflow-hidden rounded-[1.75rem] border border-border shadow-[0_30px_60px_-30px_rgba(11,34,69,0.4)] lg:order-1"
+          className="relative order-2 aspect-[4/5] overflow-hidden rounded-[1.75rem] border border-border shadow-[0_30px_60px_-30px_rgba(6,20,13,0.42)] lg:order-1"
         >
           <Image
             src="/images/gd-road-morning.jpg"
@@ -54,7 +54,7 @@ export default function Process() {
             sizes="(max-width: 1024px) 100vw, 45vw"
             className="object-cover"
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b2245]/45 via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#06140d]/55 via-transparent to-transparent" />
           <div className="absolute bottom-6 left-6 right-6">
             <p className="text-lg font-semibold text-white">
               Every route, planned around the child.
