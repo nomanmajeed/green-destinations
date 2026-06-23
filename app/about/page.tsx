@@ -15,7 +15,7 @@ export default function AboutPage() {
         eyebrow="About Ultimate Travel"
         title="Specialist transport, built on trust."
         subtitle="Established in 2012 to deliver specialist school travel that supports independence and protects every pupil's dignity."
-        backgroundImage="/images/gd-road-morning.jpg"
+        backgroundImage="/images/ut-hero-about.jpg"
       />
       <About />
     </>

@@ -15,7 +15,7 @@ export default function CareersPage() {
         eyebrow="Careers and Opportunities"
         title="Work that matters, every morning."
         subtitle="Build a meaningful career in SEND transport with a supportive, community-focused team across the West Midlands."
-        backgroundImage="/images/gd-team-assistant.jpg"
+        backgroundImage="/images/ut-hero-careers.jpg"
       />
       <Careers />
     </>

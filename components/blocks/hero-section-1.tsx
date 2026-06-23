@@ -48,16 +48,57 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden">
-      {/* Quiet ambient wash — single gold radial, anchored, no rainbow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-24 right-[-10%] h-[42rem] w-[42rem] rounded-full opacity-60 blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle, var(--gold-soft) 0%, transparent 60%)",
-        }}
-      />
+    <section className="relative isolate overflow-hidden">
+      {/* ─── Layered animated background ─────────────────────────── */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        {/* Aurora — single green + single gold, slow drift, restrained */}
+        <motion.div
+          className="absolute -left-24 -top-32 h-[34rem] w-[34rem] rounded-full blur-3xl"
+          style={{
+            background:
+              "radial-gradient(circle, color-mix(in srgb, var(--brand-green) 22%, transparent) 0%, transparent 65%)",
+          }}
+          animate={reduce ? undefined : { x: [0, 40, 0], y: [0, 26, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute right-[-8%] top-10 h-[32rem] w-[32rem] rounded-full blur-3xl"
+          style={{
+            background:
+              "radial-gradient(circle, color-mix(in srgb, var(--gold) 18%, transparent) 0%, transparent 65%)",
+          }}
+          animate={reduce ? undefined : { x: [0, -34, 0], y: [0, 32, 0] }}
+          transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Route motif — a quiet journey line with a travelling marker */}
+        <svg
+          className="absolute inset-x-0 bottom-0 h-[70%] w-full text-[var(--gold)]"
+          viewBox="0 0 1200 420"
+          fill="none"
+          preserveAspectRatio="none"
+        >
+          <motion.path
+            id="ut-route"
+            d="M-40 360 C 220 200, 360 380, 620 250 S 980 130, 1240 230"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeOpacity="0.22"
+            strokeDasharray="2 10"
+            strokeLinecap="round"
+            initial={{ pathLength: reduce ? 1 : 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 2.4, ease: [0.16, 1, 0.3, 1] }}
+          />
+          {!reduce && (
+            <circle r="5" fill="currentColor" fillOpacity="0.9">
+              <animateMotion dur="9s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#ut-route" />
+              </animateMotion>
+            </circle>
+          )}
+        </svg>
+      </div>
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pt-28 pb-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-32 lg:pb-24">
         {/* Copy */}
@@ -67,7 +108,7 @@ export function HeroSection() {
             variants={reveal}
             initial="hidden"
             animate="show"
-            className="flex items-center gap-3"
+            className="inline-flex items-center gap-3 rounded-full border border-border bg-card/60 px-4 py-1.5 backdrop-blur"
           >
             <span className="rule-gold" />
             <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
@@ -134,8 +175,8 @@ export function HeroSection() {
               className="absolute inset-[-8%]"
             >
               <Image
-                src="/images/gd-hero-journey.jpg"
-                alt="An Ultimate Travel minibus on a tree-lined road in soft morning light"
+                src="/images/ut-hero-home.jpg"
+                alt="An Ultimate Travel minibus, specialists in SEND transport, on a tree-lined road in soft morning light"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -143,27 +184,44 @@ export function HeroSection() {
               />
             </motion.div>
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#06140d]/40 via-transparent to-transparent" />
+
+            {/* One-shot light sweep across the frame on load */}
+            {!reduce && (
+              <motion.div
+                aria-hidden
+                className="pointer-events-none absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/25 to-transparent"
+                initial={{ x: "-150%" }}
+                animate={{ x: "350%" }}
+                transition={{ duration: 1.3, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              />
+            )}
           </div>
 
-          {/* Quiet, real proof point anchored to the image */}
+          {/* Quiet, real proof point — gentle float */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute -bottom-5 left-5 rounded-2xl border border-border bg-card/95 px-5 py-3.5 shadow-lg backdrop-blur"
+            className="absolute -bottom-5 left-5"
           >
-            <p className="text-2xl font-bold tracking-tight text-foreground">
-              Since 2012
-            </p>
-            <p className="text-xs text-muted-foreground">
-              Trusted by families and authorities
-            </p>
+            <motion.div
+              animate={reduce ? undefined : { y: [0, -6, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="rounded-2xl border border-border bg-card/95 px-5 py-3.5 shadow-lg backdrop-blur"
+            >
+              <p className="text-2xl font-bold tracking-tight text-foreground">
+                Since 2012
+              </p>
+              <p className="text-xs text-muted-foreground">
+                Trusted by families and authorities
+              </p>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>
 
       {/* Credentials strip (under the hero, not inside it) */}
-      <div className="border-y border-border bg-[var(--section-bg)]">
+      <div className="relative border-y border-border bg-[var(--section-bg)]">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px overflow-hidden sm:grid-cols-3 lg:grid-cols-5">
           {credentials.map(({ icon: Icon, label }, i) => (
             <motion.div

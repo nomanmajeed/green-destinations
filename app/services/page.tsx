@@ -16,7 +16,7 @@ export default function ServicesPage() {
         eyebrow="Our Services"
         title="Safe, structured, dignified travel."
         subtitle="Specialist school transport, passenger support escorts, and PATS-accredited training designed for safe delivery."
-        backgroundImage="/images/gd-hero-journey.jpg"
+        backgroundImage="/images/ut-hero-services.jpg"
       />
       <Services />
       <Process />

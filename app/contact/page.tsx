@@ -15,7 +15,7 @@ export default function ContactPage() {
         eyebrow="Contact Our Team"
         title="We are ready to help."
         subtitle="For school routes, driver training, recruitment, or public sector partnerships, start the conversation today."
-        backgroundImage="/images/gd-interior-calm.jpg"
+        backgroundImage="/images/ut-hero-contact.jpg"
       />
       <Contact />
     </>
