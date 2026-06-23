@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { MeshGradientBg } from "@/components/ui/mesh-gradient-bg";
 
 const motes = [
   { l: "18%", t: "30%", d: 9, x: 6 },
@@ -32,6 +33,12 @@ export function HeroBackground() {
       aria-hidden
       className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
     >
+      {/* Animated mesh gradient — the living, "magic movement" backdrop */}
+      <MeshGradientBg className="opacity-70 dark:opacity-60" />
+
+      {/* Veil over the mesh to keep foreground text crisp */}
+      <div className="absolute inset-0 bg-[var(--body-bg)]/60 dark:bg-[var(--body-bg)]/55" />
+
       {/* Dotted map texture */}
       <div
         className="absolute inset-0"
@@ -42,41 +49,6 @@ export function HeroBackground() {
           maskImage: mask,
           WebkitMaskImage: mask,
         }}
-      />
-
-      {/* Rotating conic gradient — a slow living green/gold sheen */}
-      <div className="absolute left-1/2 top-[44%] -translate-x-1/2 -translate-y-1/2">
-        <motion.div
-          className="h-[46rem] w-[46rem] rounded-full opacity-[0.16] blur-2xl dark:opacity-[0.22]"
-          style={{
-            background:
-              "conic-gradient(from 0deg, var(--brand-green), transparent 25%, var(--gold), transparent 55%, var(--brand-green) 80%, transparent 100%)",
-            maskImage: "radial-gradient(circle, black 0%, transparent 68%)",
-            WebkitMaskImage: "radial-gradient(circle, black 0%, transparent 68%)",
-          }}
-          animate={reduce ? undefined : { rotate: 360 }}
-          transition={{ duration: 55, repeat: Infinity, ease: "linear" }}
-        />
-      </div>
-
-      {/* Aurora — single green + single gold, slow drift + breathe */}
-      <motion.div
-        className="absolute -left-24 -top-32 h-[34rem] w-[34rem] rounded-full blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle, color-mix(in srgb, var(--brand-green) 24%, transparent) 0%, transparent 65%)",
-        }}
-        animate={reduce ? undefined : { x: [0, 40, 0], y: [0, 26, 0], scale: [1, 1.08, 1] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute right-[-8%] top-6 h-[32rem] w-[32rem] rounded-full blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle, color-mix(in srgb, var(--gold) 18%, transparent) 0%, transparent 65%)",
-        }}
-        animate={reduce ? undefined : { x: [0, -34, 0], y: [0, 32, 0], scale: [1, 1.1, 1] }}
-        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Route network */}
