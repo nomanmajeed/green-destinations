@@ -2,55 +2,33 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
-import { MapPin, Mail, Phone, Clock, Send } from "lucide-react";
+import { MapPin, Mail, Phone, Clock, Send, Check, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
 
 const info = [
-  {
-    icon: MapPin,
-    title: "Office Address",
-    v: "386 Park Road, Hockley\nBirmingham, B18 5ST",
-  },
+  { icon: MapPin, title: "Office", v: "386 Park Road, Hockley\nBirmingham, B18 5ST" },
   {
     icon: Mail,
-    title: "Email Channels",
-    v: "General: admin@greendestinationsltd.com\nCareers: recruitment@greendestinationsltd.com",
+    title: "Email",
+    v: "admin@greendestinationsltd.com",
     href: "mailto:admin@greendestinationsltd.com",
   },
-  {
-    icon: Phone,
-    title: "Enquiry Line",
-    v: "0121 553 3363",
-    href: "tel:01215533363",
-  },
-  {
-    icon: Clock,
-    title: "Operating Hours",
-    v: "Monday – Friday · 7:00 – 19:00",
-  },
+  { icon: Phone, title: "Enquiry line", v: "0121 553 3363", href: "tel:01215533363" },
+  { icon: Clock, title: "Operating hours", v: "Monday to Friday, 7:00 to 19:00" },
 ];
 
-const stagger: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
-};
+const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } };
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export default function Contact() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
 
@@ -67,245 +45,148 @@ export default function Contact() {
     setSent(true);
   };
 
+  const inputClass =
+    "h-11 rounded-xl border-border bg-background text-foreground placeholder:text-muted-foreground/60 focus:border-[var(--gold)]/60";
+
   return (
-    <section
-      id="contact"
-      ref={ref}
-      className="relative pt-24 pb-12 lg:pt-32 lg:pb-16 overflow-hidden"
-      style={{ background: "var(--section-bg)" }}
-    >
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        <div className="absolute top-1/2 left-0 w-[600px] h-[400px] rounded-full bg-blue-600/8 blur-[100px]" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          animate={inView ? "show" : "hidden"}
-          className="text-center mb-16"
-        >
-          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 glass-gold rounded-full px-4 py-1.5 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-            <span className="text-gold text-xs font-semibold tracking-widest uppercase">
-              Get In Touch
-            </span>
-          </motion.div>
-          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-4 tracking-tight">
-            Get in touch with{" "}
-            <span className="text-gradient-gold">our team</span>
-          </motion.h2>
-          <motion.p variants={fadeUp} className="text-foreground/75 text-lg max-w-xl mx-auto">
-            Whether you&apos;re a family, school, or local authority — we&apos;d
-            love to hear from you.
-          </motion.p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14">
-          {/* Info cards */}
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            animate={inView ? "show" : "hidden"}
-            className="flex flex-col gap-4"
-          >
-            <motion.h3 variants={fadeUp} className="text-foreground font-bold text-xl mb-2">
-              Send us a message
-            </motion.h3>
-            <motion.p variants={fadeUp} className="text-foreground/70 text-sm leading-relaxed mb-4">
-              Our team is available Monday to Friday. We aim to respond within
-              one working day.
+    <section id="contact" ref={ref} className="bg-[var(--section-bg)] py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+          {/* Left: heading + info */}
+          <motion.div variants={stagger} initial="hidden" animate={inView ? "show" : "hidden"}>
+            <motion.span variants={fadeUp} className="rule-gold block" />
+            <motion.h2
+              variants={fadeUp}
+              className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
+            >
+              Start the conversation.
+            </motion.h2>
+            <motion.p variants={fadeUp} className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
+              Whether you are a family, school, or local authority, we aim to
+              respond within one working day.
             </motion.p>
 
-            {info.map((item) => (
-              <motion.div key={item.title} variants={fadeUp}>
-                <Card className="bg-card/45 border-border hover:bg-card/75 hover:border-foreground/15 transition-all duration-300 group">
-                  <CardContent className="p-4 flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl glass-gold flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
-                      <item.icon className="w-4 h-4 text-gold" />
-                    </div>
-                    <div>
-                      <p className="text-foreground/50 text-xs font-medium uppercase tracking-widest mb-0.5">
-                        {item.title}
-                      </p>
-                      {item.href ? (
-                        <a
-                          href={item.href}
-                          className="text-foreground text-sm font-medium hover:text-gold transition-colors whitespace-pre-line"
-                        >
-                          {item.v}
-                        </a>
-                      ) : (
-                        <p className="text-foreground text-sm font-medium whitespace-pre-line">
-                          {item.v}
-                        </p>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+            <motion.ul variants={stagger} className="mt-10 divide-y divide-border border-y border-border">
+              {info.map((item) => (
+                <motion.li key={item.title} variants={fadeUp} className="flex items-center gap-4 py-4">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[var(--gold-soft)]">
+                    <item.icon className="h-4 w-4 text-[var(--gold)]" strokeWidth={1.75} />
+                  </span>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                      {item.title}
+                    </p>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className="whitespace-pre-line text-sm font-medium text-foreground transition-colors hover:text-[var(--gold)]"
+                      >
+                        {item.v}
+                      </a>
+                    ) : (
+                      <p className="whitespace-pre-line text-sm font-medium text-foreground">{item.v}</p>
+                    )}
+                  </div>
+                </motion.li>
+              ))}
+            </motion.ul>
           </motion.div>
 
-          {/* Contact form */}
+          {/* Right: form */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="rounded-[1.5rem] border border-border bg-card p-7 sm:p-9"
           >
-            <Card className="bg-card/45 border-border shadow-2xl shadow-black/5 dark:shadow-black/30">
-              <CardContent className="p-7">
-                {sent ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="flex flex-col items-center text-center py-10"
-                  >
-                    <div className="w-16 h-16 gradient-gold rounded-full flex items-center justify-center mb-5 shadow-xl shadow-yellow-500/30">
-                      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
-                        <path
-                          d="M5 13l4 4L19 7"
-                          stroke="#0b2245"
-                          strokeWidth="2.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <h4 className="text-foreground font-extrabold text-xl mb-2">
-                      Message Received
-                    </h4>
-                    <p className="text-foreground/70 text-sm leading-relaxed max-w-xs">
-                      Thanks for reaching out. A member of the team will be
-                      in touch shortly.
-                    </p>
-                  </motion.div>
-                ) : (
-                  <form onSubmit={submit} className="space-y-4">
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="text-foreground/70 text-xs font-medium block mb-1.5">
-                          Full Name
-                        </label>
-                        <Input
-                          required
-                          value={form.name}
-                          onChange={set("name")}
-                          placeholder="Jane Smith"
-                          className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl h-11"
-                        />
-                      </div>
-                      <div>
-                        <label className="text-foreground/70 text-xs font-medium block mb-1.5">
-                          Phone
-                        </label>
-                        <Input
-                          value={form.phone}
-                          onChange={set("phone")}
-                          placeholder="+44 7xxx xxxxxx"
-                          className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl h-11"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <label className="text-foreground/70 text-xs font-medium block mb-1.5">
-                        Email
-                      </label>
-                      <Input
-                        required
-                        type="email"
-                        value={form.email}
-                        onChange={set("email")}
-                        placeholder="jane@example.com"
-                        className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl h-11"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-foreground/70 text-xs font-medium block mb-1.5">
-                        Message
-                      </label>
-                      <Textarea
-                        required
-                        value={form.message}
-                        onChange={set("message")}
-                        placeholder="Tell us about your transport needs…"
-                        rows={5}
-                        className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl resize-none"
-                      />
-                    </div>
-                    <Button
-                      type="submit"
-                      disabled={sending}
-                      className="w-full bg-gold hover:bg-[#e6ad2e] text-[#0b2245] font-bold rounded-xl h-12 text-base transition-all duration-200 hover:scale-[1.01] shadow-lg shadow-yellow-500/20 cursor-pointer"
-                    >
-                      {sending ? (
-                        <span className="flex items-center gap-2">
-                          <span className="w-4 h-4 border-2 border-[#0b2245]/40 border-t-[#0b2245] rounded-full animate-spin" />
-                          Sending…
-                        </span>
-                      ) : (
-                        <span className="flex items-center gap-2">
-                          <Send className="w-4 h-4" />
-                          Send Message
-                        </span>
-                      )}
-                    </Button>
-                  </form>
-                )}
-              </CardContent>
-            </Card>
+            {sent ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="flex flex-col items-center py-12 text-center"
+              >
+                <div className="mb-5 grid h-16 w-16 place-items-center rounded-full bg-[var(--gold-soft)]">
+                  <Check className="h-8 w-8 text-[var(--gold)]" strokeWidth={2.5} />
+                </div>
+                <h3 className="text-xl font-bold tracking-tight text-foreground">Message received</h3>
+                <p className="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">
+                  Thanks for reaching out. A member of the team will be in touch shortly.
+                </p>
+              </motion.div>
+            ) : (
+              <form onSubmit={submit} className="space-y-5">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-xs font-medium text-foreground/80">Full name</label>
+                    <Input required value={form.name} onChange={set("name")} placeholder="Aisha Okonkwo" className={inputClass} />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-xs font-medium text-foreground/80">Phone</label>
+                    <Input value={form.phone} onChange={set("phone")} placeholder="07700 900318" className={inputClass} />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-medium text-foreground/80">Email</label>
+                  <Input required type="email" value={form.email} onChange={set("email")} placeholder="aisha@example.com" className={inputClass} />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-medium text-foreground/80">Message</label>
+                  <Textarea
+                    required
+                    value={form.message}
+                    onChange={set("message")}
+                    placeholder="Tell us about your transport needs."
+                    rows={5}
+                    className="rounded-xl border-border bg-background text-foreground placeholder:text-muted-foreground/60 focus:border-[var(--gold)]/60 resize-none"
+                  />
+                </div>
+                <Button type="submit" disabled={sending} className="btn-gold h-12 w-full rounded-xl text-base shadow-none">
+                  {sending ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-current/40 border-t-current" />
+                      Sending
+                    </span>
+                  ) : (
+                    <span className="flex items-center justify-center gap-2">
+                      <Send className="h-4 w-4" />
+                      Send message
+                    </span>
+                  )}
+                </Button>
+              </form>
+            )}
           </motion.div>
         </div>
 
-        {/* Map Section */}
+        {/* Map */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-12"
+          transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="relative mt-12 overflow-hidden rounded-[1.5rem] border border-border"
         >
-          <Card className="bg-card/45 border-border overflow-hidden shadow-2xl rounded-3xl p-0 py-0 gap-0">
-            <div className="relative w-full h-[350px] sm:h-[450px]">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2429.2136006421066!2d-1.9213455!3d52.4933946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870bc7e5c9a4449%3A0xe54e389d4fb842b1!2s386%20Park%20Rd%2C%20Hockley%2C%20Birmingham%20B18%205ST!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-full opacity-95 transition-all duration-300 block"
-              />
-              {/* Address Badge shifted down to clear the native Google widget */}
-              {/* <div className="absolute top-24 left-4 bg-background/20 backdrop-blur-md px-4 py-2.5 rounded-xl border border-border pointer-events-none select-none">
-                <p className="text-foreground font-bold text-xs uppercase tracking-wider">Birmingham Head Office</p>
-                <p className="text-foreground/75 text-xs">386 Park Road, Hockley, B18 5ST</p>
-              </div> */}
-              <a
-                href="https://maps.google.com/?q=386+Park+Road,+Hockley,+Birmingham,+B18+5ST"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute top-4 right-4 bg-background/20 hover:bg-background/40 text-foreground hover:text-gold backdrop-blur-md px-3.5 py-2 rounded-xl border border-border text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 shadow-md"
-              >
-                <span>Open in Maps</span>
-                <svg
-                  className="w-3.5 h-3.5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </a>
-            </div>
-          </Card>
+          <div className="relative h-[340px] sm:h-[440px]">
+            <iframe
+              title="Ultimate Travel office location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2429.2136006421066!2d-1.9213455!3d52.4933946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870bc7e5c9a4449%3A0xe54e389d4fb842b1!2s386%20Park%20Rd%2C%20Hockley%2C%20Birmingham%20B18%205ST!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="block h-full w-full"
+            />
+            <a
+              href="https://maps.google.com/?q=386+Park+Road,+Hockley,+Birmingham,+B18+5ST"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute right-4 top-4 flex items-center gap-1.5 rounded-xl border border-border bg-card/90 px-3.5 py-2 text-xs font-semibold text-foreground shadow-md backdrop-blur transition-colors hover:text-[var(--gold)]"
+            >
+              Open in Maps
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>

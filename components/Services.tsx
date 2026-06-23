@@ -1,97 +1,57 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView, type Variants } from "framer-motion";
-import { Bus, Heart, ShieldCheck, Award, Route } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Bus, Heart, ShieldCheck, Award, Route, Check } from "lucide-react";
+
+const featured = {
+  icon: Bus,
+  tag: "Core service",
+  h: "Specialist SEND transport",
+  p: "Fulfilling statutory duties under Section 508B of the Education Act 1996 with safe, calm, and reliable home-to-school travel for SEND pupils.",
+  list: [
+    "Facilitates regular school attendance",
+    "Consistent routes, vehicles, and teams",
+    "Close cooperation with schools and families",
+  ],
+};
 
 const services = [
   {
-    icon: Bus,
-    tag: "SEND",
-    h: "Specialist SEND Transport",
-    p: "Fulfilling local authority statutory duties under Section 508B of the Education Act 1996, providing safe, calm, and reliable home-to-school travel arrangements for SEND pupils.",
-    list: [
-      "Facilitate regular school attendance",
-      "Consistent routes, vehicles, and teams",
-      "Close cooperation with schools and families",
-    ],
-    accent: "from-blue-500/5 to-blue-700/5 dark:from-white/3 dark:to-white/1",
-    iconColor: "text-blue-600 dark:text-blue-400",
-    iconBg: "bg-blue-500/10 dark:bg-blue-500/20",
-    badge: "bg-blue-500/10 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/20 dark:border-blue-500/30",
-  },
-  {
     icon: Heart,
-    tag: "SUPPORT",
-    h: "Passenger Support Escorts",
-    p: "Our Passenger Assistants accompany pupils throughout their journeys, offering patient support, reassurance for anxiety, and assistance with boarding and exiting.",
-    list: [
-      "Support boarding and secure seating",
-      "Emotional regulation and reassurance",
-      "Calm and patience-led journey experience",
-    ],
-    accent: "from-pink-500/5 to-rose-700/5 dark:from-white/3 dark:to-white/1",
-    iconColor: "text-pink-600 dark:text-pink-400",
-    iconBg: "bg-pink-500/10 dark:bg-pink-500/20",
-    badge: "bg-pink-500/10 dark:bg-pink-500/20 text-pink-700 dark:text-pink-300 border-pink-500/20 dark:border-pink-500/30",
+    tag: "Support",
+    h: "Passenger support escorts",
+    p: "Trained assistants accompany pupils throughout the journey with patient support and reassurance.",
+    list: ["Boarding and secure seating", "Emotional regulation support", "Patience-led journeys"],
   },
   {
     icon: ShieldCheck,
-    tag: "SAFEGUARD",
-    h: "Vetting & Safeguarding Culture",
-    p: "Safeguarding is embedded in our operations. All drivers and escorts undergo Enhanced DBS checks and must obtain local authority approval and ID badges.",
-    list: [
-      "Enhanced DBS checked staff",
-      "Local Authority badging and validation",
-      "Clear escalation and reporting protocols",
-    ],
-    accent: "from-amber-500/5 to-[#e6ad2e]/5 dark:from-white/3 dark:to-white/1",
-    iconColor: "text-amber-600 dark:text-[#f7d36f]",
-    iconBg: "bg-amber-500/10 dark:bg-[#f7d36f]/15",
-    badge: "bg-amber-500/10 dark:bg-[#f7d36f]/20 text-amber-800 dark:text-[#f7d36f] border-amber-500/20 dark:border-[#f7d36f]/30",
-    featured: true,
+    tag: "Safeguard",
+    h: "Vetting and safeguarding",
+    p: "Safeguarding is embedded in operations. All staff are Enhanced DBS checked and locally approved.",
+    list: ["Enhanced DBS checked staff", "Local Authority badging", "Clear escalation protocols"],
   },
   {
     icon: Award,
-    tag: "ACCREDITED",
-    h: "PATS Training Scheme",
-    p: "We provide training aligned with the nationally accredited Passenger Assistance Training Scheme (PATS), certifying our staff in special needs transport safety.",
-    list: [
-      "Hidden disability awareness",
-      "Emergency healthcare protocols",
-      "Non-discrimination and compliance skills",
-    ],
-    accent: "from-emerald-500/5 to-teal-700/5 dark:from-white/3 dark:to-white/1",
-    iconColor: "text-emerald-600 dark:text-emerald-400",
-    iconBg: "bg-emerald-500/10 dark:bg-emerald-500/20",
-    badge: "bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border-emerald-500/20 dark:border-emerald-500/30",
+    tag: "Accredited",
+    h: "PATS training scheme",
+    p: "Training aligned to the nationally accredited Passenger Assistance Training Scheme.",
+    list: ["Hidden disability awareness", "Emergency healthcare protocols", "Non-discrimination skills"],
   },
   {
     icon: Route,
-    tag: "PARTNERS",
-    h: "Public Sector Partnerships",
-    p: "We work directly with commissioning teams to deliver highly compliant, structured transport solutions that offer genuine value for public funds.",
-    list: [
-      "Operational discipline & tracking",
-      "Statutory compliance reporting",
-      "Route optimization and value management",
-    ],
-    accent: "from-purple-500/5 to-indigo-700/5 dark:from-white/3 dark:to-white/1",
-    iconColor: "text-purple-600 dark:text-purple-400",
-    iconBg: "bg-purple-500/10 dark:bg-purple-500/20",
-    badge: "bg-purple-500/10 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/20 dark:border-purple-500/30",
+    tag: "Partnerships",
+    h: "Public sector partnerships",
+    p: "Working directly with commissioning teams to deliver compliant, structured transport.",
+    list: ["Operational discipline", "Statutory compliance reporting", "Route and value management"],
   },
 ];
 
-const stagger: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
-};
+const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } };
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 32 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export default function Services() {
@@ -99,100 +59,95 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="services" ref={ref} className="relative py-24 lg:py-32">
-      {/* decorative blurs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full bg-blue-700/8 blur-[100px]" />
-        <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] rounded-full bg-yellow-500/6 blur-[80px]" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" ref={ref} className="bg-[var(--section-bg)] py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <motion.div
           variants={stagger}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          className="text-center mb-16"
+          className="max-w-2xl"
         >
-          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 glass-gold rounded-full px-4 py-1.5 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-            <span className="text-gold text-xs font-semibold tracking-widest uppercase">
-              Our Services
-            </span>
-          </motion.div>
-          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-4 tracking-tight">
-            Specialist services built around{" "}
-            <span className="text-gradient-gold">safe & dignifying travel</span>
+          <motion.span variants={fadeUp} className="rule-gold block" />
+          <motion.h2
+            variants={fadeUp}
+            className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
+          >
+            Services built around safe, dignified travel.
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-foreground/75 text-lg max-w-2xl mx-auto leading-relaxed">
-            From statutory school routes to Passenger Assistant support and PATS accredited training — we deliver with operational discipline.
+          <motion.p variants={fadeUp} className="mt-5 text-lg leading-relaxed text-muted-foreground">
+            From statutory school routes to passenger assistant support and PATS
+            accredited training, delivered with operational discipline.
           </motion.p>
         </motion.div>
 
-        {/* Cards grid */}
+        {/* Featured service — wide tile with photography */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-12 grid overflow-hidden rounded-[1.75rem] border border-border bg-card lg:grid-cols-2"
+        >
+          <div className="order-2 flex flex-col justify-center p-8 lg:order-1 lg:p-12">
+            <span className="grid h-11 w-11 place-items-center rounded-xl bg-[var(--gold-soft)]">
+              <featured.icon className="h-5 w-5 text-[var(--gold)]" strokeWidth={1.75} />
+            </span>
+            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--gold)]">
+              {featured.tag}
+            </p>
+            <h3 className="mt-2 text-2xl font-bold tracking-tight text-foreground">{featured.h}</h3>
+            <p className="mt-3 max-w-md leading-relaxed text-muted-foreground">{featured.p}</p>
+            <ul className="mt-6 space-y-2.5">
+              {featured.list.map((item) => (
+                <li key={item} className="flex items-center gap-2.5 text-sm text-foreground/85">
+                  <Check className="h-4 w-4 shrink-0 text-[var(--gold)]" strokeWidth={2.5} />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="relative order-1 min-h-[260px] lg:order-2">
+            <Image
+              src="/images/gd-interior-calm.jpg"
+              alt="The calm, accessible interior of an Ultimate Travel minibus"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
+        </motion.div>
+
+        {/* Remaining services — clean 2x2 grid, single accent */}
         <motion.div
           variants={stagger}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="mt-6 grid gap-6 sm:grid-cols-2"
         >
           {services.map((s) => (
-            <motion.div key={s.h} variants={fadeUp} className="group">
-              <Card
-                className={`relative h-full border-border bg-card/30 bg-gradient-to-br ${s.accent} backdrop-blur-sm overflow-hidden
-                  hover:border-foreground/15 hover:shadow-2xl transition-all duration-400
-                  ${s.featured ? "ring-1 ring-gold/30" : ""}`}
-              >
-                {s.featured && (
-                  <div className="absolute top-3 right-3">
-                    <span className="text-[10px] font-bold text-[#0b2245] bg-gold px-2 py-0.5 rounded-full">
-                      Core
-                    </span>
-                  </div>
-                )}
-                <CardContent className="p-6 flex flex-col h-full">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div
-                      className={`w-11 h-11 rounded-2xl ${s.iconBg} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <s.icon className={`w-5 h-5 ${s.iconColor}`} />
-                    </div>
-                    <Badge
-                      variant="outline"
-                      className={`text-[10px] font-bold tracking-widest mt-1.5 ${s.badge}`}
-                    >
-                      {s.tag}
-                    </Badge>
-                  </div>
-
-                  <h3 className="text-foreground font-bold text-lg mb-2 leading-tight">
-                    {s.h}
-                  </h3>
-                  <p className="text-foreground/70 text-sm leading-relaxed mb-5 flex-1">
-                    {s.p}
-                  </p>
-
-                  <ul className="space-y-1.5 mt-auto">
-                    {s.list.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-center gap-2 text-xs text-foreground/70"
-                      >
-                        <span
-                          className={`w-1 h-1 rounded-full ${s.iconBg} shrink-0`}
-                        />
-                        <span
-                          className={`w-1 h-1 rounded-full ${s.iconColor} shrink-0 -ml-2.5`}
-                          style={{
-                            background: "currentColor",
-                          }}
-                        />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+            <motion.div
+              key={s.h}
+              variants={fadeUp}
+              className="flex flex-col rounded-2xl border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--gold)]/40 hover:shadow-[0_20px_40px_-24px_rgba(6,20,13,0.4)]"
+            >
+              <div className="flex items-center gap-3">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--gold-soft)]">
+                  <s.icon className="h-5 w-5 text-[var(--gold)]" strokeWidth={1.75} />
+                </span>
+                <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                  {s.tag}
+                </span>
+              </div>
+              <h3 className="mt-5 text-lg font-bold tracking-tight text-foreground">{s.h}</h3>
+              <p className="mt-2 leading-relaxed text-muted-foreground">{s.p}</p>
+              <ul className="mt-5 space-y-2 border-t border-border pt-5">
+                {s.list.map((item) => (
+                  <li key={item} className="flex items-center gap-2.5 text-sm text-foreground/80">
+                    <Check className="h-3.5 w-3.5 shrink-0 text-[var(--gold)]" strokeWidth={2.5} />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </motion.div>

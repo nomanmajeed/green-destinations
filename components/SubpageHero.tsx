@@ -1,23 +1,24 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 
 interface SubpageHeroProps {
+  eyebrow?: string;
   title: string;
   subtitle: string;
   backgroundImage: string;
 }
 
-export default function SubpageHero({ title, subtitle, backgroundImage }: SubpageHeroProps) {
+export default function SubpageHero({ eyebrow, title, subtitle, backgroundImage }: SubpageHeroProps) {
+  const reduce = useReducedMotion();
   return (
-    <div className="relative h-[45vh] min-h-[350px] w-full overflow-hidden flex items-center justify-center border-b border-border bg-black">
-      {/* Background Image with zoom & fade animation */}
+    <section className="relative flex min-h-[44vh] items-end overflow-hidden border-b border-border">
       <motion.div
-        initial={{ scale: 1.15, opacity: 0 }}
-        animate={{ scale: 1.05, opacity: 0.65 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        className="absolute inset-0 w-full h-full"
+        initial={{ scale: reduce ? 1 : 1.08, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute inset-0"
       >
         <Image
           src={backgroundImage}
@@ -25,54 +26,42 @@ export default function SubpageHero({ title, subtitle, backgroundImage }: Subpag
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center pointer-events-none select-none filter brightness-75 contrast-105"
+          className="object-cover"
         />
-        {/* Soft radial overlay for premium look */}
-        <div className="absolute inset-0 bg-radial-gradient-to-b from-transparent via-black/40 to-black/85" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#06140d]/92 via-[#06140d]/60 to-[#06140d]/30" />
       </motion.div>
 
-      {/* Grid overlay lines */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
-
-      {/* Content wrapper */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-12">
-        <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2 glass-gold rounded-full px-4 py-1.5 mb-6"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-          <span className="text-gold text-[10px] sm:text-xs font-semibold tracking-widest uppercase">
-            Green Destinations Transit
-          </span>
-        </motion.div>
-
-        {/* Dynamic Title with Gold Accent */}
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-12 pt-32">
+        {eyebrow && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center gap-3"
+          >
+            <span className="rule-gold" />
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-white/80">
+              {eyebrow}
+            </span>
+          </motion.div>
+        )}
         <motion.h1
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight drop-shadow-xl"
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-5 max-w-3xl text-balance text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl"
         >
           {title}
         </motion.h1>
-
-        {/* Subtitle with premium glass backdrop blur */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-4 max-w-2xl mx-auto bg-black/35 backdrop-blur-md border border-white/5 rounded-2xl p-4 sm:p-5 shadow-2xl"
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg"
         >
-          <p className="text-white/85 text-sm sm:text-base leading-relaxed font-medium">
-            {subtitle}
-          </p>
-        </motion.div>
+          {subtitle}
+        </motion.p>
       </div>
-
-      {/* Bottom fade out to merge smoothly with section content */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#030303] to-transparent pointer-events-none" />
-    </div>
+    </section>
   );
 }

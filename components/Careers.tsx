@@ -2,10 +2,8 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence, type Variants } from "framer-motion";
-import { MapPin, Clock, X, Send, Search, ArrowRight, PoundSterling, Award, BadgeAlert, AlertCircle } from "lucide-react";
+import { MapPin, Clock, X, Send, Search, ArrowRight, Check, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -13,101 +11,90 @@ const roles = [
   {
     id: 1,
     tag: "Assistant",
-    h: "Passenger Assistant – Home-to-School Transport",
-    p: "Make a real difference by supporting children with Special Educational Needs and Disabilities (SEND) on their daily school runs. Split shifts are ideal for local residents.",
+    h: "Passenger Assistant — Home-to-School Transport",
+    p: "Support children with SEND on their daily school runs. Split shifts are ideal for local residents.",
     loc: "West Midlands",
-    type: "Part Time (Term Time Only)",
-    salary: "£12.71 per hour",
+    type: "Part time (term time only)",
+    salary: "£12.71 / hour",
     hours: "07:30–09:00 & 14:30–16:00 (Mon–Fri)",
     incentives: "Stable regional route allocations",
-    tagColor: "bg-pink-500/10 dark:bg-pink-500/20 text-pink-700 dark:text-pink-300 border-pink-500/20 dark:border-pink-500/30",
     reqs: [
-      "No prior experience required - empathetic nature is essential",
+      "No prior experience required, an empathetic nature is essential",
       "Enhanced DBS check and professional references",
       "Local Authority approval and ID badge prior to start",
-      "Safeguarding-focused interview process"
-    ]
+      "Safeguarding-focused interview process",
+    ],
   },
   {
     id: 2,
     tag: "Driver",
     h: "PSV Drivers (D or D1 Licence)",
-    p: "Transport children with Special Educational Needs and Disabilities (SEND) in a safe, comfortable, and supportive environment every school day.",
+    p: "Transport children with SEND in a safe, comfortable, and supportive environment every school day.",
     loc: "West Midlands",
-    type: "Part Time (Term Time Only)",
-    salary: "From £13.00 per hour",
+    type: "Part time (term time only)",
+    salary: "From £13.00 / hour",
     hours: "20–30 hours per week",
     incentives: "Stable term-time schedules",
-    tagColor: "bg-blue-500/10 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/20 dark:border-blue-500/30",
     reqs: [
-      "Valid PSV license (category D or D1)",
+      "Valid PSV licence (category D or D1)",
       "Professional, patient, and friendly attitude",
       "Punctuality and reliability are essential",
-      "Local Authority approval and ID badge prior to start"
-    ]
+      "Local Authority approval and ID badge prior to start",
+    ],
   },
   {
     id: 3,
     tag: "Driver",
     h: "Swindon PSV Drivers Wanted",
-    p: "Join our expanding Swindon driver team supporting school routes. High earning potential, consistent routing, and excellent sign-on incentives.",
-    loc: "Swindon & Surrounding Areas",
-    type: "Part Time (Term Time)",
-    salary: "Up to £17.00 per hour",
+    p: "Join our expanding Swindon driver team supporting school routes, with consistent routing and incentives.",
+    loc: "Swindon and surrounding areas",
+    type: "Part time (term time)",
+    salary: "Up to £17.00 / hour",
     hours: "20–30 hours per week",
-    incentives: "£1,000 Joining Bonus + Referral Opportunities",
-    tagColor: "bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border-emerald-500/20 dark:border-emerald-500/30",
+    incentives: "£1,000 joining bonus + referral opportunities",
     reqs: [
-      "Valid PSV license (category D or D1)",
+      "Valid PSV licence (category D or D1)",
       "Excellent local Swindon geography knowledge",
       "Friendly attitude towards children and parents",
-      "Local Authority approval and ID badge prior to start"
-    ]
+      "Local Authority approval and ID badge prior to start",
+    ],
   },
   {
     id: 4,
     tag: "Contractor",
     h: "PHV/HCV Drivers (Taxi Licensed)",
-    p: "Contract of services for independent drivers using their own licensed taxi vehicles. Earn fixed pay per route supporting SEND transport.",
+    p: "Contract of services for independent drivers using their own licensed taxi vehicles, with fixed pay per route.",
     loc: "West Midlands",
-    type: "Contract / Route-based",
-    salary: "Fixed Pay Per Route",
+    type: "Contract / route-based",
+    salary: "Fixed pay per route",
     hours: "Varies by route allocation",
-    incentives: "Substitution rights & work for other hirers allowed",
-    tagColor: "bg-purple-500/10 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/20 dark:border-purple-500/30",
+    incentives: "Substitution rights and work for other hirers allowed",
     reqs: [
-      "Own licensed taxi vehicle in West Midlands",
+      "Own licensed taxi vehicle in the West Midlands",
       "Good proficiency in the English language",
-      "Enhanced DBS certificate & local authority badge in hand",
-      "Ability to appoint substitute eligible drivers"
-    ]
-  }
+      "Enhanced DBS certificate and local authority badge in hand",
+      "Ability to appoint substitute eligible drivers",
+    ],
+  },
 ];
 
-type Role = typeof roles[0];
+type Role = (typeof roles)[0];
 
-const stagger: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.09 } },
-};
+const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } };
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
 };
 
-function ApplyModal({
-  role,
-  onClose,
-}: {
-  role: Role;
-  onClose: () => void;
-}) {
+function ApplyModal({ role, onClose }: { role: Role; onClose: () => void }) {
   const [form, setForm] = useState({ name: "", email: "", phone: "", statement: "", licence: "", taxiVehicle: "" });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    setForm((f) => ({ ...f, [k]: e.target.value }));
+  const set =
+    (k: keyof typeof form) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+      setForm((f) => ({ ...f, [k]: e.target.value }));
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -117,161 +104,119 @@ function ApplyModal({
     setSubmitted(true);
   };
 
+  const inputClass =
+    "bg-background border-border text-foreground placeholder:text-muted-foreground/60 focus:border-[var(--gold)]/60 rounded-xl";
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 overflow-y-auto"
+      className="fixed inset-0 z-[60] flex items-end justify-center overflow-y-auto p-4 sm:items-center"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-[#06140d]/65 backdrop-blur-sm" onClick={onClose} />
       <motion.div
-        initial={{ opacity: 0, y: 60, scale: 0.95 }}
+        initial={{ opacity: 0, y: 40, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 40, scale: 0.97 }}
-        transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-        className="relative w-full max-w-lg glass rounded-3xl border border-border shadow-2xl overflow-hidden my-8"
+        exit={{ opacity: 0, y: 30, scale: 0.98 }}
+        transition={{ type: "spring", bounce: 0.18, duration: 0.45 }}
+        className="relative my-8 w-full max-w-lg overflow-hidden rounded-3xl border border-border bg-card shadow-2xl"
       >
-        {/* Header */}
-        <div className="flex items-start justify-between p-6 border-b border-border bg-card/10">
+        <div className="flex items-start justify-between gap-2 border-b border-border p-6">
           <div>
-            <p className="text-gold text-xs font-semibold tracking-widest uppercase mb-1">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
               {role.loc} · {role.type}
             </p>
-            <h3 className="text-foreground font-extrabold text-xl leading-tight">{role.h}</h3>
-            <p className="text-emerald-500 dark:text-emerald-400 text-sm font-semibold mt-1 flex items-center gap-1.5">
-              <PoundSterling className="w-4 h-4" /> {role.salary}
-            </p>
+            <h3 className="mt-1 text-xl font-bold leading-tight tracking-tight text-foreground">{role.h}</h3>
+            <p className="mt-1 text-sm font-semibold text-[var(--gold)]">{role.salary}</p>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-xl hover:bg-foreground/10 transition-colors text-foreground/50 hover:text-foreground cursor-pointer shrink-0 ml-2"
+            className="-m-1.5 shrink-0 rounded-xl p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            aria-label="Close"
           >
-            <X className="w-5 h-5" />
+            <X className="h-5 w-5" />
           </button>
         </div>
 
-        <div className="p-6 max-h-[70vh] overflow-y-auto">
+        <div className="max-h-[70vh] overflow-y-auto p-6">
           {submitted ? (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-8"
-            >
-              <div className="w-16 h-16 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl shadow-yellow-500/30">
-                <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
-                  <path d="M5 13l4 4L19 7" stroke="#0b2245" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="py-8 text-center">
+              <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-full bg-[var(--gold-soft)]">
+                <Check className="h-7 w-7 text-[var(--gold)]" strokeWidth={2.5} />
               </div>
-              <h4 className="text-foreground font-bold text-lg mb-2">Application Received!</h4>
-              <p className="text-foreground/70 text-sm mb-4">
-                Thank you, {form.name.split(" ")[0]}! Our recruitment team will contact you shortly regarding the vetting steps.
+              <h4 className="text-lg font-bold tracking-tight text-foreground">Application received</h4>
+              <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">
+                Thank you{form.name ? `, ${form.name.split(" ")[0]}` : ""}. Our recruitment team will contact you about the
+                vetting steps.
               </p>
-              <Button onClick={onClose} className="bg-gold hover:bg-[#e6ad2e] text-[#0b2245] font-bold rounded-xl cursor-pointer">
+              <Button onClick={onClose} className="btn-gold mt-5 rounded-xl shadow-none">
                 Close
               </Button>
             </motion.div>
           ) : (
             <form onSubmit={submit} className="space-y-4 text-left">
-              {/* Requirements Reminder */}
-              <div className="p-3.5 bg-yellow-500/10 rounded-2xl border border-yellow-500/20 text-xs text-foreground/80 flex items-start gap-2.5">
-                <AlertCircle className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+              <div className="flex items-start gap-2.5 rounded-2xl border border-[var(--gold)]/25 bg-[var(--gold-soft)] p-3.5 text-xs text-foreground/85">
+                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-[var(--gold)]" />
                 <div>
-                  <span className="font-bold text-gold">Regulatory Vetting Required:</span> This role requires Enhanced DBS clearance and Local Authority badge approval.
+                  <span className="font-bold text-foreground">Regulatory vetting required.</span> This role needs Enhanced
+                  DBS clearance and Local Authority badge approval.
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="text-foreground/70 text-xs font-medium block mb-1">Full Name</label>
-                  <Input
-                    required
-                    value={form.name}
-                    onChange={set("name")}
-                    placeholder="Jane Smith"
-                    className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl"
-                  />
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-medium text-foreground/80">Full name</label>
+                  <Input required value={form.name} onChange={set("name")} placeholder="Aisha Okonkwo" className={inputClass} />
                 </div>
-                <div>
-                  <label className="text-foreground/70 text-xs font-medium block mb-1">Phone Number</label>
-                  <Input
-                    required
-                    value={form.phone}
-                    onChange={set("phone")}
-                    placeholder="+44 7xxx xxxxxx"
-                    className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl"
-                  />
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-medium text-foreground/80">Phone number</label>
+                  <Input required value={form.phone} onChange={set("phone")} placeholder="07700 900318" className={inputClass} />
                 </div>
               </div>
 
-              <div>
-                <label className="text-foreground/70 text-xs font-medium block mb-1">Email Address</label>
-                <Input
-                  required
-                  type="email"
-                  value={form.email}
-                  onChange={set("email")}
-                  placeholder="jane@example.com"
-                  className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl"
-                />
+              <div className="flex flex-col gap-1.5">
+                <label className="text-xs font-medium text-foreground/80">Email address</label>
+                <Input required type="email" value={form.email} onChange={set("email")} placeholder="aisha@example.com" className={inputClass} />
               </div>
 
-              {/* Role Specific Inputs */}
               {(role.id === 2 || role.id === 3) && (
-                <div>
-                  <label className="text-foreground/70 text-xs font-medium block mb-1">PSV Licence Details (D/D1)</label>
-                  <Input
-                    required
-                    value={form.licence}
-                    onChange={set("licence")}
-                    placeholder="e.g. D1 Category, License Number..."
-                    className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl"
-                  />
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-medium text-foreground/80">PSV licence details (D/D1)</label>
+                  <Input required value={form.licence} onChange={set("licence")} placeholder="Category and licence number" className={inputClass} />
                 </div>
               )}
 
               {role.id === 4 && (
-                <div>
-                  <label className="text-foreground/70 text-xs font-medium block mb-1">Licensed Taxi Vehicle Details</label>
-                  <Input
-                    required
-                    value={form.taxiVehicle}
-                    onChange={set("taxiVehicle")}
-                    placeholder="Make, Model, Licensing Authority..."
-                    className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl"
-                  />
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-medium text-foreground/80">Licensed taxi vehicle details</label>
+                  <Input required value={form.taxiVehicle} onChange={set("taxiVehicle")} placeholder="Make, model, licensing authority" className={inputClass} />
                 </div>
               )}
 
-              <div>
-                <label className="text-foreground/70 text-xs font-medium block mb-1">
-                  Experience & Statement
-                </label>
+              <div className="flex flex-col gap-1.5">
+                <label className="text-xs font-medium text-foreground/80">Experience and statement</label>
                 <Textarea
                   required
                   value={form.statement}
                   onChange={set("statement")}
-                  placeholder="Briefly state your experience with school transport, child safeguarding, or SEND support..."
+                  placeholder="Briefly describe your experience with school transport, safeguarding, or SEND support."
                   rows={3}
-                  className="bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 rounded-xl resize-none"
+                  className={`${inputClass} resize-none`}
                 />
               </div>
 
-              <Button
-                type="submit"
-                disabled={submitting}
-                className="w-full bg-gold hover:bg-[#e6ad2e] text-[#0b2245] font-bold rounded-xl py-3 transition-all duration-200 hover:scale-[1.01] shadow-lg shadow-yellow-500/20 cursor-pointer"
-              >
+              <Button type="submit" disabled={submitting} className="btn-gold h-12 w-full rounded-xl shadow-none">
                 {submitting ? (
-                  <span className="flex items-center gap-2 justify-center">
-                    <span className="w-4 h-4 border-2 border-[#0b2245]/40 border-t-[#0b2245] rounded-full animate-spin" />
-                    Submitting Application…
+                  <span className="flex items-center justify-center gap-2">
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-current/40 border-t-current" />
+                    Submitting application
                   </span>
                 ) : (
-                  <span className="flex items-center gap-2 justify-center">
-                    <Send className="w-4 h-4" />
-                    Submit Application Form
+                  <span className="flex items-center justify-center gap-2">
+                    <Send className="h-4 w-4" />
+                    Submit application
                   </span>
                 )}
               </Button>
@@ -297,133 +242,110 @@ export default function Careers() {
   );
 
   return (
-    <section
-      id="careers"
-      ref={ref}
-      className="relative py-24 lg:py-32 overflow-hidden"
-      style={{ background: "var(--section-bg)" }}
-    >
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-yellow-500/5 blur-[100px]" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+    <section id="careers" ref={ref} className="py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-6">
         <motion.div
           variants={stagger}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          className="grid lg:grid-cols-2 gap-12 items-end mb-14"
+          className="grid items-end gap-10 lg:grid-cols-2"
         >
           <div>
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 glass-gold rounded-full px-4 py-1.5 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-              <span className="text-gold text-xs font-semibold tracking-widest uppercase">
-                Careers & Partnerships
-              </span>
-            </motion.div>
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight">
-              Build a rewarding role in{" "}
-              <span className="text-gradient-gold">SEND passenger transport</span>
+            <motion.span variants={fadeUp} className="rule-gold block" />
+            <motion.h2
+              variants={fadeUp}
+              className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
+            >
+              A rewarding role in SEND transport.
             </motion.h2>
           </div>
           <motion.div variants={fadeUp}>
-            <p className="text-foreground/75 leading-relaxed mb-4">
-              Join a team dedicated to safe, respectful, and punctual journeys. 
-              We pay competitive rates, offer stable school-term contracts, and reward teams with bonuses.
+            <p className="leading-relaxed text-muted-foreground">
+              Join a team dedicated to safe, respectful, and punctual journeys. We
+              pay competitive rates, offer stable school-term contracts, and reward
+              teams with bonuses.
             </p>
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/40" />
+            <div className="relative mt-5">
+              <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
-                placeholder="Search by role, category, or location..."
+                placeholder="Search by role, category, or location"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="pl-9 bg-card/45 border-border text-foreground placeholder:text-muted-foreground/50 rounded-xl focus:border-gold/50"
+                className="h-11 rounded-xl border-border bg-card pl-10 text-foreground placeholder:text-muted-foreground/60 focus:border-[var(--gold)]/60"
               />
             </div>
           </motion.div>
         </motion.div>
 
-        {/* Role cards */}
         <motion.div
           variants={stagger}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          className="grid sm:grid-cols-2 gap-6"
+          className="mt-12 grid gap-6 sm:grid-cols-2"
         >
           {filtered.map((role) => (
-            <motion.div key={role.id} variants={fadeUp}>
-              <Card className="group h-full bg-card/45 border-border hover:border-foreground/15 hover:bg-card/70 transition-all duration-300 cursor-pointer flex flex-col justify-between"
-                onClick={() => setSelected(role)}>
-                <CardContent className="p-6 flex flex-col justify-between h-full">
-                  <div>
-                    <div className="flex items-center justify-between gap-2 mb-4">
-                      <Badge variant="outline" className={`text-[10px] font-bold tracking-widest ${role.tagColor}`}>
-                        {role.tag}
-                      </Badge>
-                      <span className="text-emerald-500 dark:text-emerald-400 text-sm font-bold flex items-center gap-1">
-                        <PoundSterling className="w-4 h-4 shrink-0" /> {role.salary}
-                      </span>
-                    </div>
+            <motion.button
+              key={role.id}
+              variants={fadeUp}
+              onClick={() => setSelected(role)}
+              className="group flex h-full flex-col rounded-2xl border border-border bg-card p-7 text-left transition-colors duration-300 hover:border-[var(--gold)]/40"
+            >
+              <div className="flex items-center justify-between gap-2">
+                <span className="rounded-full border border-border px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                  {role.tag}
+                </span>
+                <span className="text-sm font-bold text-[var(--gold)]">{role.salary}</span>
+              </div>
 
-                    <h3 className="text-foreground font-bold text-lg mb-3 group-hover:text-gold transition-colors leading-tight">
-                      {role.h}
-                    </h3>
-                    <p className="text-foreground/70 text-sm leading-relaxed mb-4">
-                      {role.p}
-                    </p>
+              <h3 className="mt-4 text-lg font-bold leading-tight tracking-tight text-foreground transition-colors group-hover:text-[var(--gold)]">
+                {role.h}
+              </h3>
+              <p className="mt-2 leading-relaxed text-muted-foreground">{role.p}</p>
 
-                    <div className="p-3 bg-card/30 border border-border/40 rounded-xl text-xs text-foreground/60 space-y-1.5 mb-4">
-                      {role.hours && <div><span className="font-semibold text-foreground/80">Hours:</span> {role.hours}</div>}
-                      {role.incentives && <div><span className="font-semibold text-foreground/80">Incentives:</span> {role.incentives}</div>}
-                    </div>
+              <dl className="mt-4 space-y-1 rounded-xl bg-muted/60 p-3.5 text-sm text-muted-foreground">
+                <div className="flex gap-2">
+                  <dt className="font-semibold text-foreground/80">Hours:</dt>
+                  <dd>{role.hours}</dd>
+                </div>
+                <div className="flex gap-2">
+                  <dt className="font-semibold text-foreground/80">Incentives:</dt>
+                  <dd>{role.incentives}</dd>
+                </div>
+              </dl>
 
-                    <div className="space-y-2 mb-6">
-                      <span className="text-xs font-semibold text-foreground/80 block uppercase tracking-wider">Key Requirements:</span>
-                      <ul className="space-y-1">
-                        {role.reqs.map((req, index) => (
-                          <li key={index} className="text-xs text-foreground/75 flex items-start gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
-                            <span>{req}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+              <ul className="mt-4 space-y-2">
+                {role.reqs.map((req) => (
+                  <li key={req} className="flex items-start gap-2.5 text-sm text-foreground/80">
+                    <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[var(--gold)]" strokeWidth={2.5} />
+                    <span>{req}</span>
+                  </li>
+                ))}
+              </ul>
 
-                  <div className="flex items-center gap-4 text-xs text-foreground/70 mb-4 justify-between border-t border-border/40 pt-4">
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-gold" /> {role.loc}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-gold" /> {role.type}
-                    </span>
-                  </div>
+              <div className="mt-6 flex items-center justify-between border-t border-border pt-5 text-xs text-muted-foreground">
+                <span className="flex items-center gap-1.5">
+                  <MapPin className="h-3.5 w-3.5 text-[var(--gold)]" /> {role.loc}
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Clock className="h-3.5 w-3.5 text-[var(--gold)]" /> {role.type}
+                </span>
+              </div>
 
-                  <Button
-                    size="sm"
-                    className="w-full bg-foreground/5 hover:bg-gold hover:text-[#0b2245] text-foreground border border-border hover:border-gold rounded-xl font-semibold text-xs transition-all duration-200 flex items-center gap-1.5 cursor-pointer py-4"
-                  >
-                    Apply for this Role
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
+              <span className="mt-5 flex items-center justify-center gap-1.5 rounded-xl border border-border py-2.5 text-sm font-semibold text-foreground transition-colors group-hover:border-[var(--gold)] group-hover:bg-[var(--gold-soft)]">
+                Apply for this role
+                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              </span>
+            </motion.button>
           ))}
         </motion.div>
 
         {filtered.length === 0 && (
-          <div className="text-center py-16 text-foreground/50">
-            No roles match your search criteria.
-          </div>
+          <div className="py-16 text-center text-muted-foreground">No roles match your search.</div>
         )}
       </div>
 
       <AnimatePresence>
-        {selected && (
-          <ApplyModal role={selected} onClose={() => setSelected(null)} />
-        )}
+        {selected && <ApplyModal role={selected} onClose={() => setSelected(null)} />}
       </AnimatePresence>
     </section>
   );

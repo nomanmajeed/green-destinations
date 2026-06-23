@@ -49,16 +49,16 @@ export interface ThemeToggleProps {
 
 const TOKENS: Record<Theme, Record<string, string>> = {
   light: {
-    pageBg:    "#f8fafc",
-    pageText:  "#0b2245",
+    pageBg:    "#f4f6f2",
+    pageText:  "#0c241a",
     barBg:     "#ffffff",
-    barText:   "#0b2245",
-    barBorder: "rgba(11,34,69,0.08)",
-    btnBg:     "#f1f5f9",
-    btnText:   "#0b2245",
-    btnRing:   "rgba(11,34,69,0.12)",
-    inputBg:   "rgba(11,34,69,0.05)",
-    inputText: "#0b2245",
+    barText:   "#0c241a",
+    barBorder: "rgba(15,74,48,0.10)",
+    btnBg:     "#e7eee9",
+    btnText:   "#0c241a",
+    btnRing:   "rgba(15,74,48,0.12)",
+    inputBg:   "rgba(15,74,48,0.05)",
+    inputText: "#0c241a",
   },
   dark: {
     pageBg:    "#030303",
