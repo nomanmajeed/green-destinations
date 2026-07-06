@@ -106,7 +106,7 @@
   /* Theme-aware layout variables */
   --body-bg: #f4f6f2;
   --section-bg: #e9efe9;
-  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-bg: rgba(244, 246, 242, 0.88);
   --glass-border: rgba(15, 74, 48, 0.12);
   --glass-gold-bg: rgba(154, 115, 34, 0.08);
   --glass-gold-border: rgba(154, 115, 34, 0.22);
@@ -163,7 +163,7 @@
   /* Theme-aware layout variables */
   --body-bg: #06140d;
   --section-bg: #0a1c12;
-  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-bg: rgba(6, 20, 13, 0.86);
   --glass-border: rgba(255, 255, 255, 0.09);
   --glass-gold-bg: rgba(231, 197, 105, 0.07);
   --glass-gold-border: rgba(231, 197, 105, 0.22);
