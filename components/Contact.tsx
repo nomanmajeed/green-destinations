@@ -66,7 +66,7 @@ export default function Contact() {
     "h-11 rounded-xl border-border bg-background text-foreground placeholder:text-muted-foreground/60 focus:border-[var(--gold)]/60";
 
   return (
-    <section id="contact" ref={ref} className="bg-background py-24 lg:py-32">
+    <section id="contact" ref={ref} className="bg-[var(--section-bg)] py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           {/* Left: heading + info */}

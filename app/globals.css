@@ -103,9 +103,9 @@
   --gold-cta-bg: #e7b53e;   /* CTA fill */
   --gold-cta-fg: #0f3a26;   /* CTA label (deep green) */
 
-  /* Theme-aware layout variables — one page surface, no alternating bands */
+  /* Theme-aware layout variables */
   --body-bg: #f4f6f2;
-  --section-bg: var(--background);
+  --section-bg: #e9efe9;
   --glass-bg: rgba(255, 255, 255, 0.72);
   --glass-border: rgba(15, 74, 48, 0.12);
   --glass-gold-bg: rgba(154, 115, 34, 0.08);
@@ -160,9 +160,9 @@
   --gold-cta-bg: #e7c569;
   --gold-cta-fg: #07140d;
 
-  /* Theme-aware layout variables — one page surface, no alternating bands */
+  /* Theme-aware layout variables */
   --body-bg: #06140d;
-  --section-bg: var(--background);
+  --section-bg: #0a1c12;
   --glass-bg: rgba(255, 255, 255, 0.04);
   --glass-border: rgba(255, 255, 255, 0.09);
   --glass-gold-bg: rgba(231, 197, 105, 0.07);
@@ -188,8 +188,7 @@
   }
   html,
   body,
-  main,
-  section {
+  main {
     background-color: var(--background);
   }
   body {

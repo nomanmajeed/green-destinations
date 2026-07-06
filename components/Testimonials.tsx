@@ -53,7 +53,7 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="bg-background py-16 lg:py-20">
+    <section id="testimonials" className="bg-[var(--section-bg)] py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
