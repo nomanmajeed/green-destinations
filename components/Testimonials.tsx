@@ -1,7 +1,7 @@
 "use client";
-import React from "react";
+
 import { motion } from "framer-motion";
-import { TestimonialsColumn, Testimonial } from "@/components/ui/testimonials-columns-1";
+import { TestimonialsRow, type Testimonial } from "@/components/ui/testimonials-columns-1";
 
 const testimonials: Testimonial[] = [
   {
@@ -51,13 +51,9 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-const firstColumn = testimonials.slice(0, 3);
-const secondColumn = testimonials.slice(3, 6);
-const thirdColumn = testimonials.slice(6, 9);
-
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="bg-background py-24 lg:py-32">
+    <section id="testimonials" className="bg-background py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -70,16 +66,14 @@ export default function Testimonials() {
           <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Voices from the people we support.
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             Parents, schools and commissioning partners on what dependable SEND
             transport means in practice.
           </p>
         </motion.div>
 
-        <div className="mt-14 flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)] max-h-[640px] overflow-hidden">
-          <TestimonialsColumn testimonials={firstColumn} duration={26} />
-          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={32} />
-          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={29} />
+        <div className="mt-10">
+          <TestimonialsRow testimonials={testimonials} duration={52} />
         </div>
       </div>
     </section>
