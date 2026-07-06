@@ -26,7 +26,7 @@ function TestimonialCard({ text, name, role }: Testimonial) {
         {text}
       </blockquote>
       <figcaption className="mt-5 flex items-center gap-3">
-        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[var(--gold-soft)] text-[11px] font-bold tracking-tight text-[var(--gold)]">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-(--gold-soft) text-[11px] font-bold tracking-tight text-(--gold)">
           {initials(name)}
         </span>
         <span className="flex min-w-0 flex-col">
@@ -50,7 +50,11 @@ function MarqueeTrack({
   trackRef?: React.RefObject<HTMLDivElement | null>;
 }) {
   return (
-    <div ref={trackRef} className="flex shrink-0 gap-5 pr-5" aria-hidden={ariaHidden || undefined}>
+    <div
+      ref={trackRef}
+      className="flex shrink-0 gap-5 pr-5"
+      aria-hidden={ariaHidden || undefined}
+    >
       {testimonials.map((t) => (
         <TestimonialCard key={`${ariaHidden ? "b" : "a"}-${t.name}`} {...t} />
       ))}

@@ -31,6 +31,7 @@ export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
 
   const set =
     (k: keyof typeof form) =>
@@ -40,9 +41,25 @@ export default function Contact() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
-    await new Promise((r) => setTimeout(r, 1400));
-    setSending(false);
-    setSent(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "Unable to send your message. Please try again.");
+        return;
+      }
+      setSent(true);
+    } catch {
+      setError("Unable to send your message. Please try again or email us directly.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputClass =
@@ -140,6 +157,11 @@ export default function Contact() {
                     className="rounded-xl border-border bg-background text-foreground placeholder:text-muted-foreground/60 focus:border-[var(--gold)]/60 resize-none"
                   />
                 </div>
+                {error ? (
+                  <p className="rounded-xl border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm text-destructive">
+                    {error}
+                  </p>
+                ) : null}
                 <Button type="submit" disabled={sending} className="btn-gold h-12 w-full rounded-xl text-base shadow-none">
                   {sending ? (
                     <span className="flex items-center justify-center gap-2">

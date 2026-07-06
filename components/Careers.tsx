@@ -90,6 +90,7 @@ function ApplyModal({ role, onClose }: { role: Role; onClose: () => void }) {
   const [form, setForm] = useState({ name: "", email: "", phone: "", statement: "", licence: "", taxiVehicle: "" });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const set =
     (k: keyof typeof form) =>
@@ -99,9 +100,38 @@ function ApplyModal({ role, onClose }: { role: Role; onClose: () => void }) {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setSubmitting(false);
-    setSubmitted(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/careers/apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          roleId: role.id,
+          roleTitle: role.h,
+          roleTag: role.tag,
+          location: role.loc,
+          type: role.type,
+          salary: role.salary,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          statement: form.statement,
+          licence: form.licence || undefined,
+          taxiVehicle: form.taxiVehicle || undefined,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "Unable to submit your application. Please try again.");
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setError("Unable to submit your application. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputClass =
@@ -206,6 +236,12 @@ function ApplyModal({ role, onClose }: { role: Role; onClose: () => void }) {
                   className={`${inputClass} resize-none`}
                 />
               </div>
+
+              {error ? (
+                <p className="rounded-xl border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm text-destructive">
+                  {error}
+                </p>
+              ) : null}
 
               <Button type="submit" disabled={submitting} className="btn-gold h-12 w-full rounded-xl shadow-none">
                 {submitting ? (
