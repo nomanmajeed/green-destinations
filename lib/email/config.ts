@@ -9,3 +9,6 @@ export const TO_EMAIL =
 
 export const FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL ?? "Ultimate Travel <onboarding@resend.dev>";
+
+/** Sandbox sender only delivers to your Resend account email — not applicants */
+export const USES_RESEND_SANDBOX = FROM_EMAIL.includes("resend.dev");

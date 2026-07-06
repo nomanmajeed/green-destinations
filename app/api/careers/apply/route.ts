@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
-import { buildCareersEmail } from "@/lib/email/careers-template";
-import { sendSiteEmail } from "@/lib/email/send";
+import { CONTACT_EMAIL, USES_RESEND_SANDBOX } from "@/lib/email/config";
+import { buildCareersConfirmationEmail, buildCareersEmail } from "@/lib/email/careers-template";
+import { sendEmail, sendSiteEmail } from "@/lib/email/send";
 
 export async function POST(request: Request) {
   try {
@@ -54,6 +55,29 @@ export async function POST(request: Request) {
 
     if (!result.ok) {
       return NextResponse.json({ error: result.error }, { status: 503 });
+    }
+
+    const confirmation = buildCareersConfirmationEmail({ name, roleTitle, location, type });
+    const confirmationResult = await sendEmail({
+      ...confirmation,
+      to: email,
+      replyTo: CONTACT_EMAIL,
+    });
+
+    if (!confirmationResult.ok) {
+      console.error("[email] Applicant confirmation failed:", confirmationResult.error);
+
+      // Sandbox only delivers to info@ — don't block submissions while domain is pending
+      if (USES_RESEND_SANDBOX) {
+        return NextResponse.json({ ok: true });
+      }
+
+      return NextResponse.json(
+        {
+          error: `We received your application, but could not send a confirmation email. Our team will still review it — contact ${CONTACT_EMAIL} if needed.`,
+        },
+        { status: 503 },
+      );
     }
 
     return NextResponse.json({ ok: true });
