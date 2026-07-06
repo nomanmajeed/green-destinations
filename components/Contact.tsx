@@ -12,8 +12,8 @@ const info = [
   {
     icon: Mail,
     title: "Email",
-    v: "admin@greendestinationsltd.com",
-    href: "mailto:admin@greendestinationsltd.com",
+    v: "enquiries@ultimatetravel.co.uk",
+    href: "mailto:enquiries@ultimatetravel.co.uk",
   },
   { icon: Phone, title: "Enquiry line", v: "0121 553 3363", href: "tel:01215533363" },
   { icon: Clock, title: "Operating hours", v: "Monday to Friday, 7:00 to 19:00" },
@@ -49,7 +49,7 @@ export default function Contact() {
     "h-11 rounded-xl border-border bg-background text-foreground placeholder:text-muted-foreground/60 focus:border-[var(--gold)]/60";
 
   return (
-    <section id="contact" ref={ref} className="bg-[var(--section-bg)] py-24 lg:py-32">
+    <section id="contact" ref={ref} className="bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           {/* Left: heading + info */}
@@ -59,11 +59,11 @@ export default function Contact() {
               variants={fadeUp}
               className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
             >
-              Start the conversation.
+              Tell us what you need.
             </motion.h2>
             <motion.p variants={fadeUp} className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
-              Whether you are a family, school, or local authority, we aim to
-              respond within one working day.
+              Families, schools and local authorities — share your enquiry and
+              our team will respond within one working day.
             </motion.p>
 
             <motion.ul variants={stagger} className="mt-10 divide-y divide-border border-y border-border">
@@ -135,7 +135,7 @@ export default function Contact() {
                     required
                     value={form.message}
                     onChange={set("message")}
-                    placeholder="Tell us about your transport needs."
+                    placeholder="Describe your route, pupil needs or partnership enquiry."
                     rows={5}
                     className="rounded-xl border-border bg-background text-foreground placeholder:text-muted-foreground/60 focus:border-[var(--gold)]/60 resize-none"
                   />

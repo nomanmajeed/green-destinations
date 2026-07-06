@@ -24,12 +24,39 @@ import { Button } from "@/components/ui/button";
 import { HeroBackground } from "@/components/blocks/hero-background";
 
 const credentials = [
-  { icon: Accessibility, label: "Wheelchair accessible" },
-  { icon: ShieldCheck, label: "Safe & reliable" },
-  { icon: Users, label: "Specialists in SEND transport" },
-  { icon: MapPin, label: "School runs across the UK" },
-  { icon: Flag, label: "Proudly UK based" },
+  { icon: Accessibility, label: "Accessible fleet" },
+  { icon: ShieldCheck, label: "Safeguarding-led" },
+  { icon: Users, label: "Specialists in SEND Transport" },
+  { icon: MapPin, label: "West Midlands & UK routes" },
+  { icon: Flag, label: "UK operator since 2012" },
 ];
+
+export function HeroCredentials() {
+  return (
+    <div className="border-y border-[var(--gold-cta-bg)]/20 bg-[var(--brand-green)] dark:border-border dark:bg-[var(--brand-green-deep)]">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 divide-y divide-[var(--gold-cta-bg)]/15 sm:grid-cols-3 sm:divide-y-0 lg:grid-cols-5 lg:divide-x lg:divide-y-0 dark:divide-border">
+        {credentials.map(({ icon: Icon, label }, i) => (
+          <motion.div
+            key={label}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center justify-center gap-2.5 px-4 py-5 text-center"
+          >
+            <Icon
+              className="h-4 w-4 shrink-0 text-[var(--gold-cta-bg)] dark:text-[var(--gold)]"
+              strokeWidth={2}
+            />
+            <span className="text-xs font-semibold tracking-tight text-[var(--gold-cta-bg)] dark:text-[var(--gold)]">
+              {label}
+            </span>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function HeroSection() {
   const reduce = useReducedMotion();
@@ -74,10 +101,16 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative isolate overflow-hidden">
+    <section className="relative isolate overflow-hidden bg-background [contain:paint]">
       <HeroBackground />
 
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pt-28 pb-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-32 lg:pb-24">
+      {/* Soft fade into the page — mesh stays clipped inside the hero */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-44 bg-gradient-to-b from-transparent via-background/75 to-background"
+      />
+
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pt-28 pb-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-32 lg:pb-24">
         {/* Copy */}
         <div className="max-w-xl">
           <motion.div
@@ -100,7 +133,7 @@ export function HeroSection() {
             animate="show"
             className="mt-6 text-balance text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
           >
-            School transport that families can truly rely on.
+            Calm, dependable journeys to school and back.
           </motion.h1>
 
           <motion.p
@@ -110,9 +143,10 @@ export function HeroSection() {
             animate="show"
             className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground"
           >
-            Ultimate Travel provides dedicated home-to-school journeys, calm,
-            safe, and consistent, with a trained passenger assistant on every
-            route.
+            Ultimate Travel operates dedicated SEND routes with a trained
+            passenger assistant on every journey — familiar crews, steady
+            routines, and care that shows from the first pickup to the last
+            drop-off.
           </motion.p>
 
           <motion.div
@@ -151,7 +185,7 @@ export function HeroSection() {
             onMouseLeave={resetTilt}
             whileHover={reduce ? undefined : { scale: 1.015 }}
             style={{ rotateX, rotateY, transformPerspective: 900 }}
-            className="group relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-border shadow-[0_30px_60px_-30px_rgba(6,20,13,0.45)] transition-shadow duration-500 hover:shadow-[0_45px_80px_-30px_rgba(6,20,13,0.6)]"
+            className="group relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-border transition-shadow duration-500"
           >
             <motion.div
               style={{ y: reduce ? 0 : parallaxY }}
@@ -206,32 +240,11 @@ export function HeroSection() {
                 Since 2012
               </p>
               <p className="text-xs text-muted-foreground">
-                Trusted by families and authorities
+                Serving families and commissioning teams
               </p>
             </motion.div>
           </motion.div>
         </motion.div>
-      </div>
-
-      {/* Credentials strip (under the hero, not inside it) */}
-      <div className="relative border-y border-border bg-[var(--section-bg)]">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px overflow-hidden sm:grid-cols-3 lg:grid-cols-5">
-          {credentials.map(({ icon: Icon, label }, i) => (
-            <motion.div
-              key={label}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center justify-center gap-2.5 px-4 py-5 text-center"
-            >
-              <Icon className="h-4 w-4 shrink-0 text-[var(--gold)]" strokeWidth={2} />
-              <span className="text-xs font-semibold tracking-tight text-foreground/80">
-                {label}
-              </span>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );

@@ -103,9 +103,9 @@
   --gold-cta-bg: #e7b53e;   /* CTA fill */
   --gold-cta-fg: #0f3a26;   /* CTA label (deep green) */
 
-  /* Theme-aware layout variables */
+  /* Theme-aware layout variables — one page surface, no alternating bands */
   --body-bg: #f4f6f2;
-  --section-bg: #e9efe9;
+  --section-bg: var(--background);
   --glass-bg: rgba(255, 255, 255, 0.72);
   --glass-border: rgba(15, 74, 48, 0.12);
   --glass-gold-bg: rgba(154, 115, 34, 0.08);
@@ -160,9 +160,9 @@
   --gold-cta-bg: #e7c569;
   --gold-cta-fg: #07140d;
 
-  /* Theme-aware layout variables */
+  /* Theme-aware layout variables — one page surface, no alternating bands */
   --body-bg: #06140d;
-  --section-bg: #0a1c12;
+  --section-bg: var(--background);
   --glass-bg: rgba(255, 255, 255, 0.04);
   --glass-border: rgba(255, 255, 255, 0.09);
   --glass-gold-bg: rgba(231, 197, 105, 0.07);
@@ -186,13 +186,18 @@
     @apply border-border outline-ring/50;
     transition: background-color 0.3s ease, border-color 0.3s ease, text-decoration-color 0.3s ease;
   }
+  html,
+  body,
+  main,
+  section {
+    background-color: var(--background);
+  }
   body {
     @apply bg-background text-foreground;
-    background: var(--body-bg);
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   html {
     scroll-behavior: smooth;

@@ -99,7 +99,7 @@ export default function Hero() {
             >
               <span className="w-2 h-2 rounded-full bg-[#f7d36f] animate-pulse" />
               <span className="text-[#f7d36f] text-xs font-semibold tracking-widest uppercase">
-                Specialist SEND Transport
+                Specialists in SEND Transport
               </span>
             </motion.div>
 
@@ -130,9 +130,9 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.25 }}
               className="text-lg text-blue-200/80 leading-relaxed mb-8 max-w-lg"
             >
-              Green Destinations provides dedicated SEND transport connecting
-              families, schools, and local authorities with safe, reliable
-              journeys tailored to every child's needs.
+              Ultimate Travel operates dedicated SEND routes with trained
+              passenger assistants — connecting families, schools and local
+              authorities through calm, dependable daily journeys.
             </motion.p>
 
             <motion.div
@@ -354,10 +354,10 @@ export default function Hero() {
                 <div className="mt-6 flex items-center justify-between">
                   <div>
                     <p className="text-white font-bold text-lg leading-tight">
-                      Green Destinations
+                      Ultimate Travel
                     </p>
                     <p className="text-[#f7d36f] text-xs font-semibold tracking-widest uppercase mt-0.5">
-                      SEND Transport Specialists
+                      Specialists in SEND Transport
                     </p>
                   </div>
                   <div className="flex gap-1">

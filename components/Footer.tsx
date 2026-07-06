@@ -26,16 +26,16 @@ const links = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-[var(--section-bg)]">
+    <footer className="border-t border-border bg-background">
       <div className="mx-auto max-w-7xl px-6">
         {/* Closing CTA */}
         <div className="flex flex-col items-start justify-between gap-6 border-b border-border py-14 md:flex-row md:items-center">
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-              Ready to plan a safer school route?
+              Let&apos;s talk about your route requirements.
             </h2>
             <p className="mt-2 text-muted-foreground">
-              Talk to our team about routes, training, or partnerships.
+              Speak to our team about school transport, recruitment or commissioning.
             </p>
           </div>
           <Button asChild className="btn-gold h-12 shrink-0 rounded-xl px-6 text-base shadow-none">
@@ -58,7 +58,8 @@ export default function Footer() {
               </span>
             </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Specialist SEND home-to-school transport across the West Midlands and beyond.
+              Specialists in SEND Transport — serving the West Midlands, Swindon
+              and commissioning partners across the UK.
             </p>
             <ul className="mt-5 space-y-2.5 text-sm text-muted-foreground">
               <li className="flex items-start gap-2.5">
@@ -67,8 +68,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 shrink-0 text-[var(--gold)]" />
-                <a href="mailto:admin@greendestinationsltd.com" className="transition-colors hover:text-foreground">
-                  admin@greendestinationsltd.com
+                <a href="mailto:enquiries@ultimatetravel.co.uk" className="transition-colors hover:text-foreground">
+                  enquiries@ultimatetravel.co.uk
                 </a>
               </li>
               <li className="flex items-center gap-2.5">

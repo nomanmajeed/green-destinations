@@ -13,7 +13,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Ultimate Travel | Specialists in SEND Transport",
   description:
-    "Ultimate Travel provides dedicated home-to-school transport for pupils with Special Educational Needs and Disabilities. Safe, caring, and consistent journeys across the West Midlands and the UK.",
+    "Ultimate Travel — Specialists in SEND Transport. Dedicated school routes with trained passenger assistants across the West Midlands and the UK.",
 };
 
 export default function RootLayout({
@@ -22,10 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} h-full`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+    <html lang="en" className={`${plusJakarta.variable} h-full bg-background`} suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-background" suppressHydrationWarning>
         <Header />
-        <div className="flex-1 flex flex-col">{children}</div>
+        <div className="flex-1 flex flex-col bg-background">{children}</div>
         <Footer />
       </body>
     </html>
