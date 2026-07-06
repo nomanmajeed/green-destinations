@@ -12,8 +12,8 @@ const info = [
   {
     icon: Mail,
     title: "Email",
-    v: "enquiries@ultimatetravel.co.uk",
-    href: "mailto:enquiries@ultimatetravel.co.uk",
+    v: "Info@ultimatetravel.co.uk",
+    href: "mailto:Info@ultimatetravel.co.uk",
   },
   { icon: Phone, title: "Enquiry line", v: "0121 553 3363", href: "tel:01215533363" },
   { icon: Clock, title: "Operating hours", v: "Monday to Friday, 7:00 to 19:00" },
