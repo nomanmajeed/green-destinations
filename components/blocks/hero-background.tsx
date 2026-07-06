@@ -31,13 +31,13 @@ export function HeroBackground() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      className="pointer-events-none absolute inset-0 z-0 overflow-hidden [contain:paint]"
     >
       {/* Animated mesh gradient — the living, "magic movement" backdrop */}
-      <MeshGradientBg className="opacity-70 dark:opacity-60" />
+      <MeshGradientBg className="opacity-85 dark:opacity-70" />
 
-      {/* Veil over the mesh to keep foreground text crisp */}
-      <div className="absolute inset-0 bg-[var(--body-bg)]/60 dark:bg-[var(--body-bg)]/55" />
+      {/* Light veil — enough for legibility, not enough to kill the aurora */}
+      <div className="absolute inset-0 bg-background/62 dark:bg-background/58" />
 
       {/* Dotted map texture */}
       <div
@@ -126,7 +126,7 @@ export function HeroBackground() {
         ))}
 
       {/* Blend edges into the page */}
-      <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[var(--body-bg)] to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-background to-transparent" />
     </div>
   );
 }

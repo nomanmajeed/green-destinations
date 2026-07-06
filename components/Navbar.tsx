@@ -72,10 +72,10 @@ export default function Navbar() {
           </div>
           <div className="leading-none">
             <span className="font-extrabold text-white text-sm tracking-tight">
-              Green
+              Ultimate
             </span>
             <span className="font-extrabold text-gold-light text-sm tracking-tight ml-1">
-              Destinations
+              Travel
             </span>
           </div>
         </button>

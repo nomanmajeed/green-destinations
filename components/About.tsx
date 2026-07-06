@@ -7,40 +7,40 @@ import { ShieldCheck, Scale, Users, Heart, Check } from "lucide-react";
 import { CountUp } from "@/components/ui/count-up";
 
 const stats: { to?: number; suffix?: string; text?: string; l: string }[] = [
-  { to: 2012, l: "Operating since" },
-  { to: 100, suffix: "+", l: "Years of combined safeguarding experience" },
-  { text: "Local", l: "Drivers, assistants and supply chain" },
+  { to: 2012, l: "Year we began operating" },
+  { to: 100, suffix: "+", l: "Combined years of safeguarding expertise" },
+  { text: "Regional", l: "Drivers, assistants and supply partners" },
 ];
 
 const values = [
   {
     icon: ShieldCheck,
-    h: "Safeguarding first",
-    p: "Every relevant team member is Enhanced DBS checked and strictly vetted.",
+    h: "Protection at the core",
+    p: "Enhanced DBS checks and strict vetting for every role that works with children.",
   },
   {
     icon: Scale,
-    h: "Statutory alignment",
-    p: "We help authorities meet duties under Section 508B of the Education Act 1996.",
+    h: "Commission-ready delivery",
+    p: "Structured provision that supports local authority duties under the Education Act 1996.",
   },
   {
     icon: Users,
-    h: "PATS certified team",
-    p: "Accredited training for drivers and assistants in passenger safety and care.",
+    h: "Industry-trained crews",
+    p: "Drivers and assistants trained through the Passenger Assistance Training Scheme.",
   },
   {
     icon: Heart,
-    h: "Dignity and care",
-    p: "Journeys that feel calm, respectful, and safe for every pupil, every day.",
+    h: "Respect on every seat",
+    p: "Routes run with patience, predictability, and attention to each pupil's needs.",
   },
 ];
 
 const modules = [
-  "Awareness of different disabilities, including hidden disabilities",
-  "Recognising discrimination and unconscious bias",
-  "Supporting and managing pupils with a wide range of needs",
-  "Clear communication for visible and hidden disabilities",
-  "Healthcare protocols, including emergency procedures",
+  "Understanding visible and hidden disabilities",
+  "Identifying bias and promoting inclusive practice",
+  "Supporting pupils with diverse behavioural and medical needs",
+  "Clear, appropriate communication with children and carers",
+  "Emergency and healthcare response procedures",
 ];
 
 const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.1 } } };
@@ -54,7 +54,7 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="about" ref={ref} className="py-24 lg:py-32">
+    <section id="about" ref={ref} className="bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6">
         {/* Intro: editorial split */}
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
@@ -69,16 +69,15 @@ export default function About() {
               variants={fadeUp}
               className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
             >
-              A decade of safe, dignified school journeys.
+              Built on experience. Focused on every pupil.
             </motion.h2>
             <motion.p
               variants={fadeUp}
               className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground"
             >
-              Established in 2012, Ultimate Travel delivers specialist transport
-              that helps local authorities meet their statutory duties under
-              Section 508B of the Education Act 1996, so every SEND pupil can get
-              to school safely.
+              Since 2012, Ultimate Travel has partnered with schools and local
+              authorities to deliver statutory school transport — with routes
+              planned around individual needs, not one-size-fits-all schedules.
             </motion.p>
           </motion.div>
 
@@ -86,7 +85,7 @@ export default function About() {
             initial={{ opacity: 0, scale: 1.03 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="relative aspect-[5/4] overflow-hidden rounded-[1.75rem] border border-border shadow-[0_30px_60px_-30px_rgba(6,20,13,0.42)]"
+            className="relative aspect-[5/4] overflow-hidden rounded-[1.75rem] border border-border"
           >
             <Image
               src="/images/gd-team-assistant.jpg"
@@ -103,10 +102,10 @@ export default function About() {
           variants={stagger}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          className="mt-20 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-3"
+          className="mt-20 grid grid-cols-1 divide-y divide-border overflow-hidden rounded-2xl border border-border sm:grid-cols-3 sm:divide-x sm:divide-y-0"
         >
           {stats.map((s) => (
-            <motion.div key={s.l} variants={fadeUp} className="bg-background px-7 py-8">
+            <motion.div key={s.l} variants={fadeUp} className="px-7 py-8">
               <p className="text-4xl font-bold tracking-tight text-foreground">
                 {s.text ? (
                   s.text
@@ -127,12 +126,12 @@ export default function About() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             <h3 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-              Rigorous training and vetting
+              Prepared teams, thorough checks
             </h3>
             <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">
-              Every driver and passenger assistant is prepared to work safely,
-              respectfully, and effectively with children across a wide range of
-              needs.
+              Before anyone joins a route, they complete structured training and
+              pass the checks required to work safely alongside children with
+              SEND.
             </p>
             <ul className="mt-8 space-y-4">
               {modules.map((m) => (

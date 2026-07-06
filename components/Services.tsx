@@ -7,44 +7,44 @@ import { Bus, Heart, ShieldCheck, Award, Route, Check } from "lucide-react";
 
 const featured = {
   icon: Bus,
-  tag: "Core service",
-  h: "Specialist SEND transport",
-  p: "Fulfilling statutory duties under Section 508B of the Education Act 1996 with safe, calm, and reliable home-to-school travel for SEND pupils.",
+  tag: "Primary provision",
+  h: "Dedicated SEND school routes",
+  p: "Door-to-door transport for pupils with Special Educational Needs and Disabilities — delivered with the consistency families expect and commissioners require.",
   list: [
-    "Facilitates regular school attendance",
-    "Consistent routes, vehicles, and teams",
-    "Close cooperation with schools and families",
+    "Supports regular attendance and punctual arrival",
+    "Fixed vehicles and familiar route teams",
+    "Close liaison with schools, families and case workers",
   ],
 };
 
 const services = [
   {
     icon: Heart,
-    tag: "Support",
-    h: "Passenger support escorts",
-    p: "Trained assistants accompany pupils throughout the journey with patient support and reassurance.",
-    list: ["Boarding and secure seating", "Emotional regulation support", "Patience-led journeys"],
+    tag: "On-board care",
+    h: "Passenger assistant support",
+    p: "Qualified assistants travel with pupils, offering reassurance, supervision and practical help throughout the journey.",
+    list: ["Safe boarding and secure seating", "Sensory and emotional support", "Calm, unhurried travel"],
   },
   {
     icon: ShieldCheck,
-    tag: "Safeguard",
-    h: "Vetting and safeguarding",
-    p: "Safeguarding is embedded in operations. All staff are Enhanced DBS checked and locally approved.",
-    list: ["Enhanced DBS checked staff", "Local Authority badging", "Clear escalation protocols"],
+    tag: "Compliance",
+    h: "Safeguarding and vetting",
+    p: "Child protection is woven into how we recruit, train and manage every member of the team.",
+    list: ["Enhanced DBS clearance", "Local Authority badge approval", "Documented escalation pathways"],
   },
   {
     icon: Award,
-    tag: "Accredited",
-    h: "PATS training scheme",
-    p: "Training aligned to the nationally accredited Passenger Assistance Training Scheme.",
-    list: ["Hidden disability awareness", "Emergency healthcare protocols", "Non-discrimination skills"],
+    tag: "Training",
+    h: "PATS-accredited development",
+    p: "Our training programme follows the nationally recognised Passenger Assistance Training Scheme.",
+    list: ["Hidden disability awareness", "Medical emergency protocols", "Inclusive communication skills"],
   },
   {
     icon: Route,
-    tag: "Partnerships",
-    h: "Public sector partnerships",
-    p: "Working directly with commissioning teams to deliver compliant, structured transport.",
-    list: ["Operational discipline", "Statutory compliance reporting", "Route and value management"],
+    tag: "Commissioning",
+    h: "Authority and school partnerships",
+    p: "We work with commissioning teams to design, run and report on compliant transport contracts.",
+    list: ["Route planning and optimisation", "Statutory reporting", "Transparent contract management"],
   },
 ];
 
@@ -73,11 +73,12 @@ export default function Services() {
             variants={fadeUp}
             className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
           >
-            Services built around safe, dignified travel.
+            What we deliver for schools, families and commissioners.
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-5 text-lg leading-relaxed text-muted-foreground">
-            From statutory school routes to passenger assistant support and PATS
-            accredited training, delivered with operational discipline.
+            From statutory school routes to on-board passenger assistance and
+            accredited crew training — all managed with the rigour commissioning
+            bodies expect.
           </motion.p>
         </motion.div>
 

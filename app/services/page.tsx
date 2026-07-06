@@ -6,7 +6,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Services | Ultimate Travel",
   description:
-    "Explore our SEND transport services, passenger assistant support, safeguarding processes, and local authority partnership contracts.",
+    "Ultimate Travel's SEND transport services — dedicated school routes, passenger assistant support, PATS training and local authority partnerships.",
 };
 
 export default function ServicesPage() {
@@ -14,8 +14,8 @@ export default function ServicesPage() {
     <>
       <SubpageHero
         eyebrow="Our Services"
-        title="Safe, structured, dignified travel."
-        subtitle="Specialist school transport, passenger support escorts, and PATS-accredited training designed for safe delivery."
+        title="Provision shaped around each pupil."
+        subtitle="Dedicated SEND routes, on-board passenger assistance and accredited crew training — managed to commissioning standards."
         backgroundImage="/images/ut-hero-services.jpg"
       />
       <Services />

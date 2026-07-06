@@ -5,7 +5,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About | Ultimate Travel",
   description:
-    "Learn about Ultimate Travel, our mission, values, and dedication to safe and caring SEND transport across the West Midlands.",
+    "Discover Ultimate Travel — our history since 2012, our safeguarding standards, and how we deliver SEND school transport across the West Midlands.",
 };
 
 export default function AboutPage() {
@@ -13,8 +13,8 @@ export default function AboutPage() {
     <>
       <SubpageHero
         eyebrow="About Ultimate Travel"
-        title="Specialist transport, built on trust."
-        subtitle="Established in 2012 to deliver specialist school travel that supports independence and protects every pupil's dignity."
+        title="Experience you can commission with confidence."
+        subtitle="Operating since 2012, we design SEND school routes around each pupil — with the safeguarding rigour families and authorities expect."
         backgroundImage="/images/ut-hero-about.jpg"
       />
       <About />

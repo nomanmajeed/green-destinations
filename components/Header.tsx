@@ -73,7 +73,7 @@ export default function Header() {
                 Ultimate Travel
               </span>
               <span className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                SEND Transport
+                Specialists in SEND Transport
               </span>
             </span>
           </Link>

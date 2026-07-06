@@ -6,14 +6,14 @@ import { ArrowRight, PoundSterling, CalendarCheck, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const highlights = [
-  { icon: PoundSterling, label: "Competitive pay and joining bonuses" },
-  { icon: CalendarCheck, label: "Stable term-time contracts" },
-  { icon: Heart, label: "Genuinely rewarding, child-first work" },
+  { icon: PoundSterling, label: "Competitive hourly rates and bonuses" },
+  { icon: CalendarCheck, label: "Term-time hours that fit family life" },
+  { icon: Heart, label: "Work that makes a daily difference" },
 ];
 
 export default function CareersTeaser() {
   return (
-    <section id="careers" className="py-24 lg:py-32">
+    <section id="careers" className="bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -31,12 +31,12 @@ export default function CareersTeaser() {
             <div>
               <span className="rule-gold block" />
               <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl">
-                A rewarding role in SEND transport.
+                Build a career with purpose.
               </h2>
               <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">
-                We are always looking for caring drivers, passenger assistants,
-                and contractors across the West Midlands and Swindon, with
-                competitive pay, term-time contracts, and a supportive team.
+                Ultimate Travel is recruiting drivers, passenger assistants and
+                contractors across the West Midlands and Swindon — term-time
+                roles with competitive pay and a safeguarding-first culture.
               </p>
               <Button
                 asChild

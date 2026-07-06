@@ -1,63 +1,59 @@
 "use client";
-import React from "react";
+
 import { motion } from "framer-motion";
-import { TestimonialsColumn, Testimonial } from "@/components/ui/testimonials-columns-1";
+import { TestimonialsRow, type Testimonial } from "@/components/ui/testimonials-columns-1";
 
 const testimonials: Testimonial[] = [
   {
-    text: "Ultimate Travel changed our mornings. A consistent, calm driver who understands my son's sensory needs has made his school journey stress-free.",
+    text: "Having the same driver and assistant each day has transformed our mornings. My son knows exactly what to expect, and that predictability matters enormously.",
     name: "Sarah Jenkins",
     role: "Parent of pupil (autism)",
   },
   {
-    text: "We value their transparency and high safeguarding standards. Their passenger assistants are exceptionally well trained in SEND care.",
+    text: "Ultimate Travel's safeguarding documentation and staff training give us confidence. Their assistants understand the needs of our SEND cohort.",
     name: "Dr. Evelyn Carter",
     role: "Headteacher, Oakridge School",
   },
   {
-    text: "A dependable partner for SEND transport contracts. Their route coordination, compliance, and reporting are exemplary.",
+    text: "A dependable contracting partner. Route reporting is clear, compliance is handled properly, and communication is always straightforward.",
     name: "Rachel Higgins",
     role: "Transport Commissioning Officer",
   },
   {
-    text: "Finding accessible transport with staff who treat our daughter with real dignity was tough, until we partnered with Ultimate Travel.",
+    text: "We struggled to find transport where our daughter would be treated with genuine respect. Ultimate Travel understood that from the very first conversation.",
     name: "Marcus Reynolds",
     role: "Parent of pupil (physical SEND)",
   },
   {
-    text: "The first aid and autism awareness training given to drivers gives us parents real peace of mind. A professional, caring team.",
+    text: "Knowing the crew has first aid and autism awareness training gives us real reassurance. They are professional without being impersonal.",
     name: "Amelia Patel",
     role: "Parent of pupil (ADHD)",
   },
   {
-    text: "Their assistants are excellent at emotional regulation support. Children arrive at school calm, happy, and ready to learn.",
+    text: "Pupils arrive settled and ready to learn. The assistants are skilled at de-escalation and know when a child needs space or encouragement.",
     name: "Simon Fletcher",
     role: "SENCo Lead, West Midlands Academies",
   },
   {
-    text: "Reliable, warm, and highly professional. We trust them completely with our child's safety and routine every single day of term.",
+    text: "Punctual, warm and thoroughly professional. We have complete confidence in the team that collects our daughter every school day.",
     name: "Laura Bennett",
     role: "Parent of pupil (visual impairment)",
   },
   {
-    text: "They optimised our school-run routes, reducing travel times and helping pupils start the day in a positive frame of mind.",
+    text: "They restructured several of our routes, cutting journey times without compromising on pupil comfort. A well-run operation.",
     name: "David Vance",
     role: "Operations Coordinator",
   },
   {
-    text: "Excellent communication. We receive updates about arrival times, which helps us keep a stable, predictable routine at home.",
+    text: "We receive timely updates about pick-up and drop-off. That level of communication helps us keep a stable routine at home.",
     name: "James Atherton",
     role: "Parent of pupil (developmental delay)",
   },
 ];
 
-const firstColumn = testimonials.slice(0, 3);
-const secondColumn = testimonials.slice(3, 6);
-const thirdColumn = testimonials.slice(6, 9);
-
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="bg-[var(--section-bg)] py-24 lg:py-32">
+    <section id="testimonials" className="bg-[var(--section-bg)] py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -68,18 +64,16 @@ export default function Testimonials() {
         >
           <span className="rule-gold block" />
           <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            What families and partners say.
+            Voices from the people we support.
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-            The real-world impact of dedicated, safety-first home-to-school
-            journeys.
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+            Parents, schools and commissioning partners on what dependable SEND
+            transport means in practice.
           </p>
         </motion.div>
 
-        <div className="mt-14 flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)] max-h-[640px] overflow-hidden">
-          <TestimonialsColumn testimonials={firstColumn} duration={26} />
-          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={32} />
-          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={29} />
+        <div className="mt-10">
+          <TestimonialsRow testimonials={testimonials} duration={52} />
         </div>
       </div>
     </section>

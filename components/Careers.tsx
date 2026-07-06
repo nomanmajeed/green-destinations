@@ -11,42 +11,42 @@ const roles = [
   {
     id: 1,
     tag: "Assistant",
-    h: "Passenger Assistant — Home-to-School Transport",
-    p: "Support children with SEND on their daily school runs. Split shifts are ideal for local residents.",
+    h: "Passenger Assistant — School Routes",
+    p: "Accompany pupils with SEND on daily school journeys. Split-shift hours suit local residents looking for meaningful part-time work.",
     loc: "West Midlands",
     type: "Part time (term time only)",
     salary: "£12.71 / hour",
     hours: "07:30–09:00 & 14:30–16:00 (Mon–Fri)",
-    incentives: "Stable regional route allocations",
+    incentives: "Consistent regional route allocations",
     reqs: [
-      "No prior experience required, an empathetic nature is essential",
-      "Enhanced DBS check and professional references",
-      "Local Authority approval and ID badge prior to start",
-      "Safeguarding-focused interview process",
+      "No prior experience required — empathy and reliability are essential",
+      "Enhanced DBS check and verifiable references",
+      "Local Authority approval and ID badge before starting",
+      "Interview process focused on safeguarding suitability",
     ],
   },
   {
     id: 2,
     tag: "Driver",
-    h: "PSV Drivers (D or D1 Licence)",
-    p: "Transport children with SEND in a safe, comfortable, and supportive environment every school day.",
+    h: "PSV Drivers (Category D or D1)",
+    p: "Drive pupils with SEND in a safe, comfortable environment. Term-time schedules with a supportive operations team behind you.",
     loc: "West Midlands",
     type: "Part time (term time only)",
     salary: "From £13.00 / hour",
     hours: "20–30 hours per week",
-    incentives: "Stable term-time schedules",
+    incentives: "Predictable term-time rota",
     reqs: [
       "Valid PSV licence (category D or D1)",
-      "Professional, patient, and friendly attitude",
-      "Punctuality and reliability are essential",
-      "Local Authority approval and ID badge prior to start",
+      "Patient, professional manner with children and parents",
+      "Strong punctuality and reliability record",
+      "Local Authority approval and ID badge before starting",
     ],
   },
   {
     id: 3,
     tag: "Driver",
-    h: "Swindon PSV Drivers Wanted",
-    p: "Join our expanding Swindon driver team supporting school routes, with consistent routing and incentives.",
+    h: "PSV Drivers — Swindon Area",
+    p: "Join our growing Swindon team covering school routes with fixed allocations and a joining incentive for new drivers.",
     loc: "Swindon and surrounding areas",
     type: "Part time (term time)",
     salary: "Up to £17.00 / hour",
@@ -54,26 +54,26 @@ const roles = [
     incentives: "£1,000 joining bonus + referral opportunities",
     reqs: [
       "Valid PSV licence (category D or D1)",
-      "Excellent local Swindon geography knowledge",
-      "Friendly attitude towards children and parents",
-      "Local Authority approval and ID badge prior to start",
+      "Confident knowledge of Swindon and nearby routes",
+      "Positive attitude towards children, parents and schools",
+      "Local Authority approval and ID badge before starting",
     ],
   },
   {
     id: 4,
     tag: "Contractor",
-    h: "PHV/HCV Drivers (Taxi Licensed)",
-    p: "Contract of services for independent drivers using their own licensed taxi vehicles, with fixed pay per route.",
+    h: "Licensed Taxi Contractors (PHV/HCV)",
+    p: "Provide contract-of-services driving using your own licensed vehicle, with fixed pay per allocated route.",
     loc: "West Midlands",
     type: "Contract / route-based",
     salary: "Fixed pay per route",
     hours: "Varies by route allocation",
-    incentives: "Substitution rights and work for other hirers allowed",
+    incentives: "Substitution rights; work for other hirers permitted",
     reqs: [
-      "Own licensed taxi vehicle in the West Midlands",
-      "Good proficiency in the English language",
-      "Enhanced DBS certificate and local authority badge in hand",
-      "Ability to appoint substitute eligible drivers",
+      "Own licensed taxi vehicle registered in the West Midlands",
+      "Good spoken and written English",
+      "Enhanced DBS certificate and local authority badge held",
+      "Ability to appoint a qualified substitute driver",
     ],
   },
 ];
@@ -90,6 +90,7 @@ function ApplyModal({ role, onClose }: { role: Role; onClose: () => void }) {
   const [form, setForm] = useState({ name: "", email: "", phone: "", statement: "", licence: "", taxiVehicle: "" });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const set =
     (k: keyof typeof form) =>
@@ -99,9 +100,38 @@ function ApplyModal({ role, onClose }: { role: Role; onClose: () => void }) {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setSubmitting(false);
-    setSubmitted(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/careers/apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          roleId: role.id,
+          roleTitle: role.h,
+          roleTag: role.tag,
+          location: role.loc,
+          type: role.type,
+          salary: role.salary,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          statement: form.statement,
+          licence: form.licence || undefined,
+          taxiVehicle: form.taxiVehicle || undefined,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "Unable to submit your application. Please try again.");
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setError("Unable to submit your application. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputClass =
@@ -207,6 +237,12 @@ function ApplyModal({ role, onClose }: { role: Role; onClose: () => void }) {
                 />
               </div>
 
+              {error ? (
+                <p className="rounded-xl border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm text-destructive">
+                  {error}
+                </p>
+              ) : null}
+
               <Button type="submit" disabled={submitting} className="btn-gold h-12 w-full rounded-xl shadow-none">
                 {submitting ? (
                   <span className="flex items-center justify-center gap-2">
@@ -242,7 +278,7 @@ export default function Careers() {
   );
 
   return (
-    <section id="careers" ref={ref} className="py-24 lg:py-32">
+    <section id="careers" ref={ref} className="bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           variants={stagger}
@@ -256,14 +292,14 @@ export default function Careers() {
               variants={fadeUp}
               className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
             >
-              A rewarding role in SEND transport.
+              Build a career with purpose.
             </motion.h2>
           </div>
           <motion.div variants={fadeUp}>
             <p className="leading-relaxed text-muted-foreground">
-              Join a team dedicated to safe, respectful, and punctual journeys. We
-              pay competitive rates, offer stable school-term contracts, and reward
-              teams with bonuses.
+              Ultimate Travel recruits drivers, passenger assistants and
+              contractors who want meaningful term-time work — with competitive
+              pay, structured routes and a team that values safeguarding.
             </p>
             <div className="relative mt-5">
               <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />

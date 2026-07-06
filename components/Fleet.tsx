@@ -8,18 +8,18 @@ import { Bus, Accessibility, Wrench } from "lucide-react";
 const highlights = [
   {
     icon: Bus,
-    h: "Modern Mercedes-Benz fleet",
-    p: "A consistent, well-presented fleet of low-mileage minibuses kept to the highest standard.",
+    h: "Mercedes-Benz minibuses",
+    p: "A uniform, low-mileage fleet that is cleaned, serviced and presented to a high standard.",
   },
   {
     icon: Accessibility,
-    h: "Wheelchair accessible",
-    p: "Lowered access and secure restraints so every pupil travels safely and with dignity.",
+    h: "Step-free and wheelchair-ready",
+    p: "Lowered access points and secure restraint systems so every pupil boards and travels safely.",
   },
   {
     icon: Wrench,
-    h: "Maintained and tracked",
-    p: "Regular servicing, safety checks, and live tracking on every vehicle, every route.",
+    h: "Serviced and monitored",
+    p: "Scheduled maintenance, daily safety checks and route tracking across the entire fleet.",
   },
 ];
 
@@ -34,7 +34,7 @@ export default function Fleet() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="fleet" ref={ref} className="py-24 lg:py-32">
+    <section id="fleet" ref={ref} className="bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
           {/* Copy */}
@@ -44,15 +44,15 @@ export default function Fleet() {
               variants={fadeUp}
               className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
             >
-              A fleet built around safety and care.
+              Vehicles maintained for the journey ahead.
             </motion.h2>
             <motion.p
               variants={fadeUp}
               className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground"
             >
-              Every Ultimate Travel minibus is accessible, immaculately kept, and
-              driven by a vetted team, so families and authorities can trust the
-              journey from door to door.
+              Ultimate Travel runs a modern, accessible minibus fleet — each
+              vehicle kept to standard and crewed by vetted teams so the trip
+              from doorstep to school gate is as smooth as possible.
             </motion.p>
 
             <motion.ul variants={stagger} className="mt-10 space-y-6">
@@ -75,7 +75,7 @@ export default function Fleet() {
             initial={{ opacity: 0, scale: 1.04 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative aspect-[3/2] overflow-hidden rounded-[1.75rem] border border-border shadow-[0_30px_60px_-30px_rgba(6,20,13,0.45)]"
+            className="group relative aspect-[3/2] overflow-hidden rounded-[1.75rem] border border-border"
           >
             <Image
               src="/images/ut-fleet.jpg"

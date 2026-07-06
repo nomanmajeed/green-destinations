@@ -5,16 +5,16 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact | Ultimate Travel",
   description:
-    "Get in touch with Ultimate Travel. Contact our team to book a journey, partner with us, or learn more about our specialist SEND transport services.",
+    "Contact Ultimate Travel to enquire about SEND school routes, driver recruitment, or commissioning partnerships.",
 };
 
 export default function ContactPage() {
   return (
     <>
       <SubpageHero
-        eyebrow="Contact Our Team"
-        title="We are ready to help."
-        subtitle="For school routes, driver training, recruitment, or public sector partnerships, start the conversation today."
+        eyebrow="Contact Ultimate Travel"
+        title="We are here to help."
+        subtitle="Route enquiries, recruitment questions or commissioning discussions — reach out and we will respond within one working day."
         backgroundImage="/images/ut-hero-contact.jpg"
       />
       <Contact />
