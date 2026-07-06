@@ -8,14 +8,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 const info = [
-  { icon: MapPin, title: "Office", v: "386 Park Road, Hockley\nBirmingham, B18 5ST" },
+  { icon: MapPin, title: "Office", v: "Unit 5, Hoyle Head Mills, New Street\nDewsbury, WF12 8JJ" },
   {
     icon: Mail,
     title: "Email",
     v: "Info@ultimatetravel.co.uk",
     href: "mailto:Info@ultimatetravel.co.uk",
   },
-  { icon: Phone, title: "Enquiry line", v: "0121 553 3363", href: "tel:01215533363" },
+  { icon: Phone, title: "Enquiry line", v: "+44 7400 267989", href: "tel:+447400267989" },
   { icon: Clock, title: "Operating hours", v: "Monday to Friday, 7:00 to 19:00" },
 ];
 
@@ -190,7 +190,7 @@ export default function Contact() {
           <div className="relative h-[340px] sm:h-[440px]">
             <iframe
               title="Ultimate Travel office location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2429.2136006421066!2d-1.9213455!3d52.4933946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870bc7e5c9a4449%3A0xe54e389d4fb842b1!2s386%20Park%20Rd%2C%20Hockley%2C%20Birmingham%20B18%205ST!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
+              src="https://www.google.com/maps?q=Unit+5+Hoyle+Head+Mills,+New+Street,+Dewsbury,+WF12+8JJ&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -200,7 +200,7 @@ export default function Contact() {
               className="block h-full w-full"
             />
             <a
-              href="https://maps.google.com/?q=386+Park+Road,+Hockley,+Birmingham,+B18+5ST"
+              href="https://maps.google.com/?q=Unit+5+Hoyle+Head+Mills,+New+Street,+Dewsbury,+WF12+8JJ"
               target="_blank"
               rel="noopener noreferrer"
               className="absolute right-4 top-4 flex items-center gap-1.5 rounded-xl border border-border bg-card/90 px-3.5 py-2 text-xs font-semibold text-foreground shadow-md backdrop-blur transition-colors hover:text-[var(--gold)]"

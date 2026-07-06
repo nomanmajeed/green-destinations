@@ -64,7 +64,7 @@ export default function Footer() {
             <ul className="mt-5 space-y-2.5 text-sm text-muted-foreground">
               <li className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--gold)]" />
-                386 Park Road, Hockley, Birmingham, B18 5ST
+                Unit 5, Hoyle Head Mills, New Street, Dewsbury, WF12 8JJ
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 shrink-0 text-[var(--gold)]" />
@@ -74,8 +74,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 shrink-0 text-[var(--gold)]" />
-                <a href="tel:01215533363" className="transition-colors hover:text-foreground">
-                  0121 553 3363
+                <a href="tel:+447400267989" className="transition-colors hover:text-foreground">
+                  +44 7400 267989
                 </a>
               </li>
             </ul>
