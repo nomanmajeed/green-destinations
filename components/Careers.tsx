@@ -13,7 +13,7 @@ const roles = [
     tag: "Assistant",
     h: "Passenger Assistant — School Routes",
     p: "Accompany pupils with SEND on daily school journeys. Split-shift hours suit local residents looking for meaningful part-time work.",
-    loc: "West Midlands",
+    loc: "Yorkshire",
     type: "Part time (term time only)",
     salary: "£12.71 / hour",
     hours: "07:30–09:00 & 14:30–16:00 (Mon–Fri)",
@@ -30,7 +30,7 @@ const roles = [
     tag: "Driver",
     h: "PSV Drivers (Category D or D1)",
     p: "Drive pupils with SEND in a safe, comfortable environment. Term-time schedules with a supportive operations team behind you.",
-    loc: "West Midlands",
+    loc: "Yorkshire",
     type: "Part time (term time only)",
     salary: "From £13.00 / hour",
     hours: "20–30 hours per week",
@@ -45,16 +45,16 @@ const roles = [
   {
     id: 3,
     tag: "Driver",
-    h: "PSV Drivers — Swindon Area",
-    p: "Join our growing Swindon team covering school routes with fixed allocations and a joining incentive for new drivers.",
-    loc: "Swindon and surrounding areas",
+    h: "PSV Drivers — Yorkshire Area",
+    p: "Join our growing Yorkshire team covering school routes with fixed allocations and a joining incentive for new drivers.",
+    loc: "Yorkshire and surrounding areas",
     type: "Part time (term time)",
     salary: "Up to £17.00 / hour",
     hours: "20–30 hours per week",
     incentives: "£1,000 joining bonus + referral opportunities",
     reqs: [
       "Valid PSV licence (category D or D1)",
-      "Confident knowledge of Swindon and nearby routes",
+      "Confident knowledge of Yorkshire and nearby routes",
       "Positive attitude towards children, parents and schools",
       "Local Authority approval and ID badge before starting",
     ],
@@ -64,13 +64,13 @@ const roles = [
     tag: "Contractor",
     h: "Licensed Taxi Contractors (PHV/HCV)",
     p: "Provide contract-of-services driving using your own licensed vehicle, with fixed pay per allocated route.",
-    loc: "West Midlands",
+    loc: "Yorkshire",
     type: "Contract / route-based",
     salary: "Fixed pay per route",
     hours: "Varies by route allocation",
     incentives: "Substitution rights; work for other hirers permitted",
     reqs: [
-      "Own licensed taxi vehicle registered in the West Midlands",
+      "Own licensed taxi vehicle registered in Yorkshire",
       "Good spoken and written English",
       "Enhanced DBS certificate and local authority badge held",
       "Ability to appoint a qualified substitute driver",
@@ -326,11 +326,10 @@ export default function Careers() {
               onClick={() => setSelected(role)}
               className="group flex h-full flex-col rounded-2xl border border-border bg-card p-7 text-left transition-colors duration-300 hover:border-[var(--gold)]/40"
             >
-              <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
                 <span className="rounded-full border border-border px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
                   {role.tag}
                 </span>
-                <span className="text-sm font-bold text-[var(--gold)]">{role.salary}</span>
               </div>
 
               <h3 className="mt-4 text-lg font-bold leading-tight tracking-tight text-foreground transition-colors group-hover:text-[var(--gold)]">

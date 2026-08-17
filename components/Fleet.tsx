@@ -3,13 +3,13 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView, type Variants } from "framer-motion";
-import { Bus, Accessibility, Wrench } from "lucide-react";
+import { Bus, Accessibility, Wrench, BadgeCheck } from "lucide-react";
 
 const highlights = [
   {
     icon: Bus,
-    h: "Mercedes-Benz minibuses",
-    p: "A uniform, low-mileage fleet that is cleaned, serviced and presented to a high standard.",
+    h: "Various mini buses",
+    p: "A varied, low-mileage fleet that is cleaned, serviced and presented to a high standard.",
   },
   {
     icon: Accessibility,
@@ -20,6 +20,11 @@ const highlights = [
     icon: Wrench,
     h: "Serviced and monitored",
     p: "Scheduled maintenance, daily safety checks and route tracking across the entire fleet.",
+  },
+  {
+    icon: BadgeCheck,
+    h: "Industry approved buses",
+    p: "Every vehicle meets recognised industry standards for safety and accessibility.",
   },
 ];
 
@@ -79,7 +84,7 @@ export default function Fleet() {
           >
             <Image
               src="/images/ut-fleet.jpg"
-              alt="The Ultimate Travel fleet of white Mercedes-Benz minibuses, specialists in SEND transport"
+              alt="The Ultimate Travel fleet of white mini buses, specialists in SEND transport"
               fill
               sizes="(max-width: 1024px) 100vw, 55vw"
               className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.03]"

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const links = {
@@ -58,7 +58,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Specialists in SEND Transport — serving the West Midlands, Swindon
+              Specialists in SEND Transport — serving Yorkshire
               and commissioning partners across the UK.
             </p>
             <ul className="mt-5 space-y-2.5 text-sm text-muted-foreground">
@@ -70,12 +70,6 @@ export default function Footer() {
                 <Mail className="h-4 w-4 shrink-0 text-[var(--gold)]" />
                 <a href="mailto:Info@ultimatetravel.co.uk" className="transition-colors hover:text-foreground">
                   Info@ultimatetravel.co.uk
-                </a>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <Phone className="h-4 w-4 shrink-0 text-[var(--gold)]" />
-                <a href="tel:+447400267989" className="transition-colors hover:text-foreground">
-                  +44 7400 267989
                 </a>
               </li>
             </ul>

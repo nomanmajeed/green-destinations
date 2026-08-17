@@ -13,7 +13,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Ultimate Travel | Specialists in SEND Transport",
   description:
-    "Ultimate Travel — Specialists in SEND Transport. Dedicated school routes with trained passenger assistants across the West Midlands and the UK.",
+    "Ultimate Travel — Specialists in SEND Transport. Dedicated school routes with trained passenger assistants across Yorkshire and the UK.",
 };
 
 export default function RootLayout({

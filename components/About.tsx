@@ -3,11 +3,11 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView, type Variants } from "framer-motion";
-import { ShieldCheck, Scale, Users, Heart, Check } from "lucide-react";
+import { ShieldCheck, Scale, Users, Heart, Check, BadgeCheck, Bus } from "lucide-react";
 import { CountUp } from "@/components/ui/count-up";
 
 const stats: { to?: number; suffix?: string; text?: string; l: string }[] = [
-  { to: 2012, l: "Year we began operating" },
+  { text: "Trusted", l: "Provider of statutory SEND transport" },
   { to: 100, suffix: "+", l: "Combined years of safeguarding expertise" },
   { text: "Regional", l: "Drivers, assistants and supply partners" },
 ];
@@ -32,6 +32,16 @@ const values = [
     icon: Heart,
     h: "Respect on every seat",
     p: "Routes run with patience, predictability, and attention to each pupil's needs.",
+  },
+  {
+    icon: BadgeCheck,
+    h: "Industry approved buses",
+    p: "Every vehicle meets recognised industry standards for safety and accessibility.",
+  },
+  {
+    icon: Bus,
+    h: "Various mini buses",
+    p: "A varied fleet of mini buses sized and equipped to suit each route's needs.",
   },
 ];
 
@@ -75,7 +85,7 @@ export default function About() {
               variants={fadeUp}
               className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground"
             >
-              Since 2012, Ultimate Travel has partnered with schools and local
+              Ultimate Travel has partnered with schools and local
               authorities to deliver statutory school transport — with routes
               planned around individual needs, not one-size-fits-all schedules.
             </motion.p>

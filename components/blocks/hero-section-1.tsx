@@ -27,8 +27,8 @@ const credentials = [
   { icon: Accessibility, label: "Accessible fleet" },
   { icon: ShieldCheck, label: "Safeguarding-led" },
   { icon: Users, label: "Specialists in SEND Transport" },
-  { icon: MapPin, label: "West Midlands & UK routes" },
-  { icon: Flag, label: "UK operator since 2012" },
+  { icon: MapPin, label: "Yorkshire & UK routes" },
+  { icon: Flag, label: "Trusted UK operator" },
 ];
 
 export function HeroCredentials() {
@@ -237,7 +237,7 @@ export function HeroSection() {
               className="rounded-2xl border border-border bg-card/95 px-5 py-3.5 shadow-lg backdrop-blur"
             >
               <p className="text-2xl font-bold tracking-tight text-foreground">
-                Since 2012
+                Yorkshire-based
               </p>
               <p className="text-xs text-muted-foreground">
                 Serving families and commissioning teams

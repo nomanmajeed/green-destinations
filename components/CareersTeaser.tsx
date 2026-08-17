@@ -35,7 +35,7 @@ export default function CareersTeaser() {
               </h2>
               <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">
                 Ultimate Travel is recruiting drivers, passenger assistants and
-                contractors across the West Midlands and Swindon — term-time
+                contractors across Yorkshire — term-time
                 roles with competitive pay and a safeguarding-first culture.
               </p>
               <Button

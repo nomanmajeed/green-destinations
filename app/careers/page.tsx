@@ -5,7 +5,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Careers | Ultimate Travel",
   description:
-    "Current vacancies at Ultimate Travel — PSV drivers, passenger assistants and licensed contractors across Birmingham, the West Midlands and Swindon.",
+    "Current vacancies at Ultimate Travel — PSV drivers, passenger assistants and licensed contractors across Yorkshire.",
 };
 
 export default function CareersPage() {
@@ -14,7 +14,7 @@ export default function CareersPage() {
       <SubpageHero
         eyebrow="Careers at Ultimate Travel"
         title="Meaningful work, every school day."
-        subtitle="Join a safeguarding-led team delivering SEND transport across the West Midlands and Swindon — with term-time hours and competitive pay."
+        subtitle="Join a safeguarding-led team delivering SEND transport across Yorkshire — with term-time hours and competitive pay."
         backgroundImage="/images/ut-hero-careers.jpg"
       />
       <Careers />

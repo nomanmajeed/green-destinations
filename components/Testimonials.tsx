@@ -32,7 +32,7 @@ const testimonials: Testimonial[] = [
   {
     text: "Pupils arrive settled and ready to learn. The assistants are skilled at de-escalation and know when a child needs space or encouragement.",
     name: "Simon Fletcher",
-    role: "SENCo Lead, West Midlands Academies",
+    role: "SENCo Lead, Yorkshire Academies",
   },
   {
     text: "Punctual, warm and thoroughly professional. We have complete confidence in the team that collects our daughter every school day.",
