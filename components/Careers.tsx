@@ -11,15 +11,15 @@ const roles = [
   {
     id: 1,
     tag: "Assistant",
-    h: "Passenger Assistant — School Routes",
+    h: "Passenger Assistant - School Routes",
     p: "Accompany pupils with SEND on daily school journeys. Split-shift hours suit local residents looking for meaningful part-time work.",
     loc: "Yorkshire",
     type: "Part time (term time only)",
     salary: "£12.71 / hour",
-    hours: "07:30–09:00 & 14:30–16:00 (Mon–Fri)",
+    hours: "07:30-09:00 & 14:30-16:00 (Mon-Fri)",
     incentives: "Consistent regional route allocations",
     reqs: [
-      "No prior experience required — empathy and reliability are essential",
+      "No prior experience required, empathy and reliability are essential",
       "Enhanced DBS check and verifiable references",
       "Local Authority approval and ID badge before starting",
       "Interview process focused on safeguarding suitability",
@@ -33,7 +33,7 @@ const roles = [
     loc: "Yorkshire",
     type: "Part time (term time only)",
     salary: "From £13.00 / hour",
-    hours: "20–30 hours per week",
+    hours: "20-30 hours per week",
     incentives: "Predictable term-time rota",
     reqs: [
       "Valid PSV licence (category D or D1)",
@@ -45,7 +45,7 @@ const roles = [
   {
     id: 3,
     tag: "Driver",
-    h: "PSV Drivers — Yorkshire Area",
+    h: "PSV Drivers - Yorkshire Area",
     p: "Join our growing Yorkshire team covering school routes with fixed allocations and a joining incentive for new drivers.",
     loc: "Yorkshire and surrounding areas",
     type: "Part time (term time)",
@@ -298,7 +298,7 @@ export default function Careers() {
           <motion.div variants={fadeUp}>
             <p className="leading-relaxed text-muted-foreground">
               Ultimate Travel recruits drivers, passenger assistants and
-              contractors who want meaningful term-time work — with competitive
+              contractors who want meaningful term-time work, with competitive
               pay, structured routes and a team that values safeguarding.
             </p>
             <div className="relative mt-5">

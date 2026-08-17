@@ -114,14 +114,14 @@
   --scrollbar-track: #e7eee9;
   --destructive-foreground: oklch(1.0000 0 0);
   --font-serif: var(--font-plus-jakarta), sans-serif;
-  --shadow-2xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 1px 2px -2px hsl(0 0% 0% / 0.10);
-  --shadow: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 1px 2px -2px hsl(0 0% 0% / 0.10);
-  --shadow-md: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 2px 4px -2px hsl(0 0% 0% / 0.10);
-  --shadow-lg: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 4px 6px -2px hsl(0 0% 0% / 0.10);
-  --shadow-xl: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 8px 10px -2px hsl(0 0% 0% / 0.10);
-  --shadow-2xl: 0px 4px 8px -1px hsl(0 0% 0% / 0.25);
+  --shadow-2xs: 0px 4px 8px -1px hsl(155 66% 10% / 0.06);
+  --shadow-xs: 0px 4px 8px -1px hsl(155 66% 10% / 0.06);
+  --shadow-sm: 0px 4px 8px -1px hsl(155 66% 10% / 0.10), 0px 1px 2px -2px hsl(155 66% 10% / 0.08);
+  --shadow: 0px 4px 8px -1px hsl(155 66% 10% / 0.10), 0px 1px 2px -2px hsl(155 66% 10% / 0.08);
+  --shadow-md: 0px 4px 8px -1px hsl(155 66% 10% / 0.12), 0px 2px 4px -2px hsl(155 66% 10% / 0.10);
+  --shadow-lg: 0px 4px 8px -1px hsl(155 66% 10% / 0.14), 0px 4px 6px -2px hsl(155 66% 10% / 0.10);
+  --shadow-xl: 0px 4px 8px -1px hsl(155 66% 10% / 0.14), 0px 8px 10px -2px hsl(155 66% 10% / 0.10);
+  --shadow-2xl: 0px 4px 8px -1px hsl(155 66% 10% / 0.25);
 }
 
 .dark {
@@ -203,7 +203,11 @@
   }
   h1, h2, h3, h4 {
     font-feature-settings: "ss01", "cv01";
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
+  }
+  h1, h2 {
+    letter-spacing: -0.04em;
+    text-wrap: balance;
   }
 }
 

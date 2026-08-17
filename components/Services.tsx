@@ -9,7 +9,7 @@ const featured = {
   icon: Bus,
   tag: "Primary provision",
   h: "Dedicated SEND school routes",
-  p: "Door-to-door transport for pupils with Special Educational Needs and Disabilities — delivered with the consistency families expect and commissioners require.",
+  p: "Door-to-door transport for pupils with Special Educational Needs and Disabilities, delivered with the consistency families expect and commissioners require.",
   list: [
     "Supports regular attendance and punctual arrival",
     "Fixed vehicles and familiar route teams",
@@ -59,7 +59,7 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="services" ref={ref} className="bg-[var(--section-bg)] py-24 lg:py-32">
+    <section id="services" ref={ref} className="bg-[var(--section-bg)] py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <motion.div
@@ -77,7 +77,7 @@ export default function Services() {
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-5 text-lg leading-relaxed text-muted-foreground">
             From statutory school routes to on-board passenger assistance and
-            accredited crew training — all managed with the rigour commissioning
+            accredited crew training, all managed with the rigour commissioning
             bodies expect.
           </motion.p>
         </motion.div>
@@ -97,7 +97,9 @@ export default function Services() {
               {featured.tag}
             </p>
             <h3 className="mt-2 text-2xl font-bold tracking-tight text-foreground">{featured.h}</h3>
-            <p className="mt-3 max-w-md leading-relaxed text-muted-foreground">{featured.p}</p>
+            <p className="mt-3 max-w-md leading-relaxed text-muted-foreground">
+              Door-to-door transport for pupils with Special Educational Needs and Disabilities, delivered with the consistency families expect and commissioners require.
+            </p>
             <ul className="mt-6 space-y-2.5">
               {featured.list.map((item) => (
                 <li key={item} className="flex items-center gap-2.5 text-sm text-foreground/85">
@@ -125,11 +127,13 @@ export default function Services() {
           animate={inView ? "show" : "hidden"}
           className="mt-6 grid gap-6 sm:grid-cols-2"
         >
-          {services.map((s) => (
+          {services.map((s, idx) => (
             <motion.div
               key={s.h}
               variants={fadeUp}
-              className="flex flex-col rounded-2xl border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--gold)]/40 hover:shadow-[0_20px_40px_-24px_rgba(6,20,13,0.4)]"
+              className={`flex flex-col rounded-2xl border border-border ${
+                idx === 0 ? "bg-card/90" : "bg-card"
+              } p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--gold)]/40 hover:shadow-[0_20px_40px_-24px_rgba(6,20,13,0.4)]`}
             >
               <div className="flex items-center gap-3">
                 <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--gold-soft)]">

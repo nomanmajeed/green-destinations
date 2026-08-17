@@ -64,20 +64,14 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="about" ref={ref} className="bg-background py-24 lg:py-32">
+    <section id="about" ref={ref} className="bg-background py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6">
         {/* Intro: editorial split */}
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <motion.div variants={stagger} initial="hidden" animate={inView ? "show" : "hidden"}>
-            <motion.div variants={fadeUp} className="flex items-center gap-3">
-              <span className="rule-gold" />
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                About Ultimate Travel
-              </span>
-            </motion.div>
             <motion.h2
               variants={fadeUp}
-              className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
+              className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
             >
               Built on experience. Focused on every pupil.
             </motion.h2>
@@ -86,7 +80,7 @@ export default function About() {
               className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground"
             >
               Ultimate Travel has partnered with schools and local
-              authorities to deliver statutory school transport — with routes
+              authorities to deliver statutory school transport, with routes
               planned around individual needs, not one-size-fits-all schedules.
             </motion.p>
           </motion.div>
@@ -159,19 +153,21 @@ export default function About() {
             variants={stagger}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
-            className="grid grid-cols-1 gap-4 sm:grid-cols-2"
+            className="divide-y divide-border rounded-2xl border border-border bg-card/50"
           >
             {values.map((v) => (
               <motion.div
                 key={v.h}
                 variants={fadeUp}
-                className="rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--gold)]/40 hover:shadow-[0_20px_40px_-24px_rgba(6,20,13,0.4)]"
+                className="flex items-start gap-4 p-5 transition-colors duration-200 hover:bg-card"
               >
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--gold-soft)]">
+                <span className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[var(--gold-soft)]">
                   <v.icon className="h-5 w-5 text-[var(--gold)]" strokeWidth={1.75} />
                 </span>
-                <h4 className="mt-4 font-bold tracking-tight text-foreground">{v.h}</h4>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{v.p}</p>
+                <div>
+                  <h4 className="font-bold tracking-tight text-foreground">{v.h}</h4>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{v.p}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>

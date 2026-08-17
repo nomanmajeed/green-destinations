@@ -53,7 +53,7 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="bg-[var(--section-bg)] py-16 lg:py-20">
+    <section id="testimonials" className="bg-[var(--section-bg)] py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -62,8 +62,7 @@ export default function Testimonials() {
           viewport={{ once: true, margin: "-80px" }}
           className="max-w-2xl"
         >
-          <span className="rule-gold block" />
-          <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Voices from the people we support.
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">

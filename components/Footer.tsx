@@ -58,7 +58,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Specialists in SEND Transport — serving Yorkshire
+              Specialists in SEND Transport, serving Yorkshire
               and commissioning partners across the UK.
             </p>
             <ul className="mt-5 space-y-2.5 text-sm text-muted-foreground">

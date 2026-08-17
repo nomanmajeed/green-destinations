@@ -144,7 +144,7 @@ export function HeroSection() {
             className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground"
           >
             Ultimate Travel operates dedicated SEND routes with a trained
-            passenger assistant on every journey — familiar crews, steady
+            passenger assistant on every journey, with familiar crews, steady
             routines, and care that shows from the first pickup to the last
             drop-off.
           </motion.p>
@@ -232,8 +232,8 @@ export function HeroSection() {
             className="absolute -bottom-5 left-5"
           >
             <motion.div
-              animate={reduce ? undefined : { y: [0, -6, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              animate={reduce ? undefined : { y: [0, -3, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               className="rounded-2xl border border-border bg-card/95 px-5 py-3.5 shadow-lg backdrop-blur"
             >
               <p className="text-2xl font-bold tracking-tight text-foreground">

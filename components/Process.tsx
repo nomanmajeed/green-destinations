@@ -13,7 +13,7 @@ const steps = [
   {
     n: "02",
     h: "Bespoke route plan",
-    p: "We design a transport arrangement around sensory, mobility and timing needs — not a generic template.",
+    p: "We design a transport arrangement around sensory, mobility and timing needs, not a generic template.",
   },
   {
     n: "03",
@@ -38,7 +38,7 @@ export default function Process() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="bg-background py-24 lg:py-32">
+    <section ref={ref} className="bg-background py-28 lg:py-36">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
         {/* Visual */}
         <motion.div
@@ -64,10 +64,9 @@ export default function Process() {
 
         {/* Steps */}
         <motion.div variants={stagger} initial="hidden" animate={inView ? "show" : "hidden"} className="order-1 lg:order-2">
-          <motion.span variants={fadeUp} className="rule-gold block" />
           <motion.h2
             variants={fadeUp}
-            className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl"
+            className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl"
           >
             From enquiry to term-time routine.
           </motion.h2>
@@ -77,11 +76,11 @@ export default function Process() {
               <motion.div
                 key={s.n}
                 variants={fadeUp}
-                className="flex gap-6 border-t border-border py-6 last:border-b"
+                className="group flex gap-6 border-t border-border py-6 transition-colors duration-200 hover:bg-card/40 last:border-b"
               >
                 <span className="font-mono text-sm font-semibold text-[var(--gold)]">{s.n}</span>
                 <div>
-                  <h3 className="font-bold tracking-tight text-foreground">{s.h}</h3>
+                  <h3 className="font-bold tracking-tight text-foreground transition-colors group-hover:text-[var(--gold)]">{s.h}</h3>
                   <p className="mt-1.5 max-w-md leading-relaxed text-muted-foreground">{s.p}</p>
                 </div>
               </motion.div>

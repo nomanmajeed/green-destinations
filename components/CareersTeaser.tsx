@@ -13,7 +13,7 @@ const highlights = [
 
 export default function CareersTeaser() {
   return (
-    <section id="careers" className="bg-background py-24 lg:py-32">
+    <section id="careers" className="bg-background py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -29,13 +29,12 @@ export default function CareersTeaser() {
 
           <div className="relative grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
             <div>
-              <span className="rule-gold block" />
-              <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl">
+              <h2 className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl">
                 Build a career with purpose.
               </h2>
               <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">
                 Ultimate Travel is recruiting drivers, passenger assistants and
-                contractors across Yorkshire — term-time
+                contractors across Yorkshire, offering term-time
                 roles with competitive pay and a safeguarding-first culture.
               </p>
               <Button
