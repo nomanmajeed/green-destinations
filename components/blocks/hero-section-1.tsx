@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useRef } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
   motion,
-  useMotionValue,
   useReducedMotion,
   useScroll,
-  useSpring,
   useTransform,
   type Variants,
 } from "framer-motion";
@@ -21,7 +19,6 @@ import {
   Flag,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { HeroBackground } from "@/components/blocks/hero-background";
 
 const credentials = [
   { icon: Accessibility, label: "Accessible fleet" },
@@ -60,36 +57,13 @@ export function HeroCredentials() {
 
 export function HeroSection() {
   const reduce = useReducedMotion();
-  const imageRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
-    target: imageRef,
-    offset: ["start end", "end start"],
+    target: sectionRef,
+    offset: ["start start", "end start"],
   });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
-
-  // Cursor-reactive 3D tilt for the hero image
-  const px = useMotionValue(0);
-  const py = useMotionValue(0);
-  const rotateY = useSpring(useTransform(px, [-0.5, 0.5], [9, -9]), {
-    stiffness: 150,
-    damping: 18,
-  });
-  const rotateX = useSpring(useTransform(py, [-0.5, 0.5], [-9, 9]), {
-    stiffness: 150,
-    damping: 18,
-  });
-
-  const handleTilt = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (reduce) return;
-    const r = e.currentTarget.getBoundingClientRect();
-    px.set((e.clientX - r.left) / r.width - 0.5);
-    py.set((e.clientY - r.top) / r.height - 0.5);
-  };
-  const resetTilt = () => {
-    px.set(0);
-    py.set(0);
-  };
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
 
   const reveal: Variants = {
     hidden: { opacity: 0, y: reduce ? 0 : 16 },
@@ -101,27 +75,45 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative isolate overflow-hidden bg-background [contain:paint]">
-      <HeroBackground />
+    <section
+      ref={sectionRef}
+      className="relative isolate flex min-h-[100dvh] items-center overflow-hidden bg-[#06140d] [contain:paint]"
+    >
+      {/* Full-bleed photo */}
+      <motion.div
+        initial={{ opacity: 0, scale: reduce ? 1 : 1.08 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute inset-0"
+      >
+        <motion.div style={{ y: reduce ? 0 : parallaxY }} className="absolute inset-[-10%]">
+          <Image
+            src="/images/ut-hero-home.jpg"
+            alt="An Ultimate Travel minibus, specialists in SEND transport, on a tree-lined road in soft morning light"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </motion.div>
+      </motion.div>
 
-      {/* Soft fade into the page — mesh stays clipped inside the hero */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-44 bg-gradient-to-b from-transparent via-background/75 to-background"
-      />
+      {/* Cinematic vignette: darker toward the copy, dark at the seams for header/scroll-cue legibility */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#06140d]/85 via-[#06140d]/45 to-[#06140d]/15" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#06140d]/70 via-transparent to-[#06140d]/55" />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pt-28 pb-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-32 lg:pb-24">
-        {/* Copy */}
+      {/* Copy */}
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-24 pb-20">
         <div className="max-w-xl">
           <motion.div
             custom={0}
             variants={reveal}
             initial="hidden"
             animate="show"
-            className="inline-flex items-center gap-3 rounded-full border border-border bg-card/60 px-4 py-1.5 backdrop-blur"
+            className="flex items-center gap-3"
           >
             <span className="rule-gold" />
-            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-white/75">
               Specialists in SEND Transport
             </span>
           </motion.div>
@@ -131,7 +123,7 @@ export function HeroSection() {
             variants={reveal}
             initial="hidden"
             animate="show"
-            className="mt-6 text-balance text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            className="mt-6 text-balance text-5xl font-bold leading-[1.03] tracking-tight text-white sm:text-6xl lg:text-7xl"
           >
             Calm, dependable journeys to school and back.
           </motion.h1>
@@ -141,7 +133,7 @@ export function HeroSection() {
             variants={reveal}
             initial="hidden"
             animate="show"
-            className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground"
+            className="mt-6 max-w-md text-lg leading-relaxed text-white/80"
           >
             Ultimate Travel operates dedicated SEND routes with a trained
             passenger assistant on every journey, with familiar crews, steady
@@ -159,93 +151,36 @@ export function HeroSection() {
             <Button asChild className="btn-gold h-12 rounded-xl px-6 text-base shadow-none">
               <Link href="/contact">Book a Journey</Link>
             </Button>
-            <Button
-              asChild
-              variant="ghost"
-              className="group h-12 rounded-xl px-5 text-base text-foreground hover:bg-muted"
+            <Link
+              href="/services"
+              className="group inline-flex h-12 items-center gap-2 px-1 text-base font-medium text-white"
             >
-              <Link href="/services" className="flex items-center gap-2">
+              <span className="border-b border-transparent pb-0.5 transition-colors duration-300 group-hover:border-[var(--gold)]">
                 Explore our services
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </Button>
+              </span>
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
           </motion.div>
         </div>
-
-        {/* Image */}
-        <motion.div
-          ref={imageRef}
-          initial={{ opacity: 0, scale: reduce ? 1 : 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="relative"
-        >
-          <motion.div
-            onMouseMove={handleTilt}
-            onMouseLeave={resetTilt}
-            whileHover={reduce ? undefined : { scale: 1.015 }}
-            style={{ rotateX, rotateY, transformPerspective: 900 }}
-            className="group relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-border transition-shadow duration-500"
-          >
-            <motion.div
-              style={{ y: reduce ? 0 : parallaxY }}
-              className="absolute inset-[-8%]"
-            >
-              <div
-                className={`relative h-full w-full ${reduce ? "" : "animate-kenburns"} transition-transform duration-700 ease-out group-hover:scale-[1.06]`}
-              >
-                <Image
-                  src="/images/ut-hero-home.jpg"
-                  alt="An Ultimate Travel minibus, specialists in SEND transport, on a tree-lined road in soft morning light"
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-            </motion.div>
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#06140d]/40 via-transparent to-transparent" />
-
-            {/* Gold ring that lights up on hover */}
-            <div className="pointer-events-none absolute inset-0 rounded-[1.75rem] ring-2 ring-inset ring-[var(--gold)]/0 transition-all duration-500 group-hover:ring-[var(--gold)]/45" />
-
-            {/* Soft sheen that fades in on hover */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-            {/* One-shot light sweep across the frame on load */}
-            {!reduce && (
-              <motion.div
-                aria-hidden
-                className="pointer-events-none absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/25 to-transparent"
-                initial={{ x: "-150%" }}
-                animate={{ x: "350%" }}
-                transition={{ duration: 1.3, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              />
-            )}
-          </motion.div>
-
-          {/* Quiet, real proof point — gentle float */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute -bottom-5 left-5"
-          >
-            <motion.div
-              animate={reduce ? undefined : { y: [0, -3, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="rounded-2xl border border-border bg-card/95 px-5 py-3.5 shadow-lg backdrop-blur"
-            >
-              <p className="text-2xl font-bold tracking-tight text-foreground">
-                Yorkshire-based
-              </p>
-              <p className="text-xs text-muted-foreground">
-                Serving families and commissioning teams
-              </p>
-            </motion.div>
-          </motion.div>
-        </motion.div>
       </div>
+
+      {/* Scroll cue */}
+      <motion.div
+        custom={5}
+        variants={reveal}
+        initial="hidden"
+        animate="show"
+        className="pointer-events-none absolute inset-x-0 bottom-8 z-10 flex flex-col items-center gap-2"
+      >
+        <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/60">
+          Scroll
+        </span>
+        <motion.span
+          animate={reduce ? undefined : { y: [0, 6, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          className="h-8 w-px bg-gradient-to-b from-white/60 to-transparent"
+        />
+      </motion.div>
     </section>
   );
 }

@@ -38,11 +38,13 @@ export default function Header() {
     if (!el) return;
     const io = new IntersectionObserver(
       ([entry]) => setScrolled(!entry.isIntersecting),
-      { rootMargin: "-72px 0px 0px 0px" }
+      { rootMargin: "72px 0px 0px 0px" }
     );
     io.observe(el);
     return () => io.disconnect();
   }, [pathname]);
+
+  const overPhoto = pathname === "/" && !scrolled;
 
   return (
     <>
@@ -58,7 +60,12 @@ export default function Header() {
         >
           {/* Logo */}
           <Link href="/" className="group flex items-center gap-2.5 shrink-0">
-            <span className="relative h-9 w-9 overflow-hidden rounded-lg ring-1 ring-border shadow-sm transition-transform duration-300 group-hover:scale-105">
+            <span
+              className={cn(
+                "relative h-9 w-9 overflow-hidden rounded-lg ring-1 shadow-sm transition-transform duration-300 group-hover:scale-105",
+                overPhoto ? "ring-white/40" : "ring-border"
+              )}
+            >
               <Image
                 src="/images/ut-mark.jpg"
                 alt="Ultimate Travel"
@@ -69,10 +76,20 @@ export default function Header() {
               />
             </span>
             <span className="flex flex-col leading-none">
-              <span className="font-bold text-[15px] tracking-tight text-foreground">
+              <span
+                className={cn(
+                  "font-bold text-[15px] tracking-tight transition-colors duration-300",
+                  overPhoto ? "text-white" : "text-foreground"
+                )}
+              >
                 Ultimate Travel
               </span>
-              <span className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+              <span
+                className={cn(
+                  "mt-0.5 text-[9px] font-semibold uppercase tracking-[0.2em] transition-colors duration-300",
+                  overPhoto ? "text-white/70" : "text-muted-foreground"
+                )}
+              >
                 Specialists in SEND Transport
               </span>
             </span>
@@ -89,8 +106,12 @@ export default function Header() {
                     className={cn(
                       "relative rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                       isActive
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
+                        ? overPhoto
+                          ? "text-white"
+                          : "text-foreground"
+                        : overPhoto
+                          ? "text-white/75 hover:text-white"
+                          : "text-muted-foreground hover:text-foreground"
                     )}
                   >
                     {item.name}
@@ -121,7 +142,10 @@ export default function Header() {
 
             <button
               onClick={() => setMenuOpen((v) => !v)}
-              className="lg:hidden -m-1.5 p-1.5 rounded-xl text-foreground hover:bg-muted transition-colors"
+              className={cn(
+                "lg:hidden -m-1.5 p-1.5 rounded-xl transition-colors",
+                overPhoto ? "text-white hover:bg-white/10" : "text-foreground hover:bg-muted"
+              )}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
             >
               {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

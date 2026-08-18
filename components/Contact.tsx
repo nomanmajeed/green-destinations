@@ -190,7 +190,7 @@ export default function Contact() {
           <div className="relative h-[340px] sm:h-[440px]">
             <iframe
               title="Ultimate Travel office location"
-              src="https://www.google.com/maps?q=Unit+5+Hoyle+Head+Mills,+New+Street,+Dewsbury,+WF12+8JJ&output=embed"
+              src="https://www.google.com/maps?q=53.686959,-1.613228&z=16&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -199,8 +199,17 @@ export default function Contact() {
               referrerPolicy="no-referrer-when-downgrade"
               className="block h-full w-full"
             />
+            <div className="pointer-events-none absolute left-0 top-0 flex items-start gap-2.5 rounded-tl-[1.5rem] rounded-br-2xl border-b border-r border-border bg-card/90 px-6 py-4 shadow-md backdrop-blur">
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--gold)]" />
+              <div className="leading-tight">
+                <p className="text-sm font-semibold text-foreground">Ultimate Travel</p>
+                <p className="mt-0.5 text-xs text-muted-foreground">
+                  Unit 5, Hoyle Head Mills, WF12 8JJ
+                </p>
+              </div>
+            </div>
             <a
-              href="https://maps.google.com/?q=Unit+5+Hoyle+Head+Mills,+New+Street,+Dewsbury,+WF12+8JJ"
+              href="https://www.google.com/maps/search/?api=1&query=53.686959,-1.613228"
               target="_blank"
               rel="noopener noreferrer"
               className="absolute right-4 top-4 flex items-center gap-1.5 rounded-xl border border-border bg-card/90 px-3.5 py-2 text-xs font-semibold text-foreground shadow-md backdrop-blur transition-colors hover:text-[var(--gold)]"
