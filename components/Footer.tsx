@@ -6,21 +6,18 @@ import { Button } from "@/components/ui/button";
 const links = {
   Company: [
     { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
     { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" },
   ],
   "For families": [
     { name: "Book a Journey", href: "/contact" },
-    { name: "SEND transport", href: "/services" },
-    { name: "Passenger support", href: "/services" },
-    { name: "Safeguarding", href: "/about" },
+    { name: "Our services", href: "/services" },
+    { name: "Our fleet", href: "/#fleet" },
   ],
   "For operators": [
-    { name: "LA partnerships", href: "/services" },
-    { name: "Route coordination", href: "/services" },
-    { name: "Compliance", href: "/services" },
-    { name: "Reporting", href: "/services" },
+    { name: "Partner with us", href: "/services" },
+    { name: "About us", href: "/about" },
+    { name: "Get in touch", href: "/contact" },
   ],
 };
 
@@ -29,7 +26,7 @@ export default function Footer() {
     <footer className="border-t border-border bg-[var(--footer-bg)]">
       <div className="mx-auto max-w-7xl px-6">
         {/* Closing CTA */}
-        <div className="flex flex-col items-start justify-between gap-6 border-b border-border py-14 md:flex-row md:items-center">
+        <div className="flex flex-col items-start justify-between gap-6 border-b border-border py-10 md:flex-row md:items-center">
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
               Let&apos;s talk about your route requirements.
@@ -44,7 +41,7 @@ export default function Footer() {
         </div>
 
         {/* Columns */}
-        <div className="grid grid-cols-2 gap-10 py-14 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-10 py-10 md:grid-cols-4">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2.5">
               <span className="relative h-9 w-9 overflow-hidden rounded-lg ring-1 ring-border">
@@ -57,11 +54,11 @@ export default function Footer() {
                 </span>
               </span>
             </div>
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Specialists in SEND Transport, serving Yorkshire
               and commissioning partners across the UK.
             </p>
-            <ul className="mt-5 space-y-2.5 text-sm text-muted-foreground">
+            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
               <li className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--gold)]" />
                 Unit 5, Hoyle Head Mills, New Street, Dewsbury, WF12 8JJ
@@ -76,9 +73,9 @@ export default function Footer() {
           </div>
 
           {Object.entries(links).map(([heading, items]) => (
-            <div key={heading}>
+            <div key={heading} className="md:flex md:h-full md:flex-col md:justify-center">
               <h3 className="text-sm font-bold tracking-tight text-foreground">{heading}</h3>
-              <ul className="mt-4 space-y-2.5">
+              <ul className="mt-3 space-y-2">
                 {items.map((item) => (
                   <li key={item.name}>
                     <Link href={item.href} className="text-sm text-muted-foreground transition-colors hover:text-[var(--gold)]">
@@ -92,7 +89,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col items-center justify-between gap-3 border-t border-border py-6 text-xs text-muted-foreground sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-3 border-t border-border py-5 text-xs text-muted-foreground sm:flex-row">
           <span>© 2026 Ultimate Travel. All rights reserved.</span>
           <div className="flex items-center gap-5">
             <Link href="/contact" className="transition-colors hover:text-foreground">Privacy Policy</Link>
