@@ -39,7 +39,7 @@ export default function Fleet() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="fleet" ref={ref} className="bg-background py-28 lg:py-36">
+    <section id="fleet" ref={ref} className="bg-background py-15 lg:py-20">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header - centered editorial with clean hierarchy */}
         <motion.div
@@ -69,7 +69,7 @@ export default function Fleet() {
           initial={{ opacity: 0, scale: 1.02 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="group relative mt-12 aspect-[21/9] min-h-[300px] overflow-hidden rounded-[2rem] border border-border sm:min-h-[380px]"
+          className="group relative mt-6 aspect-[21/9] min-h-[300px] overflow-hidden rounded-[2rem] border border-border sm:min-h-[380px]"
         >
           <Image
             src="/images/ut-fleet.jpg"
@@ -91,7 +91,7 @@ export default function Fleet() {
           variants={stagger}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
         >
           {highlights.map((h) => (
             <motion.div

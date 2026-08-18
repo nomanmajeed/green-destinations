@@ -16,7 +16,7 @@ const info = [
     href: "mailto:Info@ultimatetravel.co.uk",
   },
   { icon: Phone, title: "Enquiry line", v: "+44 7400 267989", href: "tel:+447400267989" },
-  { icon: Clock, title: "Operating hours", v: "Monday to Friday, 7:00 to 19:00" },
+  { icon: Clock, title: "Operating hours", v: "Monday to Friday, 9:00 to 17:00" },
 ];
 
 const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } };
@@ -131,7 +131,7 @@ export default function Contact() {
                 </p>
               </motion.div>
             ) : (
-              <form onSubmit={submit} className="space-y-5">
+              <form onSubmit={submit} className="flex h-full flex-col space-y-5">
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div className="flex flex-col gap-1.5">
                     <label className="text-xs font-medium text-foreground/80">Full name</label>
@@ -146,15 +146,14 @@ export default function Contact() {
                   <label className="text-xs font-medium text-foreground/80">Email</label>
                   <Input required type="email" value={form.email} onChange={set("email")} placeholder="aisha@example.com" className={inputClass} />
                 </div>
-                <div className="flex flex-col gap-1.5">
+                <div className="flex flex-1 flex-col gap-1.5">
                   <label className="text-xs font-medium text-foreground/80">Message</label>
                   <Textarea
                     required
                     value={form.message}
                     onChange={set("message")}
                     placeholder="Describe your route, pupil needs or partnership enquiry."
-                    rows={5}
-                    className="rounded-xl border-border bg-background text-foreground placeholder:text-muted-foreground/60 focus:border-[var(--gold)]/60 resize-none"
+                    className="min-h-32 flex-1 rounded-xl border-border bg-background text-foreground placeholder:text-muted-foreground/60 focus:border-[var(--gold)]/60 resize-none"
                   />
                 </div>
                 {error ? (

@@ -13,7 +13,7 @@ const highlights = [
 
 export default function CareersTeaser() {
   return (
-    <section id="careers" className="bg-background py-28 lg:py-36">
+    <section id="careers" className="bg-background py-15 lg:py-20">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

@@ -38,8 +38,8 @@ export default function Process() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="bg-background py-28 lg:py-36">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+    <section ref={ref} className="bg-background py-15 lg:py-20">
+      <div className="mx-auto grid max-w-7xl items-center gap-8 px-6 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
         {/* Visual */}
         <motion.div
           initial={{ opacity: 0, scale: 1.03 }}
