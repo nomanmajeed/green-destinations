@@ -88,8 +88,8 @@ export function HeroSection() {
       >
         <motion.div style={{ y: reduce ? 0 : parallaxY }} className="absolute inset-[-10%]">
           <Image
-            src="/images/ut-hero-home.jpg"
-            alt="An Ultimate Travel minibus, specialists in SEND transport, on a tree-lined road in soft morning light"
+            src="/images/ut-hero-city-hustle-v2.jpg"
+            alt="An Ultimate Travel minibus in motion through the morning hustle of a Yorkshire city centre"
             fill
             priority
             sizes="100vw"
