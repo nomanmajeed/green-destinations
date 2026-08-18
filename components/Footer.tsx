@@ -26,7 +26,7 @@ const links = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="border-t border-border bg-[var(--footer-bg)]">
       <div className="mx-auto max-w-7xl px-6">
         {/* Closing CTA */}
         <div className="flex flex-col items-start justify-between gap-6 border-b border-border py-14 md:flex-row md:items-center">
