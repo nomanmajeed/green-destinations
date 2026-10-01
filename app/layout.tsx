@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${plusJakarta.variable} h-full bg-background`} suppressHydrationWarning>
       <head>
-        <script async src="https://api.srctk.com/tracker.min.js" data-site-key="038aa1b9-c1da-4f89-a0ef-3fe51ce5cdd5"></script>
+        <script async src="https://sourcetrack-api-staging.up.railway.app/tracker.min.js" data-site-key="038aa1b9-c1da-4f89-a0ef-3fe51ce5cdd5"></script>
       </head>
       <body className="min-h-full flex flex-col bg-background" suppressHydrationWarning>
         <Header />
